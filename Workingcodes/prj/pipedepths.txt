@@ -1,4 +1,0 @@
-in_id 8
-in_data 8
-out_id 8
-out_data 8
