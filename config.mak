@@ -7,13 +7,11 @@ includedir=${prefix}/include
 ARCH=X86
 SYS=LINUX
 CC=gcc
-CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I/home/amit/ahirgit/ahir/release/CtestBench/include/ -std=gnu99 -fomit-frame-pointer -fno-tree-vectorize
 COMPILER=GNU
 COMPILER_STYLE=GNU
 DEPMM=-MM -g0
 DEPMT=-MT
 LD=gcc -o 
-LDFLAGS=-m32  -L/home/amit/ahirgit/ahir/release/iolib/lib  -lio -lpthread -lm -ldl
 LIBX264=libx264.a
 AR=ar rc 
 RANLIB=ranlib
@@ -36,4 +34,3 @@ install:
 LDFLAGSCLI = -ldl -lgpac_static -lz 
 CLI_LIBX264 = $(LIBX264)
 CLANG = clang
-CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I/home/amit/ahirgit/ahir/release/CtestBench/include/ -emit-llvm

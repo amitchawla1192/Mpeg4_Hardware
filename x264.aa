@@ -1301,6 +1301,107 @@ $storage x264x_xlinkedx_xoptx_xo_iNtErNal_cabac_transition_5ones_hw:$array [128]
 $storage x264x_xlinkedx_xoptx_xo_iNtErNal_cabac_size_5ones_hw:$array [128] $of $uint<16>
 $storage x264x_xlinkedx_xoptx_xo_iNtErNal_x264_cache_mv_func_table:$array [10] $of $pointer< $pointer < $void >  >
 $storage x264x_xlinkedx_xoptx_xo_iNtErNal_x264_cache_mvd_func_table:$array [10] $of $pointer< $pointer < $void >  >
+$storage x264x_xlinkedx_xoptx_xo_iNtErNal_x264_cache_ref_func_table:$array [10] $of $pointer< $pointer < $void >  >
+$storage x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13:$array [21] $of $uint<8>
+$module [x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13_initializer_in_x264x_xlinkedx_xoptx_xo] $in () $out () $is 
+{
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[0] := _b00101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[1] := _b00101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[2] := _b01100011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[3] := _b01101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[4] := _b01101101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[5] := _b01101101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[6] := _b01101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[7] := _b01101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[8] := _b00101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[9] := _b01110010
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[10] := _b01100101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[11] := _b01100011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[12] := _b01110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[13] := _b01100001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[14] := _b01101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[15] := _b01100111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[16] := _b01101100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[17] := _b01100101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[18] := _b00101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[19] := _b01101000
+  $attribute nooptimize 
+}
+$storage x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect:$array [65] $of $uint<8>
+$module [x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect_initializer_in_x264x_xlinkedx_xoptx_xo] $in () $out () $is 
+{
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[0] := _b01110110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[1] := _b01101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[2] := _b01101001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[3] := _b01100100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[4] := _b00100000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[5] := _b01111000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[6] := _b00110010
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[7] := _b00110110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[8] := _b00110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[9] := _b01011111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[10] := _b01101101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[11] := _b01100001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[12] := _b01100011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[13] := _b01110010
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[14] := _b01101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[15] := _b01100010
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[16] := _b01101100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[17] := _b01101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[18] := _b01100011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[19] := _b01101011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[20] := _b01011111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[21] := _b01100011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[22] := _b01100001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[23] := _b01100011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[24] := _b01101000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[25] := _b01100101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[26] := _b01011111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[27] := _b01110010
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[28] := _b01100101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[29] := _b01100011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[30] := _b01110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[31] := _b00101000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[32] := _b01110110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[33] := _b01101111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[34] := _b01101001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[35] := _b01100100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[36] := _b00100000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[37] := _b00101010
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[38] := _b00101100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[39] := _b00100000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[40] := _b01101001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[41] := _b01101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[42] := _b01110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[43] := _b00101100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[44] := _b00100000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[45] := _b01101001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[46] := _b01101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[47] := _b01110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[48] := _b00101100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[49] := _b00100000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[50] := _b01101001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[51] := _b01101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[52] := _b01110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[53] := _b00101100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[54] := _b00100000
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[55] := _b01110101
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[56] := _b01101001
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[57] := _b01101110
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[58] := _b01110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[59] := _b00110011
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[60] := _b00110010
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[61] := _b01011111
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[62] := _b01110100
+  x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[63] := _b00101001
+  $attribute nooptimize 
+}
+$storage x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr2:$array [2] $of $uint<8>
+$module [x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr2_initializer_in_x264x_xlinkedx_xoptx_xo] $in () $out () $is 
+{
+  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr2[0] := _b00110000
+  $attribute nooptimize 
+}
 $storage x264x_xlinkedx_xoptx_xo_iNtErNal_x264_decimate_table4:$array [16] $of $uint<8>
 $module [x264x_xlinkedx_xoptx_xo_iNtErNal_x264_decimate_table4_initializer_in_x264x_xlinkedx_xoptx_xo] $in () $out () $is 
 {
@@ -3480,12 +3581,6 @@ $module [x264x_xlinkedx_xoptx_xo_iNtErNal_x264_macroblock_analysex_xcheck_mv_lis
   x264x_xlinkedx_xoptx_xo_iNtErNal_x264_macroblock_analysex_xcheck_mv_lists[4] := _b00000001
   x264x_xlinkedx_xoptx_xo_iNtErNal_x264_macroblock_analysex_xcheck_mv_lists[8] := _b00000001
   x264x_xlinkedx_xoptx_xo_iNtErNal_x264_macroblock_analysex_xcheck_mv_lists[12] := _b00000010
-  $attribute nooptimize 
-}
-$storage x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr4:$array [2] $of $uint<8>
-$module [x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr4_initializer_in_x264x_xlinkedx_xoptx_xo] $in () $out () $is 
-{
-  x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr4[0] := _b00110000
   $attribute nooptimize 
 }
 $storage x264x_xlinkedx_xoptx_xo_iNtErNal_x264_psy_trellis_initx_xzero:$array [512] $of $uint<8>
@@ -6006,6 +6101,9 @@ $module [x264x_xlinkedx_xoptx_xo_storage_initializer_] $in () $out () $is
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_cabac_renorm_shift_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_cabac_entropy_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_bypass_lut_initializer_in_x264x_xlinkedx_xoptx_xo () () 
+    $call x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13_initializer_in_x264x_xlinkedx_xoptx_xo () () 
+    $call x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect_initializer_in_x264x_xlinkedx_xoptx_xo () () 
+    $call x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr2_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_decimate_table4_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_decimate_table8_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_i_alpha_table_initializer_in_x264x_xlinkedx_xoptx_xo () () 
@@ -6036,7 +6134,6 @@ $module [x264x_xlinkedx_xoptx_xo_storage_initializer_] $in () $out () $is
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_i_mb_b16x8_cost_table_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_mb_partition_listX_table_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_macroblock_analysex_xcheck_mv_lists_initializer_in_x264x_xlinkedx_xoptx_xo () () 
-    $call x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr4_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_transform_allowed_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_x264_ue_size_tab_initializer_in_x264x_xlinkedx_xoptx_xo () () 
     $call x264x_xlinkedx_xoptx_xo_iNtErNal_chroma_mode_available_initializer_in_x264x_xlinkedx_xoptx_xo () () 
@@ -30498,6 +30595,136 @@ $is
     iNsTr_21 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000110100 ) ]
     iNsTr_22 := ($bitcast ($pointer< $uint<32> >) iNsTr_21)
     ->(iNsTr_22) := iNsTr_0
+    $place [return__]
+    $merge return__ $endmerge
+  }
+}
+$module [x264_macroblock_cache_ref_1_1] 
+$in (target : $pointer< $uint<8> > val : $uint<32> )
+$out ()
+$is 
+{
+  $branchblock [body] 
+  {
+    //begin: basic-block bb_0
+    iNsTr_0 := @(x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr2[( $bitcast ($uint<32> ) _b00000000000000000000000000000000 ) ])
+    iNsTr_1 := @(x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[( $bitcast ($uint<32> ) _b00000000000000000000000000000000 ) ])
+    iNsTr_2 := @(x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[( $bitcast ($uint<32> ) _b00000000000000000000000000000000 ) ])
+    $call x__assert_fail (iNsTr_0 iNsTr_1 ( $bitcast ($uint<32> ) _b00000000000000000000000001110111 )  iNsTr_2 )  ()
+  }
+}
+$module [x264_macroblock_cache_ref_2_1] 
+$in (target : $pointer< $uint<8> > val : $uint<32> )
+$out ()
+$is 
+{
+  $branchblock [body] 
+  {
+    //begin: basic-block x264_macroblock_cache_rectx_xexit
+    iNsTr_0 := (val * ( $bitcast ($uint<32> ) _b00000000000000000000000100000001 ) )
+    iNsTr_1 := ($cast ($uint<16>) iNsTr_0)
+    iNsTr_2 := ($bitcast ($pointer< $uint<16> >) target)
+    ->(iNsTr_2) := iNsTr_1
+    $place [return__]
+    $merge return__ $endmerge
+  }
+}
+$module [x264_macroblock_cache_ref_1_2] 
+$in (target : $pointer< $uint<8> > val : $uint<32> )
+$out ()
+$is 
+{
+  $branchblock [body] 
+  {
+    //begin: basic-block bb_0
+    iNsTr_0 := @(x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr2[( $bitcast ($uint<32> ) _b00000000000000000000000000000000 ) ])
+    iNsTr_1 := @(x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr13[( $bitcast ($uint<32> ) _b00000000000000000000000000000000 ) ])
+    iNsTr_2 := @(x264x_xlinkedx_xoptx_xo_iNtErNal_x__PRETTY_FUNCTION__x_xx264_macroblock_cache_rect[( $bitcast ($uint<32> ) _b00000000000000000000000000000000 ) ])
+    $call x__assert_fail (iNsTr_0 iNsTr_1 ( $bitcast ($uint<32> ) _b00000000000000000000000001110111 )  iNsTr_2 )  ()
+  }
+}
+$module [x264_macroblock_cache_ref_2_2] 
+$in (target : $pointer< $uint<8> > val : $uint<32> )
+$out ()
+$is 
+{
+  $branchblock [body] 
+  {
+    //begin: basic-block x264_macroblock_cache_rectx_xexit
+    iNsTr_0 := (val * ( $bitcast ($uint<32> ) _b00000000000000000000000100000001 ) )
+    iNsTr_1 := ($cast ($uint<16>) iNsTr_0)
+    iNsTr_2 := ($bitcast ($pointer< $uint<16> >) target)
+    ->(iNsTr_2) := iNsTr_1
+    iNsTr_4 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000001000 ) ]
+    iNsTr_5 := ($bitcast ($pointer< $uint<16> >) iNsTr_4)
+    ->(iNsTr_5) := iNsTr_1
+    $place [return__]
+    $merge return__ $endmerge
+  }
+}
+$module [x264_macroblock_cache_ref_4_2] 
+$in (target : $pointer< $uint<8> > val : $uint<32> )
+$out ()
+$is 
+{
+  $branchblock [body] 
+  {
+    //begin: basic-block x264_macroblock_cache_rectx_xexit
+    iNsTr_0 := (val * ( $bitcast ($uint<32> ) _b00000001000000010000000100000001 ) )
+    iNsTr_1 := ($bitcast ($pointer< $uint<32> >) target)
+    ->(iNsTr_1) := iNsTr_0
+    iNsTr_3 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000001000 ) ]
+    iNsTr_4 := ($bitcast ($pointer< $uint<32> >) iNsTr_3)
+    ->(iNsTr_4) := iNsTr_0
+    $place [return__]
+    $merge return__ $endmerge
+  }
+}
+$module [x264_macroblock_cache_ref_2_4] 
+$in (target : $pointer< $uint<8> > val : $uint<32> )
+$out ()
+$is 
+{
+  $branchblock [body] 
+  {
+    //begin: basic-block x264_macroblock_cache_rectx_xexit
+    iNsTr_0 := (val * ( $bitcast ($uint<32> ) _b00000000000000000000000100000001 ) )
+    iNsTr_1 := ($cast ($uint<16>) iNsTr_0)
+    iNsTr_2 := ($bitcast ($pointer< $uint<16> >) target)
+    ->(iNsTr_2) := iNsTr_1
+    iNsTr_4 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000001000 ) ]
+    iNsTr_5 := ($bitcast ($pointer< $uint<16> >) iNsTr_4)
+    ->(iNsTr_5) := iNsTr_1
+    iNsTr_7 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000010000 ) ]
+    iNsTr_8 := ($bitcast ($pointer< $uint<16> >) iNsTr_7)
+    ->(iNsTr_8) := iNsTr_1
+    iNsTr_10 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000011000 ) ]
+    iNsTr_11 := ($bitcast ($pointer< $uint<16> >) iNsTr_10)
+    ->(iNsTr_11) := iNsTr_1
+    $place [return__]
+    $merge return__ $endmerge
+  }
+}
+$module [x264_macroblock_cache_ref_4_4] 
+$in (target : $pointer< $uint<8> > val : $uint<32> )
+$out ()
+$is 
+{
+  $branchblock [body] 
+  {
+    //begin: basic-block x264_macroblock_cache_rectx_xexit
+    iNsTr_0 := (val * ( $bitcast ($uint<32> ) _b00000001000000010000000100000001 ) )
+    iNsTr_1 := ($bitcast ($pointer< $uint<32> >) target)
+    ->(iNsTr_1) := iNsTr_0
+    iNsTr_3 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000001000 ) ]
+    iNsTr_4 := ($bitcast ($pointer< $uint<32> >) iNsTr_3)
+    ->(iNsTr_4) := iNsTr_0
+    iNsTr_6 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000010000 ) ]
+    iNsTr_7 := ($bitcast ($pointer< $uint<32> >) iNsTr_6)
+    ->(iNsTr_7) := iNsTr_0
+    iNsTr_9 := target[( $bitcast ($uint<32> ) _b00000000000000000000000000011000 ) ]
+    iNsTr_10 := ($bitcast ($pointer< $uint<32> >) iNsTr_9)
+    ->(iNsTr_10) := iNsTr_0
     $place [return__]
     $merge return__ $endmerge
   }

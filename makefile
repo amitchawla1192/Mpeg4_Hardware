@@ -10,7 +10,9 @@ GENERATED =
 
 all:SW HW
 default:
-
+CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I/home/users/amitchawla/ahir/release/CtestBench/include/ -std=gnu99 -fomit-frame
+LDFLAGS=-m32  -L/home/users/amitchawla/ahir/release/iolib/lib  -lio -lpthread -lm -ldl
+CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I/home/users/amitchawla/ahir/release/CtestBench/include/ -emit-llvm
 SRCS = x264_hw.c
 #SRCCLI = 
 #SRCSO =
@@ -104,7 +106,7 @@ HW: default c2llvmbc llvmbc2aa
 
 c2llvmbc: $(SRCS) config.mak
 	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS)),$(CLANG) $(CLFLAGS) -o $(SRC:%.c=%.o) $(SRC);)
-	llvm-ld-2.8 -link-as-library $(addprefix $(SRCPATH)/, $(OBJS)) -b x264.linked.o
+	llvm-ld -link-as-library $(addprefix $(SRCPATH)/, $(OBJS)) -b x264.linked.o
 	llvm-dis x264.linked.o
 	opt --indvars --loopsimplify x264.linked.o -o x264.linked.opt.o
 
