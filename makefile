@@ -10,9 +10,9 @@ GENERATED =
 
 all:SW HW
 default:
-CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I/home/users/amitchawla/ahir/release/CtestBench/include/ -std=gnu99 -fomit-frame
-LDFLAGS=-m32  -L/home/users/amitchawla/ahir/release/iolib/lib  -lio -lpthread -lm -ldl
-CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I/home/users/amitchawla/ahir/release/CtestBench/include/ -emit-llvm
+CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I/home/amit/ahirgit/ahir/release/CtestBench/include/ -std=gnu99 -fomit-frame-pointer -fno-tree-vectorize
+LDFLAGS=-m32  -L/home/amit/ahirgit/ahir/release/iolib/lib  -lio -lpthread -lm -ldl
+CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I/home/amit/ahirgit/ahir/release/CtestBench/include/ -emit-llvm
 SRCS = x264_hw.c
 #SRCCLI = 
 #SRCSO =
