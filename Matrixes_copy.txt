@@ -1,0 +1,13 @@
+This file contains all the matrixes which are required to be copied to hardware in initialization
+
+1) Common/cabac.c
+	a) x264_cabac_contexts
+
+2) encoder/analyse.c
+	a) x264_cost_i4x4_mode // used by x264_macroblock_analyse_intra
+	b) x264_cost_ref // used by x264_mb_analyse_load_costs
+3) encoder/rdo.c
+	a) uint8_t x264_cabac_transition_unary[15][128];
+	b) uint16_t x264_cabac_size_unary[15][128];
+	c) static uint8_t cabac_transition_5ones[128];
+	d) static uint16_t cabac_size_5ones[128];

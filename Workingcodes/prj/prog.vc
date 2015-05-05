@@ -1,0 +1,3016 @@
+// Virtual circuit produced from Aa description by Aa2VC 
+// $pipe  in_data : $uint<32>  $depth 8 
+// can point into 
+// in scope  top-level
+$pipe [in_data] 32 $depth 8 
+// $pipe  out_id : $uint<32>  $depth 8 
+// can point into 
+// in scope  top-level
+$pipe [out_id] 32 $depth 8 
+// load store constants for object job
+$constant $W[job_base_address] : $int<8> := _b00000000
+// load store constants for object mempool
+$constant $W[mempool_base_address] : $int<1> := _b0
+$memoryspace [memory_space_0] 
+{
+  $capacity 140
+  $datawidth 32
+  $addrwidth 8
+  $maxaccesswidth 32
+  // $storage  job : $array[20] $of  structx_x_Job  // memory space index = 0  base address = 0  word size = 32
+  // can point into 
+  // in scope  top-level
+  $object [job] : $array[20] $of $record  < $int<32> >  < $int<32> >  < $int<32> >  < $int<32> >  < $int<32> >  < $int<32> >  < $int<32> > 
+}
+$memoryspace [memory_space_1] 
+{
+  $capacity 1
+  $datawidth 8
+  $addrwidth 1
+  $maxaccesswidth 8
+  // $storage  mempool : $array[1] $of $uint<8> // memory space index = 1  base address = 0  word size = 8
+  // can point into  mempool
+  // in scope  top-level
+  $object [mempool] : $array[1] $of $int<8>
+}
+$module [progx_xoptx_xo_storage_initializer_] 
+{
+  // pipe-declarations for block %progx_xoptx_xo_storage_initializer_
+  //  file prog.linked.opt.aa, line 10
+  $CP 
+  {
+    // begin control-path 
+  }
+  // end control-path
+  $DP 
+  {
+    // begin data-path 
+    // constant-object-declarations for block %progx_xoptx_xo_storage_initializer_
+    //  file prog.linked.opt.aa, line 10
+  }
+  // end data-path
+}
+$module [global_storage_initializer_] 
+{
+  // pipe-declarations for block %global_storage_initializer_
+  //  file prog.linked.opt.aa, line 18
+  // pipe-declarations for block %global_storage_initializer_%pb
+  //  file prog.linked.opt.aa, line 23
+  $CP 
+  {
+    // begin control-path 
+    ||[parallel_block_stmt_13] 
+    {
+      ::[call_stmt_14] 
+      {
+        // 		$call progx_xoptx_xo_storage_initializer_ () () 
+        //  file prog.linked.opt.aa, line 25
+        $T[call_stmt_14_sample_start_] 
+        $T[call_stmt_14_sample_completed_] 
+        $T[call_stmt_14_update_start_] 
+        $T[call_stmt_14_update_completed_] 
+        ;;[call_stmt_14_Sample] 
+        {
+          $T [crr] $T [cra] 
+        }
+        ;;[call_stmt_14_Update] 
+        {
+          $T [ccr] $T [cca] 
+        }
+        call_stmt_14_sample_start_ &-> (call_stmt_14_Sample)
+        call_stmt_14_sample_completed_ <-& (call_stmt_14_Sample)
+        call_stmt_14_sample_completed_ &-> ($null)
+        call_stmt_14_update_start_ &-> (call_stmt_14_Update)
+        call_stmt_14_update_completed_ <-& (call_stmt_14_Update)
+        // load-store dependencies..
+      }
+    }
+  }
+  // end control-path
+  $DP 
+  {
+    // begin data-path 
+    // constant-object-declarations for block %global_storage_initializer_%pb
+    //  file prog.linked.opt.aa, line 23
+    // constant-object-declarations for block %global_storage_initializer_
+    //  file prog.linked.opt.aa, line 18
+    // constant-declarations for block %global_storage_initializer_%pb
+    //  file prog.linked.opt.aa, line 23
+    // 		$call progx_xoptx_xo_storage_initializer_ () () 
+    //  file prog.linked.opt.aa, line 25
+    // block %global_storage_initializer_%pb
+    //  file prog.linked.opt.aa, line 23
+    // 		$call progx_xoptx_xo_storage_initializer_ () () 
+    //  file prog.linked.opt.aa, line 25
+    // datapath-instances for block %global_storage_initializer_%pb
+    //  file prog.linked.opt.aa, line 23
+    // 		$call progx_xoptx_xo_storage_initializer_ () () 
+    //  file prog.linked.opt.aa, line 25
+    $call [call_stmt_14_call] $module progx_xoptx_xo_storage_initializer_() () 
+    $delay call_stmt_14_call 2
+  }
+  // end data-path
+  // 		$call progx_xoptx_xo_storage_initializer_ () () 
+  //  file prog.linked.opt.aa, line 25
+  call_stmt_14_call <=> (parallel_block_stmt_13/call_stmt_14/call_stmt_14_Sample/crr parallel_block_stmt_13/call_stmt_14/call_stmt_14_Update/ccr) (parallel_block_stmt_13/call_stmt_14/call_stmt_14_Sample/cra parallel_block_stmt_13/call_stmt_14/call_stmt_14_Update/cca)
+}
+$module [hardware1] 
+{
+  // pipe-declarations for block %hardware1
+  //  file prog.linked.opt.aa, line 28
+  // pipe-declarations for block %hardware1%body
+  //  file prog.linked.opt.aa, line 33
+  // pipe-declarations for block %hardware1%body%
+  //  file prog.linked.opt.aa, line 40
+  $CP 
+  {
+    // begin control-path 
+    <>[branch_block_stmt_18] // Branch Block  file prog.linked.opt.aa, line 33
+    {
+      $P [branch_block_stmt_18__entry__]
+      branch_block_stmt_18__entry__ <-| ($entry)
+      $P [branch_block_stmt_18__exit__]
+      branch_block_stmt_18__exit__ |-> ($exit)
+      $P [assign_stmt_26_to_assign_stmt_44__entry__] 
+      $P [assign_stmt_26_to_assign_stmt_44__exit__] 
+      $P [bb_0_bb_1]
+      $P [merge_stmt_46__exit__] 
+      $P [assign_stmt_61_to_assign_stmt_118__entry__] 
+      $P [assign_stmt_61_to_assign_stmt_118__exit__] 
+      $P [assign_stmt_121__entry__] 
+      $P [assign_stmt_121__exit__] 
+      $P [assign_stmt_125__entry__] 
+      $P [assign_stmt_125__exit__] 
+      $P [assign_stmt_128__entry__] 
+      $P [assign_stmt_128__exit__] 
+      $P [assign_stmt_132__entry__] 
+      $P [assign_stmt_132__exit__] 
+      $P [assign_stmt_135__entry__] 
+      $P [assign_stmt_135__exit__] 
+      $P [assign_stmt_139__entry__] 
+      $P [assign_stmt_139__exit__] 
+      $P [assign_stmt_142__entry__] 
+      $P [assign_stmt_142__exit__] 
+      $P [assign_stmt_146__entry__] 
+      $P [assign_stmt_146__exit__] 
+      $P [assign_stmt_149__entry__] 
+      $P [assign_stmt_149__exit__] 
+      $P [assign_stmt_153__entry__] 
+      $P [assign_stmt_153__exit__] 
+      $P [assign_stmt_156__entry__] 
+      $P [assign_stmt_156__exit__] 
+      $P [assign_stmt_160_to_assign_stmt_165__entry__] 
+      $P [assign_stmt_160_to_assign_stmt_165__exit__] 
+      $P [assign_stmt_168__entry__] 
+      $P [assign_stmt_168__exit__] 
+      $P [bb_1_bb_1]
+      ::[assign_stmt_26_to_assign_stmt_44] 
+      {
+        // 		->(iNsTr_0) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+        //  file prog.linked.opt.aa, line 36
+        // Target expression
+        // ->(iNsTr_0)
+        $T[ptr_deref_28_sample_start_] 
+        $T[ptr_deref_28_sample_completed_] 
+        $T[ptr_deref_28_update_start_] 
+        $T[ptr_deref_28_update_completed_] 
+        $T[ptr_deref_28_base_address_calculated] 
+        // iNsTr_0
+        $T[R_iNsTr_0_27_sample_start_] 
+        $T[R_iNsTr_0_27_sample_completed_] 
+        $T[R_iNsTr_0_27_update_start_] 
+        $T[R_iNsTr_0_27_update_completed_] 
+        // implicit reference
+        R_iNsTr_0_27_sample_start_ <-& ($entry)
+        R_iNsTr_0_27_sample_completed_ <-& (R_iNsTr_0_27_sample_start_)
+        R_iNsTr_0_27_update_start_ <-& (R_iNsTr_0_27_sample_completed_)
+        R_iNsTr_0_27_update_completed_ <-& (R_iNsTr_0_27_update_start_)
+        $T[ptr_deref_28_word_address_calculated] 
+        $T[ptr_deref_28_root_address_calculated] 
+        $T[ptr_deref_28_base_address_resized] 
+        ;;[ptr_deref_28_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_28_base_address_calculated &-> (ptr_deref_28_base_addr_resize)
+        ptr_deref_28_base_address_resized <-& (ptr_deref_28_base_addr_resize)
+        ;;[ptr_deref_28_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_28_base_address_resized &-> (ptr_deref_28_base_plus_offset)
+        ptr_deref_28_root_address_calculated <-& (ptr_deref_28_base_plus_offset)
+        ;;[ptr_deref_28_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_28_root_address_calculated &-> (ptr_deref_28_word_addrgen)
+        ptr_deref_28_word_address_calculated <-& (ptr_deref_28_word_addrgen)
+        ;;[ptr_deref_28_Sample] 
+        {
+          ;;[ptr_deref_28_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_28_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_28_sample_start_ <-& (ptr_deref_28_word_address_calculated)
+        ptr_deref_28_sample_start_ &-> (ptr_deref_28_Sample)
+        ptr_deref_28_sample_completed_ <-& (ptr_deref_28_Sample)
+        ptr_deref_28_sample_completed_ &-> ($null)
+        ptr_deref_28_update_start_ &-> (ptr_deref_28_Update)
+        ptr_deref_28_update_completed_ <-& (ptr_deref_28_Update)
+        ptr_deref_28_base_address_calculated <-& (R_iNsTr_0_27_update_completed_)
+        ptr_deref_28_sample_start_ <-& (ptr_deref_28_base_address_calculated)
+        // 		->(iNsTr_2) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+        //  file prog.linked.opt.aa, line 38
+        // Target expression
+        // ->(iNsTr_2)
+        $T[ptr_deref_41_sample_start_] 
+        $T[ptr_deref_41_sample_completed_] 
+        $T[ptr_deref_41_update_start_] 
+        $T[ptr_deref_41_update_completed_] 
+        $T[ptr_deref_41_base_address_calculated] 
+        // iNsTr_2
+        $T[R_iNsTr_2_40_sample_start_] 
+        $T[R_iNsTr_2_40_sample_completed_] 
+        $T[R_iNsTr_2_40_update_start_] 
+        $T[R_iNsTr_2_40_update_completed_] 
+        // implicit reference
+        R_iNsTr_2_40_sample_start_ <-& ($entry)
+        R_iNsTr_2_40_sample_completed_ <-& (R_iNsTr_2_40_sample_start_)
+        R_iNsTr_2_40_update_start_ <-& (R_iNsTr_2_40_sample_completed_)
+        R_iNsTr_2_40_update_completed_ <-& (R_iNsTr_2_40_update_start_)
+        $T[ptr_deref_41_word_address_calculated] 
+        $T[ptr_deref_41_root_address_calculated] 
+        $T[ptr_deref_41_base_address_resized] 
+        ;;[ptr_deref_41_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_41_base_address_calculated &-> (ptr_deref_41_base_addr_resize)
+        ptr_deref_41_base_address_resized <-& (ptr_deref_41_base_addr_resize)
+        ;;[ptr_deref_41_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_41_base_address_resized &-> (ptr_deref_41_base_plus_offset)
+        ptr_deref_41_root_address_calculated <-& (ptr_deref_41_base_plus_offset)
+        ;;[ptr_deref_41_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_41_root_address_calculated &-> (ptr_deref_41_word_addrgen)
+        ptr_deref_41_word_address_calculated <-& (ptr_deref_41_word_addrgen)
+        ;;[ptr_deref_41_Sample] 
+        {
+          ;;[ptr_deref_41_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_41_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_41_sample_start_ <-& (ptr_deref_41_word_address_calculated)
+        ptr_deref_41_sample_start_ &-> (ptr_deref_41_Sample)
+        ptr_deref_41_sample_completed_ <-& (ptr_deref_41_Sample)
+        ptr_deref_41_sample_completed_ &-> ($null)
+        ptr_deref_41_update_start_ &-> (ptr_deref_41_Update)
+        ptr_deref_41_update_completed_ <-& (ptr_deref_41_Update)
+        ptr_deref_41_base_address_calculated <-& (R_iNsTr_2_40_update_completed_)
+        ptr_deref_41_sample_start_ <-& (ptr_deref_41_base_address_calculated)
+        // load-store dependencies..
+        $T [ptr_deref_28_ptr_deref_41_delay] $delay
+        // ->(iNsTr_0)(store) -> ->(iNsTr_2)(store)
+        ptr_deref_41_sample_start_ <-& (ptr_deref_28_ptr_deref_41_delay)
+        ptr_deref_28_ptr_deref_41_delay <-& (ptr_deref_28_sample_completed_)
+      }
+      assign_stmt_26_to_assign_stmt_44__entry__ |-> (assign_stmt_26_to_assign_stmt_44)
+      assign_stmt_26_to_assign_stmt_44__exit__ <-| (assign_stmt_26_to_assign_stmt_44)
+      ::[assign_stmt_61_to_assign_stmt_118] 
+      {
+        // 		scevgep7 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+        //  file prog.linked.opt.aa, line 43
+        // Source expression
+        // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+        $T[addr_of_60_sample_start_] 
+        $T[addr_of_60_sample_completed_] 
+        $T[addr_of_60_update_start_] 
+        $T[addr_of_60_update_completed_] 
+        $T[array_obj_ref_59_root_address_calculated] 
+        $T[array_obj_ref_59_offset_calculated] 
+        $T[array_obj_ref_59_index_resized_0] 
+        $T[array_obj_ref_59_index_scaled_0] 
+        // ix_x0
+        $T[R_ix_x0_56_sample_start_] 
+        $T[R_ix_x0_56_sample_completed_] 
+        $T[R_ix_x0_56_update_start_] 
+        $T[R_ix_x0_56_update_completed_] 
+        // implicit reference
+        R_ix_x0_56_sample_start_ <-& ($entry)
+        R_ix_x0_56_sample_completed_ <-& (R_ix_x0_56_sample_start_)
+        R_ix_x0_56_update_start_ <-& (R_ix_x0_56_sample_completed_)
+        R_ix_x0_56_update_completed_ <-& (R_ix_x0_56_update_start_)
+        ;;[array_obj_ref_59_index_resize_0] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_ix_x0_56_update_completed_ &-> (array_obj_ref_59_index_resize_0)
+        array_obj_ref_59_index_resized_0 <-& (array_obj_ref_59_index_resize_0)
+        $T[array_obj_ref_59_index_scale_0_sample_start] 
+        $T[array_obj_ref_59_index_scale_0_sample_complete] 
+        $T[array_obj_ref_59_index_scale_0_update_start] 
+        $T[array_obj_ref_59_index_scale_0_update_complete] 
+        ;;[array_obj_ref_59_index_scale_0_Sample] 
+        {
+          $T [rr] $T [ra] 
+        }
+        ;;[array_obj_ref_59_index_scale_0_Update] 
+        {
+          $T [cr] $T [ca] 
+        }
+        array_obj_ref_59_index_resized_0 &-> (array_obj_ref_59_index_scale_0_sample_start)
+        array_obj_ref_59_index_scale_0_sample_start &-> (array_obj_ref_59_index_scale_0_Sample)
+        array_obj_ref_59_index_scale_0_sample_complete <-& (array_obj_ref_59_index_scale_0_Sample)
+        array_obj_ref_59_index_scale_0_update_start &-> (array_obj_ref_59_index_scale_0_Update)
+        array_obj_ref_59_index_scale_0_update_complete <-& (array_obj_ref_59_index_scale_0_Update)
+        array_obj_ref_59_index_scaled_0 <-& (array_obj_ref_59_index_scale_0_update_complete)
+        $T[array_obj_ref_59_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_59_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_59_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_59_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_59_index_scaled_0 &-> (array_obj_ref_59_final_index_sum_regn_Sample)
+        array_obj_ref_59_final_index_sum_regn_sample_complete <-& (array_obj_ref_59_final_index_sum_regn_Sample)
+        array_obj_ref_59_final_index_sum_regn_update_start &-> (array_obj_ref_59_final_index_sum_regn_Update)
+        array_obj_ref_59_offset_calculated <-& (array_obj_ref_59_final_index_sum_regn_Update)
+        ;;[array_obj_ref_59_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_59_offset_calculated &-> (array_obj_ref_59_base_plus_offset)
+        array_obj_ref_59_root_address_calculated <-& (array_obj_ref_59_base_plus_offset)
+        ;;[addr_of_60_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[addr_of_60_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        addr_of_60_sample_start_ <-& (array_obj_ref_59_root_address_calculated)
+        addr_of_60_sample_start_ &-> (addr_of_60_request)
+        addr_of_60_sample_completed_ <-& (addr_of_60_request)
+        addr_of_60_update_start_ &-> (addr_of_60_complete)
+        addr_of_60_update_completed_ <-& (addr_of_60_complete)
+        // Target expression
+        // (as target) scevgep7
+        // scevgep7
+        // implicit reference
+        // 		scevgep6 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+        //  file prog.linked.opt.aa, line 44
+        // Source expression
+        // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+        $T[addr_of_67_sample_start_] 
+        $T[addr_of_67_sample_completed_] 
+        $T[addr_of_67_update_start_] 
+        $T[addr_of_67_update_completed_] 
+        $T[array_obj_ref_66_root_address_calculated] 
+        $T[array_obj_ref_66_offset_calculated] 
+        $T[array_obj_ref_66_index_resized_0] 
+        $T[array_obj_ref_66_index_scaled_0] 
+        // ix_x0
+        $T[R_ix_x0_63_sample_start_] 
+        $T[R_ix_x0_63_sample_completed_] 
+        $T[R_ix_x0_63_update_start_] 
+        $T[R_ix_x0_63_update_completed_] 
+        // implicit reference
+        R_ix_x0_63_sample_start_ <-& ($entry)
+        R_ix_x0_63_sample_completed_ <-& (R_ix_x0_63_sample_start_)
+        R_ix_x0_63_update_start_ <-& (R_ix_x0_63_sample_completed_)
+        R_ix_x0_63_update_completed_ <-& (R_ix_x0_63_update_start_)
+        ;;[array_obj_ref_66_index_resize_0] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_ix_x0_63_update_completed_ &-> (array_obj_ref_66_index_resize_0)
+        array_obj_ref_66_index_resized_0 <-& (array_obj_ref_66_index_resize_0)
+        $T[array_obj_ref_66_index_scale_0_sample_start] 
+        $T[array_obj_ref_66_index_scale_0_sample_complete] 
+        $T[array_obj_ref_66_index_scale_0_update_start] 
+        $T[array_obj_ref_66_index_scale_0_update_complete] 
+        ;;[array_obj_ref_66_index_scale_0_Sample] 
+        {
+          $T [rr] $T [ra] 
+        }
+        ;;[array_obj_ref_66_index_scale_0_Update] 
+        {
+          $T [cr] $T [ca] 
+        }
+        array_obj_ref_66_index_resized_0 &-> (array_obj_ref_66_index_scale_0_sample_start)
+        array_obj_ref_66_index_scale_0_sample_start &-> (array_obj_ref_66_index_scale_0_Sample)
+        array_obj_ref_66_index_scale_0_sample_complete <-& (array_obj_ref_66_index_scale_0_Sample)
+        array_obj_ref_66_index_scale_0_update_start &-> (array_obj_ref_66_index_scale_0_Update)
+        array_obj_ref_66_index_scale_0_update_complete <-& (array_obj_ref_66_index_scale_0_Update)
+        array_obj_ref_66_index_scaled_0 <-& (array_obj_ref_66_index_scale_0_update_complete)
+        $T[array_obj_ref_66_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_66_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_66_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_66_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_66_index_scaled_0 &-> (array_obj_ref_66_final_index_sum_regn_Sample)
+        array_obj_ref_66_final_index_sum_regn_sample_complete <-& (array_obj_ref_66_final_index_sum_regn_Sample)
+        array_obj_ref_66_final_index_sum_regn_update_start &-> (array_obj_ref_66_final_index_sum_regn_Update)
+        array_obj_ref_66_offset_calculated <-& (array_obj_ref_66_final_index_sum_regn_Update)
+        ;;[array_obj_ref_66_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_66_offset_calculated &-> (array_obj_ref_66_base_plus_offset)
+        array_obj_ref_66_root_address_calculated <-& (array_obj_ref_66_base_plus_offset)
+        ;;[addr_of_67_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[addr_of_67_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        addr_of_67_sample_start_ <-& (array_obj_ref_66_root_address_calculated)
+        addr_of_67_sample_start_ &-> (addr_of_67_request)
+        addr_of_67_sample_completed_ <-& (addr_of_67_request)
+        addr_of_67_update_start_ &-> (addr_of_67_complete)
+        addr_of_67_update_completed_ <-& (addr_of_67_complete)
+        // Target expression
+        // (as target) scevgep6
+        // scevgep6
+        // implicit reference
+        // 		scevgep5 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+        //  file prog.linked.opt.aa, line 45
+        // Source expression
+        // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+        $T[addr_of_74_sample_start_] 
+        $T[addr_of_74_sample_completed_] 
+        $T[addr_of_74_update_start_] 
+        $T[addr_of_74_update_completed_] 
+        $T[array_obj_ref_73_root_address_calculated] 
+        $T[array_obj_ref_73_offset_calculated] 
+        $T[array_obj_ref_73_index_resized_0] 
+        $T[array_obj_ref_73_index_scaled_0] 
+        // ix_x0
+        $T[R_ix_x0_70_sample_start_] 
+        $T[R_ix_x0_70_sample_completed_] 
+        $T[R_ix_x0_70_update_start_] 
+        $T[R_ix_x0_70_update_completed_] 
+        // implicit reference
+        R_ix_x0_70_sample_start_ <-& ($entry)
+        R_ix_x0_70_sample_completed_ <-& (R_ix_x0_70_sample_start_)
+        R_ix_x0_70_update_start_ <-& (R_ix_x0_70_sample_completed_)
+        R_ix_x0_70_update_completed_ <-& (R_ix_x0_70_update_start_)
+        ;;[array_obj_ref_73_index_resize_0] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_ix_x0_70_update_completed_ &-> (array_obj_ref_73_index_resize_0)
+        array_obj_ref_73_index_resized_0 <-& (array_obj_ref_73_index_resize_0)
+        $T[array_obj_ref_73_index_scale_0_sample_start] 
+        $T[array_obj_ref_73_index_scale_0_sample_complete] 
+        $T[array_obj_ref_73_index_scale_0_update_start] 
+        $T[array_obj_ref_73_index_scale_0_update_complete] 
+        ;;[array_obj_ref_73_index_scale_0_Sample] 
+        {
+          $T [rr] $T [ra] 
+        }
+        ;;[array_obj_ref_73_index_scale_0_Update] 
+        {
+          $T [cr] $T [ca] 
+        }
+        array_obj_ref_73_index_resized_0 &-> (array_obj_ref_73_index_scale_0_sample_start)
+        array_obj_ref_73_index_scale_0_sample_start &-> (array_obj_ref_73_index_scale_0_Sample)
+        array_obj_ref_73_index_scale_0_sample_complete <-& (array_obj_ref_73_index_scale_0_Sample)
+        array_obj_ref_73_index_scale_0_update_start &-> (array_obj_ref_73_index_scale_0_Update)
+        array_obj_ref_73_index_scale_0_update_complete <-& (array_obj_ref_73_index_scale_0_Update)
+        array_obj_ref_73_index_scaled_0 <-& (array_obj_ref_73_index_scale_0_update_complete)
+        $T[array_obj_ref_73_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_73_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_73_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_73_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_73_index_scaled_0 &-> (array_obj_ref_73_final_index_sum_regn_Sample)
+        array_obj_ref_73_final_index_sum_regn_sample_complete <-& (array_obj_ref_73_final_index_sum_regn_Sample)
+        array_obj_ref_73_final_index_sum_regn_update_start &-> (array_obj_ref_73_final_index_sum_regn_Update)
+        array_obj_ref_73_offset_calculated <-& (array_obj_ref_73_final_index_sum_regn_Update)
+        ;;[array_obj_ref_73_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_73_offset_calculated &-> (array_obj_ref_73_base_plus_offset)
+        array_obj_ref_73_root_address_calculated <-& (array_obj_ref_73_base_plus_offset)
+        ;;[addr_of_74_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[addr_of_74_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        addr_of_74_sample_start_ <-& (array_obj_ref_73_root_address_calculated)
+        addr_of_74_sample_start_ &-> (addr_of_74_request)
+        addr_of_74_sample_completed_ <-& (addr_of_74_request)
+        addr_of_74_update_start_ &-> (addr_of_74_complete)
+        addr_of_74_update_completed_ <-& (addr_of_74_complete)
+        // Target expression
+        // (as target) scevgep5
+        // scevgep5
+        // implicit reference
+        // 		scevgep4 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+        //  file prog.linked.opt.aa, line 46
+        // Source expression
+        // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+        $T[addr_of_81_sample_start_] 
+        $T[addr_of_81_sample_completed_] 
+        $T[addr_of_81_update_start_] 
+        $T[addr_of_81_update_completed_] 
+        $T[array_obj_ref_80_root_address_calculated] 
+        $T[array_obj_ref_80_offset_calculated] 
+        $T[array_obj_ref_80_index_resized_0] 
+        $T[array_obj_ref_80_index_scaled_0] 
+        // ix_x0
+        $T[R_ix_x0_77_sample_start_] 
+        $T[R_ix_x0_77_sample_completed_] 
+        $T[R_ix_x0_77_update_start_] 
+        $T[R_ix_x0_77_update_completed_] 
+        // implicit reference
+        R_ix_x0_77_sample_start_ <-& ($entry)
+        R_ix_x0_77_sample_completed_ <-& (R_ix_x0_77_sample_start_)
+        R_ix_x0_77_update_start_ <-& (R_ix_x0_77_sample_completed_)
+        R_ix_x0_77_update_completed_ <-& (R_ix_x0_77_update_start_)
+        ;;[array_obj_ref_80_index_resize_0] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_ix_x0_77_update_completed_ &-> (array_obj_ref_80_index_resize_0)
+        array_obj_ref_80_index_resized_0 <-& (array_obj_ref_80_index_resize_0)
+        $T[array_obj_ref_80_index_scale_0_sample_start] 
+        $T[array_obj_ref_80_index_scale_0_sample_complete] 
+        $T[array_obj_ref_80_index_scale_0_update_start] 
+        $T[array_obj_ref_80_index_scale_0_update_complete] 
+        ;;[array_obj_ref_80_index_scale_0_Sample] 
+        {
+          $T [rr] $T [ra] 
+        }
+        ;;[array_obj_ref_80_index_scale_0_Update] 
+        {
+          $T [cr] $T [ca] 
+        }
+        array_obj_ref_80_index_resized_0 &-> (array_obj_ref_80_index_scale_0_sample_start)
+        array_obj_ref_80_index_scale_0_sample_start &-> (array_obj_ref_80_index_scale_0_Sample)
+        array_obj_ref_80_index_scale_0_sample_complete <-& (array_obj_ref_80_index_scale_0_Sample)
+        array_obj_ref_80_index_scale_0_update_start &-> (array_obj_ref_80_index_scale_0_Update)
+        array_obj_ref_80_index_scale_0_update_complete <-& (array_obj_ref_80_index_scale_0_Update)
+        array_obj_ref_80_index_scaled_0 <-& (array_obj_ref_80_index_scale_0_update_complete)
+        $T[array_obj_ref_80_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_80_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_80_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_80_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_80_index_scaled_0 &-> (array_obj_ref_80_final_index_sum_regn_Sample)
+        array_obj_ref_80_final_index_sum_regn_sample_complete <-& (array_obj_ref_80_final_index_sum_regn_Sample)
+        array_obj_ref_80_final_index_sum_regn_update_start &-> (array_obj_ref_80_final_index_sum_regn_Update)
+        array_obj_ref_80_offset_calculated <-& (array_obj_ref_80_final_index_sum_regn_Update)
+        ;;[array_obj_ref_80_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_80_offset_calculated &-> (array_obj_ref_80_base_plus_offset)
+        array_obj_ref_80_root_address_calculated <-& (array_obj_ref_80_base_plus_offset)
+        ;;[addr_of_81_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[addr_of_81_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        addr_of_81_sample_start_ <-& (array_obj_ref_80_root_address_calculated)
+        addr_of_81_sample_start_ &-> (addr_of_81_request)
+        addr_of_81_sample_completed_ <-& (addr_of_81_request)
+        addr_of_81_update_start_ &-> (addr_of_81_complete)
+        addr_of_81_update_completed_ <-& (addr_of_81_complete)
+        // Target expression
+        // (as target) scevgep4
+        // scevgep4
+        // implicit reference
+        // 		scevgep3 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+        //  file prog.linked.opt.aa, line 47
+        // Source expression
+        // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+        $T[addr_of_88_sample_start_] 
+        $T[addr_of_88_sample_completed_] 
+        $T[addr_of_88_update_start_] 
+        $T[addr_of_88_update_completed_] 
+        $T[array_obj_ref_87_root_address_calculated] 
+        $T[array_obj_ref_87_offset_calculated] 
+        $T[array_obj_ref_87_index_resized_0] 
+        $T[array_obj_ref_87_index_scaled_0] 
+        // ix_x0
+        $T[R_ix_x0_84_sample_start_] 
+        $T[R_ix_x0_84_sample_completed_] 
+        $T[R_ix_x0_84_update_start_] 
+        $T[R_ix_x0_84_update_completed_] 
+        // implicit reference
+        R_ix_x0_84_sample_start_ <-& ($entry)
+        R_ix_x0_84_sample_completed_ <-& (R_ix_x0_84_sample_start_)
+        R_ix_x0_84_update_start_ <-& (R_ix_x0_84_sample_completed_)
+        R_ix_x0_84_update_completed_ <-& (R_ix_x0_84_update_start_)
+        ;;[array_obj_ref_87_index_resize_0] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_ix_x0_84_update_completed_ &-> (array_obj_ref_87_index_resize_0)
+        array_obj_ref_87_index_resized_0 <-& (array_obj_ref_87_index_resize_0)
+        $T[array_obj_ref_87_index_scale_0_sample_start] 
+        $T[array_obj_ref_87_index_scale_0_sample_complete] 
+        $T[array_obj_ref_87_index_scale_0_update_start] 
+        $T[array_obj_ref_87_index_scale_0_update_complete] 
+        ;;[array_obj_ref_87_index_scale_0_Sample] 
+        {
+          $T [rr] $T [ra] 
+        }
+        ;;[array_obj_ref_87_index_scale_0_Update] 
+        {
+          $T [cr] $T [ca] 
+        }
+        array_obj_ref_87_index_resized_0 &-> (array_obj_ref_87_index_scale_0_sample_start)
+        array_obj_ref_87_index_scale_0_sample_start &-> (array_obj_ref_87_index_scale_0_Sample)
+        array_obj_ref_87_index_scale_0_sample_complete <-& (array_obj_ref_87_index_scale_0_Sample)
+        array_obj_ref_87_index_scale_0_update_start &-> (array_obj_ref_87_index_scale_0_Update)
+        array_obj_ref_87_index_scale_0_update_complete <-& (array_obj_ref_87_index_scale_0_Update)
+        array_obj_ref_87_index_scaled_0 <-& (array_obj_ref_87_index_scale_0_update_complete)
+        $T[array_obj_ref_87_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_87_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_87_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_87_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_87_index_scaled_0 &-> (array_obj_ref_87_final_index_sum_regn_Sample)
+        array_obj_ref_87_final_index_sum_regn_sample_complete <-& (array_obj_ref_87_final_index_sum_regn_Sample)
+        array_obj_ref_87_final_index_sum_regn_update_start &-> (array_obj_ref_87_final_index_sum_regn_Update)
+        array_obj_ref_87_offset_calculated <-& (array_obj_ref_87_final_index_sum_regn_Update)
+        ;;[array_obj_ref_87_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_87_offset_calculated &-> (array_obj_ref_87_base_plus_offset)
+        array_obj_ref_87_root_address_calculated <-& (array_obj_ref_87_base_plus_offset)
+        ;;[addr_of_88_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[addr_of_88_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        addr_of_88_sample_start_ <-& (array_obj_ref_87_root_address_calculated)
+        addr_of_88_sample_start_ &-> (addr_of_88_request)
+        addr_of_88_sample_completed_ <-& (addr_of_88_request)
+        addr_of_88_update_start_ &-> (addr_of_88_complete)
+        addr_of_88_update_completed_ <-& (addr_of_88_complete)
+        // Target expression
+        // (as target) scevgep3
+        // scevgep3
+        // implicit reference
+        // 		scevgep2 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+        //  file prog.linked.opt.aa, line 48
+        // Source expression
+        // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+        $T[addr_of_95_sample_start_] 
+        $T[addr_of_95_sample_completed_] 
+        $T[addr_of_95_update_start_] 
+        $T[addr_of_95_update_completed_] 
+        $T[array_obj_ref_94_root_address_calculated] 
+        $T[array_obj_ref_94_offset_calculated] 
+        $T[array_obj_ref_94_index_resized_0] 
+        $T[array_obj_ref_94_index_scaled_0] 
+        // ix_x0
+        $T[R_ix_x0_91_sample_start_] 
+        $T[R_ix_x0_91_sample_completed_] 
+        $T[R_ix_x0_91_update_start_] 
+        $T[R_ix_x0_91_update_completed_] 
+        // implicit reference
+        R_ix_x0_91_sample_start_ <-& ($entry)
+        R_ix_x0_91_sample_completed_ <-& (R_ix_x0_91_sample_start_)
+        R_ix_x0_91_update_start_ <-& (R_ix_x0_91_sample_completed_)
+        R_ix_x0_91_update_completed_ <-& (R_ix_x0_91_update_start_)
+        ;;[array_obj_ref_94_index_resize_0] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_ix_x0_91_update_completed_ &-> (array_obj_ref_94_index_resize_0)
+        array_obj_ref_94_index_resized_0 <-& (array_obj_ref_94_index_resize_0)
+        $T[array_obj_ref_94_index_scale_0_sample_start] 
+        $T[array_obj_ref_94_index_scale_0_sample_complete] 
+        $T[array_obj_ref_94_index_scale_0_update_start] 
+        $T[array_obj_ref_94_index_scale_0_update_complete] 
+        ;;[array_obj_ref_94_index_scale_0_Sample] 
+        {
+          $T [rr] $T [ra] 
+        }
+        ;;[array_obj_ref_94_index_scale_0_Update] 
+        {
+          $T [cr] $T [ca] 
+        }
+        array_obj_ref_94_index_resized_0 &-> (array_obj_ref_94_index_scale_0_sample_start)
+        array_obj_ref_94_index_scale_0_sample_start &-> (array_obj_ref_94_index_scale_0_Sample)
+        array_obj_ref_94_index_scale_0_sample_complete <-& (array_obj_ref_94_index_scale_0_Sample)
+        array_obj_ref_94_index_scale_0_update_start &-> (array_obj_ref_94_index_scale_0_Update)
+        array_obj_ref_94_index_scale_0_update_complete <-& (array_obj_ref_94_index_scale_0_Update)
+        array_obj_ref_94_index_scaled_0 <-& (array_obj_ref_94_index_scale_0_update_complete)
+        $T[array_obj_ref_94_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_94_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_94_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_94_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_94_index_scaled_0 &-> (array_obj_ref_94_final_index_sum_regn_Sample)
+        array_obj_ref_94_final_index_sum_regn_sample_complete <-& (array_obj_ref_94_final_index_sum_regn_Sample)
+        array_obj_ref_94_final_index_sum_regn_update_start &-> (array_obj_ref_94_final_index_sum_regn_Update)
+        array_obj_ref_94_offset_calculated <-& (array_obj_ref_94_final_index_sum_regn_Update)
+        ;;[array_obj_ref_94_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_94_offset_calculated &-> (array_obj_ref_94_base_plus_offset)
+        array_obj_ref_94_root_address_calculated <-& (array_obj_ref_94_base_plus_offset)
+        ;;[addr_of_95_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[addr_of_95_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        addr_of_95_sample_start_ <-& (array_obj_ref_94_root_address_calculated)
+        addr_of_95_sample_start_ &-> (addr_of_95_request)
+        addr_of_95_sample_completed_ <-& (addr_of_95_request)
+        addr_of_95_update_start_ &-> (addr_of_95_complete)
+        addr_of_95_update_completed_ <-& (addr_of_95_complete)
+        // Target expression
+        // (as target) scevgep2
+        // scevgep2
+        // implicit reference
+        // 		scevgep := @(job[ix_x0])
+        //  file prog.linked.opt.aa, line 49
+        // Source expression
+        // @(job[ix_x0])
+        $T[addr_of_100_sample_start_] 
+        $T[addr_of_100_sample_completed_] 
+        $T[addr_of_100_update_start_] 
+        $T[addr_of_100_update_completed_] 
+        $T[array_obj_ref_99_root_address_calculated] 
+        $T[array_obj_ref_99_offset_calculated] 
+        $T[array_obj_ref_99_index_resized_0] 
+        $T[array_obj_ref_99_index_scaled_0] 
+        // ix_x0
+        $T[R_ix_x0_98_sample_start_] 
+        $T[R_ix_x0_98_sample_completed_] 
+        $T[R_ix_x0_98_update_start_] 
+        $T[R_ix_x0_98_update_completed_] 
+        // implicit reference
+        R_ix_x0_98_sample_start_ <-& ($entry)
+        R_ix_x0_98_sample_completed_ <-& (R_ix_x0_98_sample_start_)
+        R_ix_x0_98_update_start_ <-& (R_ix_x0_98_sample_completed_)
+        R_ix_x0_98_update_completed_ <-& (R_ix_x0_98_update_start_)
+        ;;[array_obj_ref_99_index_resize_0] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_ix_x0_98_update_completed_ &-> (array_obj_ref_99_index_resize_0)
+        array_obj_ref_99_index_resized_0 <-& (array_obj_ref_99_index_resize_0)
+        $T[array_obj_ref_99_index_scale_0_sample_start] 
+        $T[array_obj_ref_99_index_scale_0_sample_complete] 
+        $T[array_obj_ref_99_index_scale_0_update_start] 
+        $T[array_obj_ref_99_index_scale_0_update_complete] 
+        ;;[array_obj_ref_99_index_scale_0_Sample] 
+        {
+          $T [rr] $T [ra] 
+        }
+        ;;[array_obj_ref_99_index_scale_0_Update] 
+        {
+          $T [cr] $T [ca] 
+        }
+        array_obj_ref_99_index_resized_0 &-> (array_obj_ref_99_index_scale_0_sample_start)
+        array_obj_ref_99_index_scale_0_sample_start &-> (array_obj_ref_99_index_scale_0_Sample)
+        array_obj_ref_99_index_scale_0_sample_complete <-& (array_obj_ref_99_index_scale_0_Sample)
+        array_obj_ref_99_index_scale_0_update_start &-> (array_obj_ref_99_index_scale_0_Update)
+        array_obj_ref_99_index_scale_0_update_complete <-& (array_obj_ref_99_index_scale_0_Update)
+        array_obj_ref_99_index_scaled_0 <-& (array_obj_ref_99_index_scale_0_update_complete)
+        ;;[array_obj_ref_99_final_index_sum_regn] 
+        {
+          $T [req] $T [ack] // rename
+        }
+        array_obj_ref_99_index_scaled_0 &-> (array_obj_ref_99_final_index_sum_regn)
+        array_obj_ref_99_offset_calculated <-& (array_obj_ref_99_final_index_sum_regn)
+        ;;[array_obj_ref_99_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_99_offset_calculated &-> (array_obj_ref_99_base_plus_offset)
+        array_obj_ref_99_root_address_calculated <-& (array_obj_ref_99_base_plus_offset)
+        ;;[addr_of_100_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[addr_of_100_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        addr_of_100_sample_start_ <-& (array_obj_ref_99_root_address_calculated)
+        addr_of_100_sample_start_ &-> (addr_of_100_request)
+        addr_of_100_sample_completed_ <-& (addr_of_100_request)
+        addr_of_100_update_start_ &-> (addr_of_100_complete)
+        addr_of_100_update_completed_ <-& (addr_of_100_complete)
+        // Target expression
+        // (as target) scevgep
+        // scevgep
+        // implicit reference
+        // 		scevgep1 := ($bitcast ($pointer< $uint<32> >) scevgep )
+        //  file prog.linked.opt.aa, line 50
+        // Source expression
+        // ($bitcast ($pointer< $uint<32> >) scevgep )
+        $T[type_cast_105_sample_start_] 
+        $T[type_cast_105_sample_completed_] 
+        $T[type_cast_105_update_start_] 
+        $T[type_cast_105_update_completed_] 
+        // scevgep
+        $T[R_scevgep_104_sample_start_] 
+        $T[R_scevgep_104_sample_completed_] 
+        $T[R_scevgep_104_update_start_] 
+        $T[R_scevgep_104_update_completed_] 
+        // implicit reference
+        R_scevgep_104_sample_start_ <-& (addr_of_100_update_completed_)
+        R_scevgep_104_sample_completed_ <-& (R_scevgep_104_sample_start_)
+        R_scevgep_104_update_start_ <-& (R_scevgep_104_sample_completed_)
+        R_scevgep_104_update_completed_ <-& (R_scevgep_104_update_start_)
+        type_cast_105_sample_start_ <-& (R_scevgep_104_update_completed_)
+        ;;[type_cast_105_Sample] 
+        {
+          // unary expression 
+          $T [rr] $T [ra] // (split) unary operation
+        }
+        ;;[type_cast_105_Update] 
+        {
+          // unary expression 
+          $T [cr] $T [ca] //(split) unary operation
+        }
+        type_cast_105_sample_start_ &-> (type_cast_105_Sample)
+        type_cast_105_sample_completed_ <-& (type_cast_105_Sample)
+        type_cast_105_sample_completed_ &-> ($null)
+        type_cast_105_update_start_ &-> (type_cast_105_Update)
+        type_cast_105_update_completed_ <-& (type_cast_105_Update)
+        // Target expression
+        // (as target) scevgep1
+        // scevgep1
+        // implicit reference
+        // 		tmp := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        //  file prog.linked.opt.aa, line 51
+        // Source expression
+        // (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        $T[ADD_u32_u32_111_sample_start_] 
+        $T[ADD_u32_u32_111_sample_completed_] 
+        $T[ADD_u32_u32_111_update_start_] 
+        $T[ADD_u32_u32_111_update_completed_] 
+        // ix_x0
+        $T[R_ix_x0_108_sample_start_] 
+        $T[R_ix_x0_108_sample_completed_] 
+        $T[R_ix_x0_108_update_start_] 
+        $T[R_ix_x0_108_update_completed_] 
+        // implicit reference
+        R_ix_x0_108_sample_start_ <-& ($entry)
+        R_ix_x0_108_sample_completed_ <-& (R_ix_x0_108_sample_start_)
+        R_ix_x0_108_update_start_ <-& (R_ix_x0_108_sample_completed_)
+        R_ix_x0_108_update_completed_ <-& (R_ix_x0_108_update_start_)
+        ADD_u32_u32_111_sample_start_ <-& (R_ix_x0_108_update_completed_)
+        ;;[ADD_u32_u32_111_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[ADD_u32_u32_111_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        ADD_u32_u32_111_sample_start_ &-> (ADD_u32_u32_111_Sample)
+        ADD_u32_u32_111_sample_completed_ <-& (ADD_u32_u32_111_Sample)
+        ADD_u32_u32_111_sample_completed_ &-> ($null)
+        ADD_u32_u32_111_update_start_ &-> (ADD_u32_u32_111_Update)
+        ADD_u32_u32_111_update_completed_ <-& (ADD_u32_u32_111_Update)
+        // Target expression
+        // (as target) tmp
+        // tmp
+        // implicit reference
+        // 		iNsTr_5 := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        //  file prog.linked.opt.aa, line 52
+        // Source expression
+        // (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        $T[ADD_u32_u32_117_sample_start_] 
+        $T[ADD_u32_u32_117_sample_completed_] 
+        $T[ADD_u32_u32_117_update_start_] 
+        $T[ADD_u32_u32_117_update_completed_] 
+        // ix_x0
+        $T[R_ix_x0_114_sample_start_] 
+        $T[R_ix_x0_114_sample_completed_] 
+        $T[R_ix_x0_114_update_start_] 
+        $T[R_ix_x0_114_update_completed_] 
+        // implicit reference
+        R_ix_x0_114_sample_start_ <-& ($entry)
+        R_ix_x0_114_sample_completed_ <-& (R_ix_x0_114_sample_start_)
+        R_ix_x0_114_update_start_ <-& (R_ix_x0_114_sample_completed_)
+        R_ix_x0_114_update_completed_ <-& (R_ix_x0_114_update_start_)
+        ADD_u32_u32_117_sample_start_ <-& (R_ix_x0_114_update_completed_)
+        ;;[ADD_u32_u32_117_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[ADD_u32_u32_117_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        ADD_u32_u32_117_sample_start_ &-> (ADD_u32_u32_117_Sample)
+        ADD_u32_u32_117_sample_completed_ <-& (ADD_u32_u32_117_Sample)
+        ADD_u32_u32_117_sample_completed_ &-> ($null)
+        ADD_u32_u32_117_update_start_ &-> (ADD_u32_u32_117_Update)
+        ADD_u32_u32_117_update_completed_ <-& (ADD_u32_u32_117_Update)
+        // Target expression
+        // (as target) iNsTr_5
+        // iNsTr_5
+        // implicit reference
+        // load-store dependencies..
+      }
+      assign_stmt_61_to_assign_stmt_118__entry__ |-> (assign_stmt_61_to_assign_stmt_118)
+      assign_stmt_61_to_assign_stmt_118__exit__ <-| (assign_stmt_61_to_assign_stmt_118)
+      ::[assign_stmt_121] 
+      {
+        // 		iNsTr_7 := in_data
+        //  file prog.linked.opt.aa, line 53
+        // Source expression
+        // in_data
+        $T[RPIPE_in_data_120_sample_start_] 
+        $T[RPIPE_in_data_120_sample_completed_] 
+        $T[RPIPE_in_data_120_update_start_] 
+        $T[RPIPE_in_data_120_update_completed_] 
+        ;;[RPIPE_in_data_120_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_in_data_120_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_in_data_120_sample_start_ &-> (RPIPE_in_data_120_Sample)
+        RPIPE_in_data_120_sample_completed_ <-& (RPIPE_in_data_120_Sample)
+        RPIPE_in_data_120_sample_completed_ &-> ($null)
+        RPIPE_in_data_120_update_start_ &-> (RPIPE_in_data_120_Update)
+        RPIPE_in_data_120_update_completed_ <-& (RPIPE_in_data_120_Update)
+        // Target expression
+        // (as target) iNsTr_7
+        // iNsTr_7
+        // implicit reference
+        // barrier: 		iNsTr_7 := in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe in_data
+      }
+      assign_stmt_121__entry__ |-> (assign_stmt_121)
+      assign_stmt_121__exit__ <-| (assign_stmt_121)
+      ::[assign_stmt_125] 
+      {
+        // 		->(scevgep7) := iNsTr_7
+        //  file prog.linked.opt.aa, line 54
+        // Source expression
+        // iNsTr_7
+        $T[R_iNsTr_7_124_sample_start_] 
+        $T[R_iNsTr_7_124_sample_completed_] 
+        $T[R_iNsTr_7_124_update_start_] 
+        $T[R_iNsTr_7_124_update_completed_] 
+        // implicit reference
+        R_iNsTr_7_124_sample_start_ <-& ($entry)
+        R_iNsTr_7_124_sample_completed_ <-& (R_iNsTr_7_124_sample_start_)
+        R_iNsTr_7_124_update_start_ <-& (R_iNsTr_7_124_sample_completed_)
+        R_iNsTr_7_124_update_completed_ <-& (R_iNsTr_7_124_update_start_)
+        // Target expression
+        // ->(scevgep7)
+        $T[ptr_deref_123_sample_start_] 
+        $T[ptr_deref_123_sample_completed_] 
+        $T[ptr_deref_123_update_start_] 
+        $T[ptr_deref_123_update_completed_] 
+        $T[ptr_deref_123_base_address_calculated] 
+        // scevgep7
+        $T[R_scevgep7_122_sample_start_] 
+        $T[R_scevgep7_122_sample_completed_] 
+        $T[R_scevgep7_122_update_start_] 
+        $T[R_scevgep7_122_update_completed_] 
+        // implicit reference
+        R_scevgep7_122_sample_start_ <-& ($entry)
+        R_scevgep7_122_sample_completed_ <-& (R_scevgep7_122_sample_start_)
+        R_scevgep7_122_update_start_ <-& (R_scevgep7_122_sample_completed_)
+        R_scevgep7_122_update_completed_ <-& (R_scevgep7_122_update_start_)
+        $T[ptr_deref_123_word_address_calculated] 
+        $T[ptr_deref_123_root_address_calculated] 
+        $T[ptr_deref_123_base_address_resized] 
+        ;;[ptr_deref_123_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_123_base_address_calculated &-> (ptr_deref_123_base_addr_resize)
+        ptr_deref_123_base_address_resized <-& (ptr_deref_123_base_addr_resize)
+        ;;[ptr_deref_123_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_123_base_address_resized &-> (ptr_deref_123_base_plus_offset)
+        ptr_deref_123_root_address_calculated <-& (ptr_deref_123_base_plus_offset)
+        ;;[ptr_deref_123_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_123_root_address_calculated &-> (ptr_deref_123_word_addrgen)
+        ptr_deref_123_word_address_calculated <-& (ptr_deref_123_word_addrgen)
+        ;;[ptr_deref_123_Sample] 
+        {
+          ;;[ptr_deref_123_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_123_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_123_sample_start_ <-& (ptr_deref_123_word_address_calculated)
+        ptr_deref_123_sample_start_ &-> (ptr_deref_123_Sample)
+        ptr_deref_123_sample_completed_ <-& (ptr_deref_123_Sample)
+        ptr_deref_123_sample_completed_ &-> ($null)
+        ptr_deref_123_update_start_ &-> (ptr_deref_123_Update)
+        ptr_deref_123_update_completed_ <-& (ptr_deref_123_Update)
+        ptr_deref_123_base_address_calculated <-& (R_scevgep7_122_update_completed_)
+        ptr_deref_123_sample_start_ <-& (ptr_deref_123_base_address_calculated)
+        ptr_deref_123_sample_start_ <-& (R_iNsTr_7_124_update_completed_)
+        // load-store dependencies..
+      }
+      assign_stmt_125__entry__ |-> (assign_stmt_125)
+      assign_stmt_125__exit__ <-| (assign_stmt_125)
+      ::[assign_stmt_128] 
+      {
+        // 		iNsTr_10 := in_data
+        //  file prog.linked.opt.aa, line 55
+        // Source expression
+        // in_data
+        $T[RPIPE_in_data_127_sample_start_] 
+        $T[RPIPE_in_data_127_sample_completed_] 
+        $T[RPIPE_in_data_127_update_start_] 
+        $T[RPIPE_in_data_127_update_completed_] 
+        ;;[RPIPE_in_data_127_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_in_data_127_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_in_data_127_sample_start_ &-> (RPIPE_in_data_127_Sample)
+        RPIPE_in_data_127_sample_completed_ <-& (RPIPE_in_data_127_Sample)
+        RPIPE_in_data_127_sample_completed_ &-> ($null)
+        RPIPE_in_data_127_update_start_ &-> (RPIPE_in_data_127_Update)
+        RPIPE_in_data_127_update_completed_ <-& (RPIPE_in_data_127_Update)
+        // Target expression
+        // (as target) iNsTr_10
+        // iNsTr_10
+        // implicit reference
+        // barrier: 		iNsTr_10 := in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe in_data
+      }
+      assign_stmt_128__entry__ |-> (assign_stmt_128)
+      assign_stmt_128__exit__ <-| (assign_stmt_128)
+      ::[assign_stmt_132] 
+      {
+        // 		->(scevgep6) := iNsTr_10
+        //  file prog.linked.opt.aa, line 56
+        // Source expression
+        // iNsTr_10
+        $T[R_iNsTr_10_131_sample_start_] 
+        $T[R_iNsTr_10_131_sample_completed_] 
+        $T[R_iNsTr_10_131_update_start_] 
+        $T[R_iNsTr_10_131_update_completed_] 
+        // implicit reference
+        R_iNsTr_10_131_sample_start_ <-& ($entry)
+        R_iNsTr_10_131_sample_completed_ <-& (R_iNsTr_10_131_sample_start_)
+        R_iNsTr_10_131_update_start_ <-& (R_iNsTr_10_131_sample_completed_)
+        R_iNsTr_10_131_update_completed_ <-& (R_iNsTr_10_131_update_start_)
+        // Target expression
+        // ->(scevgep6)
+        $T[ptr_deref_130_sample_start_] 
+        $T[ptr_deref_130_sample_completed_] 
+        $T[ptr_deref_130_update_start_] 
+        $T[ptr_deref_130_update_completed_] 
+        $T[ptr_deref_130_base_address_calculated] 
+        // scevgep6
+        $T[R_scevgep6_129_sample_start_] 
+        $T[R_scevgep6_129_sample_completed_] 
+        $T[R_scevgep6_129_update_start_] 
+        $T[R_scevgep6_129_update_completed_] 
+        // implicit reference
+        R_scevgep6_129_sample_start_ <-& ($entry)
+        R_scevgep6_129_sample_completed_ <-& (R_scevgep6_129_sample_start_)
+        R_scevgep6_129_update_start_ <-& (R_scevgep6_129_sample_completed_)
+        R_scevgep6_129_update_completed_ <-& (R_scevgep6_129_update_start_)
+        $T[ptr_deref_130_word_address_calculated] 
+        $T[ptr_deref_130_root_address_calculated] 
+        $T[ptr_deref_130_base_address_resized] 
+        ;;[ptr_deref_130_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_130_base_address_calculated &-> (ptr_deref_130_base_addr_resize)
+        ptr_deref_130_base_address_resized <-& (ptr_deref_130_base_addr_resize)
+        ;;[ptr_deref_130_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_130_base_address_resized &-> (ptr_deref_130_base_plus_offset)
+        ptr_deref_130_root_address_calculated <-& (ptr_deref_130_base_plus_offset)
+        ;;[ptr_deref_130_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_130_root_address_calculated &-> (ptr_deref_130_word_addrgen)
+        ptr_deref_130_word_address_calculated <-& (ptr_deref_130_word_addrgen)
+        ;;[ptr_deref_130_Sample] 
+        {
+          ;;[ptr_deref_130_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_130_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_130_sample_start_ <-& (ptr_deref_130_word_address_calculated)
+        ptr_deref_130_sample_start_ &-> (ptr_deref_130_Sample)
+        ptr_deref_130_sample_completed_ <-& (ptr_deref_130_Sample)
+        ptr_deref_130_sample_completed_ &-> ($null)
+        ptr_deref_130_update_start_ &-> (ptr_deref_130_Update)
+        ptr_deref_130_update_completed_ <-& (ptr_deref_130_Update)
+        ptr_deref_130_base_address_calculated <-& (R_scevgep6_129_update_completed_)
+        ptr_deref_130_sample_start_ <-& (ptr_deref_130_base_address_calculated)
+        ptr_deref_130_sample_start_ <-& (R_iNsTr_10_131_update_completed_)
+        // load-store dependencies..
+      }
+      assign_stmt_132__entry__ |-> (assign_stmt_132)
+      assign_stmt_132__exit__ <-| (assign_stmt_132)
+      ::[assign_stmt_135] 
+      {
+        // 		iNsTr_13 := in_data
+        //  file prog.linked.opt.aa, line 57
+        // Source expression
+        // in_data
+        $T[RPIPE_in_data_134_sample_start_] 
+        $T[RPIPE_in_data_134_sample_completed_] 
+        $T[RPIPE_in_data_134_update_start_] 
+        $T[RPIPE_in_data_134_update_completed_] 
+        ;;[RPIPE_in_data_134_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_in_data_134_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_in_data_134_sample_start_ &-> (RPIPE_in_data_134_Sample)
+        RPIPE_in_data_134_sample_completed_ <-& (RPIPE_in_data_134_Sample)
+        RPIPE_in_data_134_sample_completed_ &-> ($null)
+        RPIPE_in_data_134_update_start_ &-> (RPIPE_in_data_134_Update)
+        RPIPE_in_data_134_update_completed_ <-& (RPIPE_in_data_134_Update)
+        // Target expression
+        // (as target) iNsTr_13
+        // iNsTr_13
+        // implicit reference
+        // barrier: 		iNsTr_13 := in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe in_data
+      }
+      assign_stmt_135__entry__ |-> (assign_stmt_135)
+      assign_stmt_135__exit__ <-| (assign_stmt_135)
+      ::[assign_stmt_139] 
+      {
+        // 		->(scevgep5) := iNsTr_13
+        //  file prog.linked.opt.aa, line 58
+        // Source expression
+        // iNsTr_13
+        $T[R_iNsTr_13_138_sample_start_] 
+        $T[R_iNsTr_13_138_sample_completed_] 
+        $T[R_iNsTr_13_138_update_start_] 
+        $T[R_iNsTr_13_138_update_completed_] 
+        // implicit reference
+        R_iNsTr_13_138_sample_start_ <-& ($entry)
+        R_iNsTr_13_138_sample_completed_ <-& (R_iNsTr_13_138_sample_start_)
+        R_iNsTr_13_138_update_start_ <-& (R_iNsTr_13_138_sample_completed_)
+        R_iNsTr_13_138_update_completed_ <-& (R_iNsTr_13_138_update_start_)
+        // Target expression
+        // ->(scevgep5)
+        $T[ptr_deref_137_sample_start_] 
+        $T[ptr_deref_137_sample_completed_] 
+        $T[ptr_deref_137_update_start_] 
+        $T[ptr_deref_137_update_completed_] 
+        $T[ptr_deref_137_base_address_calculated] 
+        // scevgep5
+        $T[R_scevgep5_136_sample_start_] 
+        $T[R_scevgep5_136_sample_completed_] 
+        $T[R_scevgep5_136_update_start_] 
+        $T[R_scevgep5_136_update_completed_] 
+        // implicit reference
+        R_scevgep5_136_sample_start_ <-& ($entry)
+        R_scevgep5_136_sample_completed_ <-& (R_scevgep5_136_sample_start_)
+        R_scevgep5_136_update_start_ <-& (R_scevgep5_136_sample_completed_)
+        R_scevgep5_136_update_completed_ <-& (R_scevgep5_136_update_start_)
+        $T[ptr_deref_137_word_address_calculated] 
+        $T[ptr_deref_137_root_address_calculated] 
+        $T[ptr_deref_137_base_address_resized] 
+        ;;[ptr_deref_137_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_137_base_address_calculated &-> (ptr_deref_137_base_addr_resize)
+        ptr_deref_137_base_address_resized <-& (ptr_deref_137_base_addr_resize)
+        ;;[ptr_deref_137_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_137_base_address_resized &-> (ptr_deref_137_base_plus_offset)
+        ptr_deref_137_root_address_calculated <-& (ptr_deref_137_base_plus_offset)
+        ;;[ptr_deref_137_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_137_root_address_calculated &-> (ptr_deref_137_word_addrgen)
+        ptr_deref_137_word_address_calculated <-& (ptr_deref_137_word_addrgen)
+        ;;[ptr_deref_137_Sample] 
+        {
+          ;;[ptr_deref_137_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_137_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_137_sample_start_ <-& (ptr_deref_137_word_address_calculated)
+        ptr_deref_137_sample_start_ &-> (ptr_deref_137_Sample)
+        ptr_deref_137_sample_completed_ <-& (ptr_deref_137_Sample)
+        ptr_deref_137_sample_completed_ &-> ($null)
+        ptr_deref_137_update_start_ &-> (ptr_deref_137_Update)
+        ptr_deref_137_update_completed_ <-& (ptr_deref_137_Update)
+        ptr_deref_137_base_address_calculated <-& (R_scevgep5_136_update_completed_)
+        ptr_deref_137_sample_start_ <-& (ptr_deref_137_base_address_calculated)
+        ptr_deref_137_sample_start_ <-& (R_iNsTr_13_138_update_completed_)
+        // load-store dependencies..
+      }
+      assign_stmt_139__entry__ |-> (assign_stmt_139)
+      assign_stmt_139__exit__ <-| (assign_stmt_139)
+      ::[assign_stmt_142] 
+      {
+        // 		iNsTr_16 := in_data
+        //  file prog.linked.opt.aa, line 59
+        // Source expression
+        // in_data
+        $T[RPIPE_in_data_141_sample_start_] 
+        $T[RPIPE_in_data_141_sample_completed_] 
+        $T[RPIPE_in_data_141_update_start_] 
+        $T[RPIPE_in_data_141_update_completed_] 
+        ;;[RPIPE_in_data_141_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_in_data_141_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_in_data_141_sample_start_ &-> (RPIPE_in_data_141_Sample)
+        RPIPE_in_data_141_sample_completed_ <-& (RPIPE_in_data_141_Sample)
+        RPIPE_in_data_141_sample_completed_ &-> ($null)
+        RPIPE_in_data_141_update_start_ &-> (RPIPE_in_data_141_Update)
+        RPIPE_in_data_141_update_completed_ <-& (RPIPE_in_data_141_Update)
+        // Target expression
+        // (as target) iNsTr_16
+        // iNsTr_16
+        // implicit reference
+        // barrier: 		iNsTr_16 := in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe in_data
+      }
+      assign_stmt_142__entry__ |-> (assign_stmt_142)
+      assign_stmt_142__exit__ <-| (assign_stmt_142)
+      ::[assign_stmt_146] 
+      {
+        // 		->(scevgep4) := iNsTr_16
+        //  file prog.linked.opt.aa, line 60
+        // Source expression
+        // iNsTr_16
+        $T[R_iNsTr_16_145_sample_start_] 
+        $T[R_iNsTr_16_145_sample_completed_] 
+        $T[R_iNsTr_16_145_update_start_] 
+        $T[R_iNsTr_16_145_update_completed_] 
+        // implicit reference
+        R_iNsTr_16_145_sample_start_ <-& ($entry)
+        R_iNsTr_16_145_sample_completed_ <-& (R_iNsTr_16_145_sample_start_)
+        R_iNsTr_16_145_update_start_ <-& (R_iNsTr_16_145_sample_completed_)
+        R_iNsTr_16_145_update_completed_ <-& (R_iNsTr_16_145_update_start_)
+        // Target expression
+        // ->(scevgep4)
+        $T[ptr_deref_144_sample_start_] 
+        $T[ptr_deref_144_sample_completed_] 
+        $T[ptr_deref_144_update_start_] 
+        $T[ptr_deref_144_update_completed_] 
+        $T[ptr_deref_144_base_address_calculated] 
+        // scevgep4
+        $T[R_scevgep4_143_sample_start_] 
+        $T[R_scevgep4_143_sample_completed_] 
+        $T[R_scevgep4_143_update_start_] 
+        $T[R_scevgep4_143_update_completed_] 
+        // implicit reference
+        R_scevgep4_143_sample_start_ <-& ($entry)
+        R_scevgep4_143_sample_completed_ <-& (R_scevgep4_143_sample_start_)
+        R_scevgep4_143_update_start_ <-& (R_scevgep4_143_sample_completed_)
+        R_scevgep4_143_update_completed_ <-& (R_scevgep4_143_update_start_)
+        $T[ptr_deref_144_word_address_calculated] 
+        $T[ptr_deref_144_root_address_calculated] 
+        $T[ptr_deref_144_base_address_resized] 
+        ;;[ptr_deref_144_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_144_base_address_calculated &-> (ptr_deref_144_base_addr_resize)
+        ptr_deref_144_base_address_resized <-& (ptr_deref_144_base_addr_resize)
+        ;;[ptr_deref_144_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_144_base_address_resized &-> (ptr_deref_144_base_plus_offset)
+        ptr_deref_144_root_address_calculated <-& (ptr_deref_144_base_plus_offset)
+        ;;[ptr_deref_144_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_144_root_address_calculated &-> (ptr_deref_144_word_addrgen)
+        ptr_deref_144_word_address_calculated <-& (ptr_deref_144_word_addrgen)
+        ;;[ptr_deref_144_Sample] 
+        {
+          ;;[ptr_deref_144_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_144_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_144_sample_start_ <-& (ptr_deref_144_word_address_calculated)
+        ptr_deref_144_sample_start_ &-> (ptr_deref_144_Sample)
+        ptr_deref_144_sample_completed_ <-& (ptr_deref_144_Sample)
+        ptr_deref_144_sample_completed_ &-> ($null)
+        ptr_deref_144_update_start_ &-> (ptr_deref_144_Update)
+        ptr_deref_144_update_completed_ <-& (ptr_deref_144_Update)
+        ptr_deref_144_base_address_calculated <-& (R_scevgep4_143_update_completed_)
+        ptr_deref_144_sample_start_ <-& (ptr_deref_144_base_address_calculated)
+        ptr_deref_144_sample_start_ <-& (R_iNsTr_16_145_update_completed_)
+        // load-store dependencies..
+      }
+      assign_stmt_146__entry__ |-> (assign_stmt_146)
+      assign_stmt_146__exit__ <-| (assign_stmt_146)
+      ::[assign_stmt_149] 
+      {
+        // 		iNsTr_19 := in_data
+        //  file prog.linked.opt.aa, line 61
+        // Source expression
+        // in_data
+        $T[RPIPE_in_data_148_sample_start_] 
+        $T[RPIPE_in_data_148_sample_completed_] 
+        $T[RPIPE_in_data_148_update_start_] 
+        $T[RPIPE_in_data_148_update_completed_] 
+        ;;[RPIPE_in_data_148_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_in_data_148_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_in_data_148_sample_start_ &-> (RPIPE_in_data_148_Sample)
+        RPIPE_in_data_148_sample_completed_ <-& (RPIPE_in_data_148_Sample)
+        RPIPE_in_data_148_sample_completed_ &-> ($null)
+        RPIPE_in_data_148_update_start_ &-> (RPIPE_in_data_148_Update)
+        RPIPE_in_data_148_update_completed_ <-& (RPIPE_in_data_148_Update)
+        // Target expression
+        // (as target) iNsTr_19
+        // iNsTr_19
+        // implicit reference
+        // barrier: 		iNsTr_19 := in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe in_data
+      }
+      assign_stmt_149__entry__ |-> (assign_stmt_149)
+      assign_stmt_149__exit__ <-| (assign_stmt_149)
+      ::[assign_stmt_153] 
+      {
+        // 		->(scevgep3) := iNsTr_19
+        //  file prog.linked.opt.aa, line 62
+        // Source expression
+        // iNsTr_19
+        $T[R_iNsTr_19_152_sample_start_] 
+        $T[R_iNsTr_19_152_sample_completed_] 
+        $T[R_iNsTr_19_152_update_start_] 
+        $T[R_iNsTr_19_152_update_completed_] 
+        // implicit reference
+        R_iNsTr_19_152_sample_start_ <-& ($entry)
+        R_iNsTr_19_152_sample_completed_ <-& (R_iNsTr_19_152_sample_start_)
+        R_iNsTr_19_152_update_start_ <-& (R_iNsTr_19_152_sample_completed_)
+        R_iNsTr_19_152_update_completed_ <-& (R_iNsTr_19_152_update_start_)
+        // Target expression
+        // ->(scevgep3)
+        $T[ptr_deref_151_sample_start_] 
+        $T[ptr_deref_151_sample_completed_] 
+        $T[ptr_deref_151_update_start_] 
+        $T[ptr_deref_151_update_completed_] 
+        $T[ptr_deref_151_base_address_calculated] 
+        // scevgep3
+        $T[R_scevgep3_150_sample_start_] 
+        $T[R_scevgep3_150_sample_completed_] 
+        $T[R_scevgep3_150_update_start_] 
+        $T[R_scevgep3_150_update_completed_] 
+        // implicit reference
+        R_scevgep3_150_sample_start_ <-& ($entry)
+        R_scevgep3_150_sample_completed_ <-& (R_scevgep3_150_sample_start_)
+        R_scevgep3_150_update_start_ <-& (R_scevgep3_150_sample_completed_)
+        R_scevgep3_150_update_completed_ <-& (R_scevgep3_150_update_start_)
+        $T[ptr_deref_151_word_address_calculated] 
+        $T[ptr_deref_151_root_address_calculated] 
+        $T[ptr_deref_151_base_address_resized] 
+        ;;[ptr_deref_151_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_151_base_address_calculated &-> (ptr_deref_151_base_addr_resize)
+        ptr_deref_151_base_address_resized <-& (ptr_deref_151_base_addr_resize)
+        ;;[ptr_deref_151_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_151_base_address_resized &-> (ptr_deref_151_base_plus_offset)
+        ptr_deref_151_root_address_calculated <-& (ptr_deref_151_base_plus_offset)
+        ;;[ptr_deref_151_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_151_root_address_calculated &-> (ptr_deref_151_word_addrgen)
+        ptr_deref_151_word_address_calculated <-& (ptr_deref_151_word_addrgen)
+        ;;[ptr_deref_151_Sample] 
+        {
+          ;;[ptr_deref_151_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_151_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_151_sample_start_ <-& (ptr_deref_151_word_address_calculated)
+        ptr_deref_151_sample_start_ &-> (ptr_deref_151_Sample)
+        ptr_deref_151_sample_completed_ <-& (ptr_deref_151_Sample)
+        ptr_deref_151_sample_completed_ &-> ($null)
+        ptr_deref_151_update_start_ &-> (ptr_deref_151_Update)
+        ptr_deref_151_update_completed_ <-& (ptr_deref_151_Update)
+        ptr_deref_151_base_address_calculated <-& (R_scevgep3_150_update_completed_)
+        ptr_deref_151_sample_start_ <-& (ptr_deref_151_base_address_calculated)
+        ptr_deref_151_sample_start_ <-& (R_iNsTr_19_152_update_completed_)
+        // load-store dependencies..
+      }
+      assign_stmt_153__entry__ |-> (assign_stmt_153)
+      assign_stmt_153__exit__ <-| (assign_stmt_153)
+      ::[assign_stmt_156] 
+      {
+        // 		iNsTr_22 := in_data
+        //  file prog.linked.opt.aa, line 63
+        // Source expression
+        // in_data
+        $T[RPIPE_in_data_155_sample_start_] 
+        $T[RPIPE_in_data_155_sample_completed_] 
+        $T[RPIPE_in_data_155_update_start_] 
+        $T[RPIPE_in_data_155_update_completed_] 
+        ;;[RPIPE_in_data_155_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_in_data_155_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_in_data_155_sample_start_ &-> (RPIPE_in_data_155_Sample)
+        RPIPE_in_data_155_sample_completed_ <-& (RPIPE_in_data_155_Sample)
+        RPIPE_in_data_155_sample_completed_ &-> ($null)
+        RPIPE_in_data_155_update_start_ &-> (RPIPE_in_data_155_Update)
+        RPIPE_in_data_155_update_completed_ <-& (RPIPE_in_data_155_Update)
+        // Target expression
+        // (as target) iNsTr_22
+        // iNsTr_22
+        // implicit reference
+        // barrier: 		iNsTr_22 := in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe in_data
+      }
+      assign_stmt_156__entry__ |-> (assign_stmt_156)
+      assign_stmt_156__exit__ <-| (assign_stmt_156)
+      ::[assign_stmt_160_to_assign_stmt_165] 
+      {
+        // 		->(scevgep2) := iNsTr_22
+        //  file prog.linked.opt.aa, line 64
+        // Source expression
+        // iNsTr_22
+        $T[R_iNsTr_22_159_sample_start_] 
+        $T[R_iNsTr_22_159_sample_completed_] 
+        $T[R_iNsTr_22_159_update_start_] 
+        $T[R_iNsTr_22_159_update_completed_] 
+        // implicit reference
+        R_iNsTr_22_159_sample_start_ <-& ($entry)
+        R_iNsTr_22_159_sample_completed_ <-& (R_iNsTr_22_159_sample_start_)
+        R_iNsTr_22_159_update_start_ <-& (R_iNsTr_22_159_sample_completed_)
+        R_iNsTr_22_159_update_completed_ <-& (R_iNsTr_22_159_update_start_)
+        // Target expression
+        // ->(scevgep2)
+        $T[ptr_deref_158_sample_start_] 
+        $T[ptr_deref_158_sample_completed_] 
+        $T[ptr_deref_158_update_start_] 
+        $T[ptr_deref_158_update_completed_] 
+        $T[ptr_deref_158_base_address_calculated] 
+        // scevgep2
+        $T[R_scevgep2_157_sample_start_] 
+        $T[R_scevgep2_157_sample_completed_] 
+        $T[R_scevgep2_157_update_start_] 
+        $T[R_scevgep2_157_update_completed_] 
+        // implicit reference
+        R_scevgep2_157_sample_start_ <-& ($entry)
+        R_scevgep2_157_sample_completed_ <-& (R_scevgep2_157_sample_start_)
+        R_scevgep2_157_update_start_ <-& (R_scevgep2_157_sample_completed_)
+        R_scevgep2_157_update_completed_ <-& (R_scevgep2_157_update_start_)
+        $T[ptr_deref_158_word_address_calculated] 
+        $T[ptr_deref_158_root_address_calculated] 
+        $T[ptr_deref_158_base_address_resized] 
+        ;;[ptr_deref_158_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_158_base_address_calculated &-> (ptr_deref_158_base_addr_resize)
+        ptr_deref_158_base_address_resized <-& (ptr_deref_158_base_addr_resize)
+        ;;[ptr_deref_158_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_158_base_address_resized &-> (ptr_deref_158_base_plus_offset)
+        ptr_deref_158_root_address_calculated <-& (ptr_deref_158_base_plus_offset)
+        ;;[ptr_deref_158_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_158_root_address_calculated &-> (ptr_deref_158_word_addrgen)
+        ptr_deref_158_word_address_calculated <-& (ptr_deref_158_word_addrgen)
+        ;;[ptr_deref_158_Sample] 
+        {
+          ;;[ptr_deref_158_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_158_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_158_sample_start_ <-& (ptr_deref_158_word_address_calculated)
+        ptr_deref_158_sample_start_ &-> (ptr_deref_158_Sample)
+        ptr_deref_158_sample_completed_ <-& (ptr_deref_158_Sample)
+        ptr_deref_158_sample_completed_ &-> ($null)
+        ptr_deref_158_update_start_ &-> (ptr_deref_158_Update)
+        ptr_deref_158_update_completed_ <-& (ptr_deref_158_Update)
+        ptr_deref_158_base_address_calculated <-& (R_scevgep2_157_update_completed_)
+        ptr_deref_158_sample_start_ <-& (ptr_deref_158_base_address_calculated)
+        ptr_deref_158_sample_start_ <-& (R_iNsTr_22_159_update_completed_)
+        // 		->(scevgep1) := ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+        //  file prog.linked.opt.aa, line 65
+        // Target expression
+        // ->(scevgep1)
+        $T[ptr_deref_162_sample_start_] 
+        $T[ptr_deref_162_sample_completed_] 
+        $T[ptr_deref_162_update_start_] 
+        $T[ptr_deref_162_update_completed_] 
+        $T[ptr_deref_162_base_address_calculated] 
+        // scevgep1
+        $T[R_scevgep1_161_sample_start_] 
+        $T[R_scevgep1_161_sample_completed_] 
+        $T[R_scevgep1_161_update_start_] 
+        $T[R_scevgep1_161_update_completed_] 
+        // implicit reference
+        R_scevgep1_161_sample_start_ <-& ($entry)
+        R_scevgep1_161_sample_completed_ <-& (R_scevgep1_161_sample_start_)
+        R_scevgep1_161_update_start_ <-& (R_scevgep1_161_sample_completed_)
+        R_scevgep1_161_update_completed_ <-& (R_scevgep1_161_update_start_)
+        $T[ptr_deref_162_word_address_calculated] 
+        $T[ptr_deref_162_root_address_calculated] 
+        $T[ptr_deref_162_base_address_resized] 
+        ;;[ptr_deref_162_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_162_base_address_calculated &-> (ptr_deref_162_base_addr_resize)
+        ptr_deref_162_base_address_resized <-& (ptr_deref_162_base_addr_resize)
+        ;;[ptr_deref_162_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_162_base_address_resized &-> (ptr_deref_162_base_plus_offset)
+        ptr_deref_162_root_address_calculated <-& (ptr_deref_162_base_plus_offset)
+        ;;[ptr_deref_162_word_addrgen] 
+        {
+          $T [root_register_req] $T [root_register_ack]
+        }
+        ptr_deref_162_root_address_calculated &-> (ptr_deref_162_word_addrgen)
+        ptr_deref_162_word_address_calculated <-& (ptr_deref_162_word_addrgen)
+        ;;[ptr_deref_162_Sample] 
+        {
+          ;;[ptr_deref_162_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_162_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_162_sample_start_ <-& (ptr_deref_162_word_address_calculated)
+        ptr_deref_162_sample_start_ &-> (ptr_deref_162_Sample)
+        ptr_deref_162_sample_completed_ <-& (ptr_deref_162_Sample)
+        ptr_deref_162_sample_completed_ &-> ($null)
+        ptr_deref_162_update_start_ &-> (ptr_deref_162_Update)
+        ptr_deref_162_update_completed_ <-& (ptr_deref_162_Update)
+        ptr_deref_162_base_address_calculated <-& (R_scevgep1_161_update_completed_)
+        ptr_deref_162_sample_start_ <-& (ptr_deref_162_base_address_calculated)
+        // load-store dependencies..
+        $T [ptr_deref_158_ptr_deref_162_delay] $delay
+        // ->(scevgep2)(store) -> ->(scevgep1)(store)
+        ptr_deref_162_sample_start_ <-& (ptr_deref_158_ptr_deref_162_delay)
+        ptr_deref_158_ptr_deref_162_delay <-& (ptr_deref_158_sample_completed_)
+      }
+      assign_stmt_160_to_assign_stmt_165__entry__ |-> (assign_stmt_160_to_assign_stmt_165)
+      assign_stmt_160_to_assign_stmt_165__exit__ <-| (assign_stmt_160_to_assign_stmt_165)
+      ::[assign_stmt_168] 
+      {
+        // 		out_id := tmp
+        //  file prog.linked.opt.aa, line 66
+        // Source expression
+        // tmp
+        $T[R_tmp_167_sample_start_] 
+        $T[R_tmp_167_sample_completed_] 
+        $T[R_tmp_167_update_start_] 
+        $T[R_tmp_167_update_completed_] 
+        // implicit reference
+        R_tmp_167_sample_start_ <-& ($entry)
+        R_tmp_167_sample_completed_ <-& (R_tmp_167_sample_start_)
+        R_tmp_167_update_start_ <-& (R_tmp_167_sample_completed_)
+        R_tmp_167_update_completed_ <-& (R_tmp_167_update_start_)
+        // Target expression
+        // (as target) out_id
+        $T[WPIPE_out_id_166_sample_start_] 
+        $T[WPIPE_out_id_166_sample_completed_] 
+        $T[WPIPE_out_id_166_update_start_] 
+        $T[WPIPE_out_id_166_update_completed_] 
+        ;;[WPIPE_out_id_166_Sample] 
+        {
+          // pipe write sample-start out_id
+          $T [req] $T [ack] 
+        }
+        ;;[WPIPE_out_id_166_Update] 
+        {
+          // pipe write update (complete) out_id
+          $T [req] $T [ack] 
+        }
+        WPIPE_out_id_166_sample_start_ &-> (WPIPE_out_id_166_Sample)
+        WPIPE_out_id_166_sample_completed_ <-& (WPIPE_out_id_166_Sample)
+        WPIPE_out_id_166_sample_completed_ &-> ($null)
+        WPIPE_out_id_166_update_start_ &-> (WPIPE_out_id_166_Update)
+        WPIPE_out_id_166_update_completed_ <-& (WPIPE_out_id_166_Update)
+        WPIPE_out_id_166_sample_start_ <-& (R_tmp_167_update_completed_)
+        // barrier: 		out_id := tmp
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe out_id
+      }
+      assign_stmt_168__entry__ |-> (assign_stmt_168)
+      assign_stmt_168__exit__ <-| (assign_stmt_168)
+      // control-path for merge  
+      //  file prog.linked.opt.aa, line 40
+      //---------------------   merge statement  file prog.linked.opt.aa, line 40  --------------------------
+      ||[bb_0_bb_1_PhiReq] 
+      {
+        ;;[phi_stmt_47] 
+        {
+          ||[phi_stmt_47_sources] 
+          {
+            // sources for 			$phi ix_x0 := 			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bb_0_bb_1			  ($cast ($uint<32>) iNsTr_5 ) $on bb_1_bb_1 // type of target is $uint<32>
+            // ($cast ($uint<32>) iNsTr_5 )
+            ;;[type_cast_53] 
+            {
+              // type-cast expression
+              ||[SplitProtocol] 
+              {
+                ;;[Sample] 
+                {
+                  $T [rr] $T [ra]  
+                }
+                ;;[Update] 
+                {
+                  $T [cr] $T [ca] 
+                }
+              }
+            }
+          }
+          $T [phi_stmt_47_req] 
+        }
+      }
+      bb_0_bb_1 |-> (bb_0_bb_1_PhiReq)
+      ||[bb_1_bb_1_PhiReq] 
+      {
+        ;;[phi_stmt_47] 
+        {
+          ||[phi_stmt_47_sources] 
+          {
+            // sources for 			$phi ix_x0 := 			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bb_0_bb_1			  ($cast ($uint<32>) iNsTr_5 ) $on bb_1_bb_1 // type of target is $uint<32>
+            // ($cast ($uint<32>) iNsTr_5 )
+            ;;[type_cast_53] 
+            {
+              // type-cast expression
+              ||[SplitProtocol] 
+              {
+                ;;[Sample] 
+                {
+                  $T [rr] $T [ra]  
+                }
+                ;;[Update] 
+                {
+                  $T [cr] $T [ca] 
+                }
+              }
+            }
+          }
+          $T [phi_stmt_47_req] 
+        }
+      }
+      bb_1_bb_1 |-> (bb_1_bb_1_PhiReq)
+      $P [merge_stmt_46_PhiReqMerge] 
+      merge_stmt_46_PhiReqMerge <-| ( bb_0_bb_1_PhiReq  bb_1_bb_1_PhiReq )
+      ||[merge_stmt_46_PhiAck] 
+      {
+        $T [phi_stmt_47_ack] 
+      }
+      merge_stmt_46_PhiReqMerge |-> (merge_stmt_46_PhiAck)
+      merge_stmt_46__exit__  <-| (merge_stmt_46_PhiAck)
+      //---------------------  end of merge statement  file prog.linked.opt.aa, line 40  --------------------------
+      assign_stmt_26_to_assign_stmt_44__entry__ <-| (branch_block_stmt_18__entry__)
+      bb_0_bb_1 <-| (assign_stmt_26_to_assign_stmt_44__exit__)
+      assign_stmt_61_to_assign_stmt_118__entry__ <-| (merge_stmt_46__exit__)
+      assign_stmt_121__entry__ <-| (assign_stmt_61_to_assign_stmt_118__exit__)
+      assign_stmt_125__entry__ <-| (assign_stmt_121__exit__)
+      assign_stmt_128__entry__ <-| (assign_stmt_125__exit__)
+      assign_stmt_132__entry__ <-| (assign_stmt_128__exit__)
+      assign_stmt_135__entry__ <-| (assign_stmt_132__exit__)
+      assign_stmt_139__entry__ <-| (assign_stmt_135__exit__)
+      assign_stmt_142__entry__ <-| (assign_stmt_139__exit__)
+      assign_stmt_146__entry__ <-| (assign_stmt_142__exit__)
+      assign_stmt_149__entry__ <-| (assign_stmt_146__exit__)
+      assign_stmt_153__entry__ <-| (assign_stmt_149__exit__)
+      assign_stmt_156__entry__ <-| (assign_stmt_153__exit__)
+      assign_stmt_160_to_assign_stmt_165__entry__ <-| (assign_stmt_156__exit__)
+      assign_stmt_168__entry__ <-| (assign_stmt_160_to_assign_stmt_165__exit__)
+      bb_1_bb_1 <-| (assign_stmt_168__exit__)
+    }
+  }
+  // end control-path
+  $DP 
+  {
+    // begin data-path 
+    // constant-object-declarations for block %hardware1%body%
+    //  file prog.linked.opt.aa, line 40
+    // constant-object-declarations for block %hardware1%body
+    //  file prog.linked.opt.aa, line 33
+    // constant-object-declarations for block %hardware1
+    //  file prog.linked.opt.aa, line 28
+    // constant-declarations for block %hardware1%body
+    //  file prog.linked.opt.aa, line 33
+    // 		iNsTr_0 := @(job[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )])
+    //  file prog.linked.opt.aa, line 35
+    $constant $W[iNsTr_0_26] : $int<32> := _b00000000000000000000000000000000 // 0
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    $constant $W[type_cast_30_wire_constant] : $int<32> := _b00000000000000000000000000000000// 0
+    // ->(iNsTr_0)
+    $constant $W[ptr_deref_28_word_offset_0] : $int<8> := _b00000000// 0
+    // 		iNsTr_2 := @(job[($bitcast ($uint<32>) _b00000000000000000000000000000001  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )])
+    //  file prog.linked.opt.aa, line 37
+    $constant $W[iNsTr_2_39] : $int<32> := _b00000000000000000000000000000111 // 7
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    $constant $W[type_cast_43_wire_constant] : $int<32> := _b00000000000000000000000000000000// 0
+    // ->(iNsTr_2)
+    $constant $W[ptr_deref_41_word_offset_0] : $int<8> := _b00000000// 0
+    // constant-declarations for block %hardware1%body%
+    //  file prog.linked.opt.aa, line 40
+    // constant-declarations for phi:  			$phi ix_x0 := 			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bb_0_bb_1			  ($cast ($uint<32>) iNsTr_5 ) $on bb_1_bb_1 // type of target is $uint<32>
+    //  file prog.linked.opt.aa, line 41
+    // ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) )
+    $constant $W[type_cast_51_wire_constant] : $int<32> := _b00000000000000000000000000000000// 0
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+    $constant $W[array_obj_ref_59_constant_part_of_offset] : $int<8> := _b00000001// 1
+    $constant $W[array_obj_ref_59_resized_base_address] : $int<8> := _b00000000// 0
+    $constant $W[array_obj_ref_59_offset_scale_factor_0] : $int<8> := _b00000111// 7
+    $constant $W[array_obj_ref_59_offset_scale_factor_1] : $int<8> := _b00000001// 1
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+    $constant $W[array_obj_ref_66_constant_part_of_offset] : $int<8> := _b00000010// 2
+    $constant $W[array_obj_ref_66_resized_base_address] : $int<8> := _b00000000// 0
+    $constant $W[array_obj_ref_66_offset_scale_factor_0] : $int<8> := _b00000111// 7
+    $constant $W[array_obj_ref_66_offset_scale_factor_1] : $int<8> := _b00000001// 1
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+    $constant $W[array_obj_ref_73_constant_part_of_offset] : $int<8> := _b00000011// 3
+    $constant $W[array_obj_ref_73_resized_base_address] : $int<8> := _b00000000// 0
+    $constant $W[array_obj_ref_73_offset_scale_factor_0] : $int<8> := _b00000111// 7
+    $constant $W[array_obj_ref_73_offset_scale_factor_1] : $int<8> := _b00000001// 1
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+    $constant $W[array_obj_ref_80_constant_part_of_offset] : $int<8> := _b00000100// 4
+    $constant $W[array_obj_ref_80_resized_base_address] : $int<8> := _b00000000// 0
+    $constant $W[array_obj_ref_80_offset_scale_factor_0] : $int<8> := _b00000111// 7
+    $constant $W[array_obj_ref_80_offset_scale_factor_1] : $int<8> := _b00000001// 1
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+    $constant $W[array_obj_ref_87_constant_part_of_offset] : $int<8> := _b00000101// 5
+    $constant $W[array_obj_ref_87_resized_base_address] : $int<8> := _b00000000// 0
+    $constant $W[array_obj_ref_87_offset_scale_factor_0] : $int<8> := _b00000111// 7
+    $constant $W[array_obj_ref_87_offset_scale_factor_1] : $int<8> := _b00000001// 1
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+    $constant $W[array_obj_ref_94_constant_part_of_offset] : $int<8> := _b00000110// 6
+    $constant $W[array_obj_ref_94_resized_base_address] : $int<8> := _b00000000// 0
+    $constant $W[array_obj_ref_94_offset_scale_factor_0] : $int<8> := _b00000111// 7
+    $constant $W[array_obj_ref_94_offset_scale_factor_1] : $int<8> := _b00000001// 1
+    // @(job[ix_x0])
+    $constant $W[array_obj_ref_99_resized_base_address] : $int<8> := _b00000000// 0
+    $constant $W[array_obj_ref_99_offset_scale_factor_0] : $int<8> := _b00000111// 7
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    $constant $W[type_cast_110_wire_constant] : $int<32> := _b00000000000000000000000000000001// 1
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    $constant $W[type_cast_116_wire_constant] : $int<32> := _b00000000000000000000000000000001// 1
+    // ->(scevgep7)
+    $constant $W[ptr_deref_123_word_offset_0] : $int<8> := _b00000000// 0
+    // ->(scevgep6)
+    $constant $W[ptr_deref_130_word_offset_0] : $int<8> := _b00000000// 0
+    // ->(scevgep5)
+    $constant $W[ptr_deref_137_word_offset_0] : $int<8> := _b00000000// 0
+    // ->(scevgep4)
+    $constant $W[ptr_deref_144_word_offset_0] : $int<8> := _b00000000// 0
+    // ->(scevgep3)
+    $constant $W[ptr_deref_151_word_offset_0] : $int<8> := _b00000000// 0
+    // ->(scevgep2)
+    $constant $W[ptr_deref_158_word_offset_0] : $int<8> := _b00000000// 0
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    $constant $W[type_cast_164_wire_constant] : $int<32> := _b00000000000000000000000000000001// 1
+    // ->(scevgep1)
+    $constant $W[ptr_deref_162_word_offset_0] : $int<8> := _b00000000// 0
+    // block %hardware1%body
+    //  file prog.linked.opt.aa, line 33
+    // 		->(iNsTr_0) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    //  file prog.linked.opt.aa, line 36
+    // ->(iNsTr_0)
+    $intermediate $W[ptr_deref_28_wire] : $int<32>
+    $intermediate $W[ptr_deref_28_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_28_root_address] : $int<8>
+    $W[ptr_deref_28_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_28_data_0] : $int<32>
+    // 		->(iNsTr_2) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    //  file prog.linked.opt.aa, line 38
+    // ->(iNsTr_2)
+    $intermediate $W[ptr_deref_41_wire] : $int<32>
+    $intermediate $W[ptr_deref_41_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_41_root_address] : $int<8>
+    $W[ptr_deref_41_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_41_data_0] : $int<32>
+    // merge-statement  
+    //  file prog.linked.opt.aa, line 40
+    // 			$phi ix_x0 := 			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bb_0_bb_1			  ($cast ($uint<32>) iNsTr_5 ) $on bb_1_bb_1 // type of target is $uint<32>
+    //  file prog.linked.opt.aa, line 41
+    // ($cast ($uint<32>) iNsTr_5 )
+    $intermediate $W[type_cast_53_wire] : $int<32>
+    // ix_x0
+    $W[ix_x0_47] : $int<32>
+    // 		scevgep7 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+    //  file prog.linked.opt.aa, line 43
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+    $intermediate $W[R_ix_x0_56_resized] : $int<8>
+    $intermediate $W[R_ix_x0_56_scaled] : $int<8>
+    $intermediate $W[array_obj_ref_59_final_offset] : $int<8>
+    $intermediate $W[array_obj_ref_59_root_address] : $int<8>
+    // scevgep7
+    $W[scevgep7_61] : $int<32>
+    // 		scevgep6 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+    //  file prog.linked.opt.aa, line 44
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+    $intermediate $W[R_ix_x0_63_resized] : $int<8>
+    $intermediate $W[R_ix_x0_63_scaled] : $int<8>
+    $intermediate $W[array_obj_ref_66_final_offset] : $int<8>
+    $intermediate $W[array_obj_ref_66_root_address] : $int<8>
+    // scevgep6
+    $W[scevgep6_68] : $int<32>
+    // 		scevgep5 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+    //  file prog.linked.opt.aa, line 45
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+    $intermediate $W[R_ix_x0_70_resized] : $int<8>
+    $intermediate $W[R_ix_x0_70_scaled] : $int<8>
+    $intermediate $W[array_obj_ref_73_final_offset] : $int<8>
+    $intermediate $W[array_obj_ref_73_root_address] : $int<8>
+    // scevgep5
+    $W[scevgep5_75] : $int<32>
+    // 		scevgep4 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+    //  file prog.linked.opt.aa, line 46
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+    $intermediate $W[R_ix_x0_77_resized] : $int<8>
+    $intermediate $W[R_ix_x0_77_scaled] : $int<8>
+    $intermediate $W[array_obj_ref_80_final_offset] : $int<8>
+    $intermediate $W[array_obj_ref_80_root_address] : $int<8>
+    // scevgep4
+    $W[scevgep4_82] : $int<32>
+    // 		scevgep3 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+    //  file prog.linked.opt.aa, line 47
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+    $intermediate $W[R_ix_x0_84_resized] : $int<8>
+    $intermediate $W[R_ix_x0_84_scaled] : $int<8>
+    $intermediate $W[array_obj_ref_87_final_offset] : $int<8>
+    $intermediate $W[array_obj_ref_87_root_address] : $int<8>
+    // scevgep3
+    $W[scevgep3_89] : $int<32>
+    // 		scevgep2 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+    //  file prog.linked.opt.aa, line 48
+    // @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+    $intermediate $W[R_ix_x0_91_resized] : $int<8>
+    $intermediate $W[R_ix_x0_91_scaled] : $int<8>
+    $intermediate $W[array_obj_ref_94_final_offset] : $int<8>
+    $intermediate $W[array_obj_ref_94_root_address] : $int<8>
+    // scevgep2
+    $W[scevgep2_96] : $int<32>
+    // 		scevgep := @(job[ix_x0])
+    //  file prog.linked.opt.aa, line 49
+    // @(job[ix_x0])
+    $intermediate $W[R_ix_x0_98_resized] : $int<8>
+    $intermediate $W[R_ix_x0_98_scaled] : $int<8>
+    $intermediate $W[array_obj_ref_99_final_offset] : $int<8>
+    $intermediate $W[array_obj_ref_99_root_address] : $int<8>
+    // scevgep
+    $W[scevgep_101] : $int<32>
+    // 		scevgep1 := ($bitcast ($pointer< $uint<32> >) scevgep )
+    //  file prog.linked.opt.aa, line 50
+    // scevgep1
+    $W[scevgep1_106] : $int<32>
+    // 		tmp := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file prog.linked.opt.aa, line 51
+    // tmp
+    $W[tmp_112] : $int<32>
+    // 		iNsTr_5 := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file prog.linked.opt.aa, line 52
+    // iNsTr_5
+    $W[iNsTr_5_118] : $int<32>
+    // 		iNsTr_7 := in_data
+    //  file prog.linked.opt.aa, line 53
+    // iNsTr_7
+    $W[iNsTr_7_121] : $int<32>
+    // 		->(scevgep7) := iNsTr_7
+    //  file prog.linked.opt.aa, line 54
+    // ->(scevgep7)
+    $intermediate $W[ptr_deref_123_wire] : $int<32>
+    $intermediate $W[ptr_deref_123_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_123_root_address] : $int<8>
+    $W[ptr_deref_123_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_123_data_0] : $int<32>
+    // 		iNsTr_10 := in_data
+    //  file prog.linked.opt.aa, line 55
+    // iNsTr_10
+    $W[iNsTr_10_128] : $int<32>
+    // 		->(scevgep6) := iNsTr_10
+    //  file prog.linked.opt.aa, line 56
+    // ->(scevgep6)
+    $intermediate $W[ptr_deref_130_wire] : $int<32>
+    $intermediate $W[ptr_deref_130_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_130_root_address] : $int<8>
+    $W[ptr_deref_130_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_130_data_0] : $int<32>
+    // 		iNsTr_13 := in_data
+    //  file prog.linked.opt.aa, line 57
+    // iNsTr_13
+    $W[iNsTr_13_135] : $int<32>
+    // 		->(scevgep5) := iNsTr_13
+    //  file prog.linked.opt.aa, line 58
+    // ->(scevgep5)
+    $intermediate $W[ptr_deref_137_wire] : $int<32>
+    $intermediate $W[ptr_deref_137_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_137_root_address] : $int<8>
+    $W[ptr_deref_137_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_137_data_0] : $int<32>
+    // 		iNsTr_16 := in_data
+    //  file prog.linked.opt.aa, line 59
+    // iNsTr_16
+    $W[iNsTr_16_142] : $int<32>
+    // 		->(scevgep4) := iNsTr_16
+    //  file prog.linked.opt.aa, line 60
+    // ->(scevgep4)
+    $intermediate $W[ptr_deref_144_wire] : $int<32>
+    $intermediate $W[ptr_deref_144_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_144_root_address] : $int<8>
+    $W[ptr_deref_144_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_144_data_0] : $int<32>
+    // 		iNsTr_19 := in_data
+    //  file prog.linked.opt.aa, line 61
+    // iNsTr_19
+    $W[iNsTr_19_149] : $int<32>
+    // 		->(scevgep3) := iNsTr_19
+    //  file prog.linked.opt.aa, line 62
+    // ->(scevgep3)
+    $intermediate $W[ptr_deref_151_wire] : $int<32>
+    $intermediate $W[ptr_deref_151_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_151_root_address] : $int<8>
+    $W[ptr_deref_151_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_151_data_0] : $int<32>
+    // 		iNsTr_22 := in_data
+    //  file prog.linked.opt.aa, line 63
+    // iNsTr_22
+    $W[iNsTr_22_156] : $int<32>
+    // 		->(scevgep2) := iNsTr_22
+    //  file prog.linked.opt.aa, line 64
+    // ->(scevgep2)
+    $intermediate $W[ptr_deref_158_wire] : $int<32>
+    $intermediate $W[ptr_deref_158_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_158_root_address] : $int<8>
+    $W[ptr_deref_158_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_158_data_0] : $int<32>
+    // 		->(scevgep1) := ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    //  file prog.linked.opt.aa, line 65
+    // ->(scevgep1)
+    $intermediate $W[ptr_deref_162_wire] : $int<32>
+    $intermediate $W[ptr_deref_162_resized_base_address] : $int<8>
+    $intermediate $W[ptr_deref_162_root_address] : $int<8>
+    $W[ptr_deref_162_word_address_0] : $pointer<memory_space_0>
+    $W[ptr_deref_162_data_0] : $int<32>
+    // 		out_id := tmp
+    //  file prog.linked.opt.aa, line 66
+    // out_id
+    // datapath-instances for block %hardware1%body
+    //  file prog.linked.opt.aa, line 33
+    // 		->(iNsTr_0) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    //  file prog.linked.opt.aa, line 36
+    // ->(iNsTr_0)
+    &/ [ptr_deref_28_base_resize] (iNsTr_0_26) (ptr_deref_28_resized_base_address) 
+    &/ [ptr_deref_28_root_address_inst] (ptr_deref_28_resized_base_address) (ptr_deref_28_root_address) 
+    &/ [ptr_deref_28_addr_0] (ptr_deref_28_root_address) (ptr_deref_28_word_address_0) 
+    $store [ptr_deref_28_store_0] $to memory_space_0 (ptr_deref_28_word_address_0 ptr_deref_28_data_0) 
+    $delay ptr_deref_28_store_0 2
+    &/ [ptr_deref_28_gather_scatter] (type_cast_30_wire_constant) (ptr_deref_28_data_0) 
+    // 		->(iNsTr_2) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    //  file prog.linked.opt.aa, line 38
+    // ->(iNsTr_2)
+    &/ [ptr_deref_41_base_resize] (iNsTr_2_39) (ptr_deref_41_resized_base_address) 
+    &/ [ptr_deref_41_root_address_inst] (ptr_deref_41_resized_base_address) (ptr_deref_41_root_address) 
+    &/ [ptr_deref_41_addr_0] (ptr_deref_41_root_address) (ptr_deref_41_word_address_0) 
+    $store [ptr_deref_41_store_0] $to memory_space_0 (ptr_deref_41_word_address_0 ptr_deref_41_data_0) 
+    $delay ptr_deref_41_store_0 2
+    &/ [ptr_deref_41_gather_scatter] (type_cast_43_wire_constant) (ptr_deref_41_data_0) 
+    // data-path instances for merge  
+    //  file prog.linked.opt.aa, line 40
+    // 			$phi ix_x0 := 			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bb_0_bb_1			  ($cast ($uint<32>) iNsTr_5 ) $on bb_1_bb_1 // type of target is $uint<32>
+    //  file prog.linked.opt.aa, line 41
+    // ($cast ($uint<32>) iNsTr_5 )
+    # := [type_cast_53_inst] (iNsTr_5_118) (type_cast_53_wire) 
+    $delay type_cast_53_inst 1
+    $phi [phi_stmt_47] (type_cast_51_wire_constant type_cast_53_wire) ( ix_x0_47 )
+    // 		scevgep7 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+    //  file prog.linked.opt.aa, line 43
+    &/ [array_obj_ref_59_index_0_resize] (ix_x0_47) (R_ix_x0_56_resized) 
+    *[array_obj_ref_59_index_0_scale] (R_ix_x0_56_resized array_obj_ref_59_offset_scale_factor_0) (R_ix_x0_56_scaled) 
+    $delay array_obj_ref_59_index_0_scale 2
+    +[array_obj_ref_59_index_offset] (R_ix_x0_56_scaled array_obj_ref_59_constant_part_of_offset) (array_obj_ref_59_final_offset) 
+    $delay array_obj_ref_59_index_offset 2
+    &/ [array_obj_ref_59_root_address_inst] (array_obj_ref_59_final_offset) (array_obj_ref_59_root_address) 
+    # := [addr_of_60_final_reg] (array_obj_ref_59_root_address) (scevgep7_61) 
+    // 		scevgep6 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+    //  file prog.linked.opt.aa, line 44
+    &/ [array_obj_ref_66_index_0_resize] (ix_x0_47) (R_ix_x0_63_resized) 
+    *[array_obj_ref_66_index_0_scale] (R_ix_x0_63_resized array_obj_ref_66_offset_scale_factor_0) (R_ix_x0_63_scaled) 
+    $delay array_obj_ref_66_index_0_scale 2
+    +[array_obj_ref_66_index_offset] (R_ix_x0_63_scaled array_obj_ref_66_constant_part_of_offset) (array_obj_ref_66_final_offset) 
+    $delay array_obj_ref_66_index_offset 2
+    &/ [array_obj_ref_66_root_address_inst] (array_obj_ref_66_final_offset) (array_obj_ref_66_root_address) 
+    # := [addr_of_67_final_reg] (array_obj_ref_66_root_address) (scevgep6_68) 
+    // 		scevgep5 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+    //  file prog.linked.opt.aa, line 45
+    &/ [array_obj_ref_73_index_0_resize] (ix_x0_47) (R_ix_x0_70_resized) 
+    *[array_obj_ref_73_index_0_scale] (R_ix_x0_70_resized array_obj_ref_73_offset_scale_factor_0) (R_ix_x0_70_scaled) 
+    $delay array_obj_ref_73_index_0_scale 2
+    +[array_obj_ref_73_index_offset] (R_ix_x0_70_scaled array_obj_ref_73_constant_part_of_offset) (array_obj_ref_73_final_offset) 
+    $delay array_obj_ref_73_index_offset 2
+    &/ [array_obj_ref_73_root_address_inst] (array_obj_ref_73_final_offset) (array_obj_ref_73_root_address) 
+    # := [addr_of_74_final_reg] (array_obj_ref_73_root_address) (scevgep5_75) 
+    // 		scevgep4 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+    //  file prog.linked.opt.aa, line 46
+    &/ [array_obj_ref_80_index_0_resize] (ix_x0_47) (R_ix_x0_77_resized) 
+    *[array_obj_ref_80_index_0_scale] (R_ix_x0_77_resized array_obj_ref_80_offset_scale_factor_0) (R_ix_x0_77_scaled) 
+    $delay array_obj_ref_80_index_0_scale 2
+    +[array_obj_ref_80_index_offset] (R_ix_x0_77_scaled array_obj_ref_80_constant_part_of_offset) (array_obj_ref_80_final_offset) 
+    $delay array_obj_ref_80_index_offset 2
+    &/ [array_obj_ref_80_root_address_inst] (array_obj_ref_80_final_offset) (array_obj_ref_80_root_address) 
+    # := [addr_of_81_final_reg] (array_obj_ref_80_root_address) (scevgep4_82) 
+    // 		scevgep3 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+    //  file prog.linked.opt.aa, line 47
+    &/ [array_obj_ref_87_index_0_resize] (ix_x0_47) (R_ix_x0_84_resized) 
+    *[array_obj_ref_87_index_0_scale] (R_ix_x0_84_resized array_obj_ref_87_offset_scale_factor_0) (R_ix_x0_84_scaled) 
+    $delay array_obj_ref_87_index_0_scale 2
+    +[array_obj_ref_87_index_offset] (R_ix_x0_84_scaled array_obj_ref_87_constant_part_of_offset) (array_obj_ref_87_final_offset) 
+    $delay array_obj_ref_87_index_offset 2
+    &/ [array_obj_ref_87_root_address_inst] (array_obj_ref_87_final_offset) (array_obj_ref_87_root_address) 
+    # := [addr_of_88_final_reg] (array_obj_ref_87_root_address) (scevgep3_89) 
+    // 		scevgep2 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+    //  file prog.linked.opt.aa, line 48
+    &/ [array_obj_ref_94_index_0_resize] (ix_x0_47) (R_ix_x0_91_resized) 
+    *[array_obj_ref_94_index_0_scale] (R_ix_x0_91_resized array_obj_ref_94_offset_scale_factor_0) (R_ix_x0_91_scaled) 
+    $delay array_obj_ref_94_index_0_scale 2
+    +[array_obj_ref_94_index_offset] (R_ix_x0_91_scaled array_obj_ref_94_constant_part_of_offset) (array_obj_ref_94_final_offset) 
+    $delay array_obj_ref_94_index_offset 2
+    &/ [array_obj_ref_94_root_address_inst] (array_obj_ref_94_final_offset) (array_obj_ref_94_root_address) 
+    # := [addr_of_95_final_reg] (array_obj_ref_94_root_address) (scevgep2_96) 
+    // 		scevgep := @(job[ix_x0])
+    //  file prog.linked.opt.aa, line 49
+    &/ [array_obj_ref_99_index_0_resize] (ix_x0_47) (R_ix_x0_98_resized) 
+    *[array_obj_ref_99_index_0_scale] (R_ix_x0_98_resized array_obj_ref_99_offset_scale_factor_0) (R_ix_x0_98_scaled) 
+    $delay array_obj_ref_99_index_0_scale 2
+    &/ [array_obj_ref_99_index_offset] (R_ix_x0_98_scaled) (array_obj_ref_99_final_offset) 
+    &/ [array_obj_ref_99_root_address_inst] (array_obj_ref_99_final_offset) (array_obj_ref_99_root_address) 
+    # := [addr_of_100_final_reg] (array_obj_ref_99_root_address) (scevgep_101) 
+    // 		scevgep1 := ($bitcast ($pointer< $uint<32> >) scevgep )
+    //  file prog.linked.opt.aa, line 50
+    // ($bitcast ($pointer< $uint<32> >) scevgep )
+    # := [type_cast_105_inst] (scevgep_101) (scevgep1_106) 
+    $delay type_cast_105_inst 1
+    // 		tmp := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file prog.linked.opt.aa, line 51
+    // (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    +[ADD_u32_u32_111_inst] (ix_x0_47 type_cast_110_wire_constant) (tmp_112) 
+    $delay ADD_u32_u32_111_inst 1
+    // 		iNsTr_5 := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file prog.linked.opt.aa, line 52
+    // (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    +[ADD_u32_u32_117_inst] (ix_x0_47 type_cast_116_wire_constant) (iNsTr_5_118) 
+    $delay ADD_u32_u32_117_inst 1
+    // 		iNsTr_7 := in_data
+    //  file prog.linked.opt.aa, line 53
+    // in_data
+    $ioport $in [RPIPE_in_data_120_inst] (in_data) (iNsTr_7_121) 
+    // 		->(scevgep7) := iNsTr_7
+    //  file prog.linked.opt.aa, line 54
+    // ->(scevgep7)
+    &/ [ptr_deref_123_base_resize] (scevgep7_61) (ptr_deref_123_resized_base_address) 
+    &/ [ptr_deref_123_root_address_inst] (ptr_deref_123_resized_base_address) (ptr_deref_123_root_address) 
+    &/ [ptr_deref_123_addr_0] (ptr_deref_123_root_address) (ptr_deref_123_word_address_0) 
+    $store [ptr_deref_123_store_0] $to memory_space_0 (ptr_deref_123_word_address_0 ptr_deref_123_data_0) 
+    $delay ptr_deref_123_store_0 2
+    &/ [ptr_deref_123_gather_scatter] (iNsTr_7_121) (ptr_deref_123_data_0) 
+    // 		iNsTr_10 := in_data
+    //  file prog.linked.opt.aa, line 55
+    // in_data
+    $ioport $in [RPIPE_in_data_127_inst] (in_data) (iNsTr_10_128) 
+    // 		->(scevgep6) := iNsTr_10
+    //  file prog.linked.opt.aa, line 56
+    // ->(scevgep6)
+    &/ [ptr_deref_130_base_resize] (scevgep6_68) (ptr_deref_130_resized_base_address) 
+    &/ [ptr_deref_130_root_address_inst] (ptr_deref_130_resized_base_address) (ptr_deref_130_root_address) 
+    &/ [ptr_deref_130_addr_0] (ptr_deref_130_root_address) (ptr_deref_130_word_address_0) 
+    $store [ptr_deref_130_store_0] $to memory_space_0 (ptr_deref_130_word_address_0 ptr_deref_130_data_0) 
+    $delay ptr_deref_130_store_0 2
+    &/ [ptr_deref_130_gather_scatter] (iNsTr_10_128) (ptr_deref_130_data_0) 
+    // 		iNsTr_13 := in_data
+    //  file prog.linked.opt.aa, line 57
+    // in_data
+    $ioport $in [RPIPE_in_data_134_inst] (in_data) (iNsTr_13_135) 
+    // 		->(scevgep5) := iNsTr_13
+    //  file prog.linked.opt.aa, line 58
+    // ->(scevgep5)
+    &/ [ptr_deref_137_base_resize] (scevgep5_75) (ptr_deref_137_resized_base_address) 
+    &/ [ptr_deref_137_root_address_inst] (ptr_deref_137_resized_base_address) (ptr_deref_137_root_address) 
+    &/ [ptr_deref_137_addr_0] (ptr_deref_137_root_address) (ptr_deref_137_word_address_0) 
+    $store [ptr_deref_137_store_0] $to memory_space_0 (ptr_deref_137_word_address_0 ptr_deref_137_data_0) 
+    $delay ptr_deref_137_store_0 2
+    &/ [ptr_deref_137_gather_scatter] (iNsTr_13_135) (ptr_deref_137_data_0) 
+    // 		iNsTr_16 := in_data
+    //  file prog.linked.opt.aa, line 59
+    // in_data
+    $ioport $in [RPIPE_in_data_141_inst] (in_data) (iNsTr_16_142) 
+    // 		->(scevgep4) := iNsTr_16
+    //  file prog.linked.opt.aa, line 60
+    // ->(scevgep4)
+    &/ [ptr_deref_144_base_resize] (scevgep4_82) (ptr_deref_144_resized_base_address) 
+    &/ [ptr_deref_144_root_address_inst] (ptr_deref_144_resized_base_address) (ptr_deref_144_root_address) 
+    &/ [ptr_deref_144_addr_0] (ptr_deref_144_root_address) (ptr_deref_144_word_address_0) 
+    $store [ptr_deref_144_store_0] $to memory_space_0 (ptr_deref_144_word_address_0 ptr_deref_144_data_0) 
+    $delay ptr_deref_144_store_0 2
+    &/ [ptr_deref_144_gather_scatter] (iNsTr_16_142) (ptr_deref_144_data_0) 
+    // 		iNsTr_19 := in_data
+    //  file prog.linked.opt.aa, line 61
+    // in_data
+    $ioport $in [RPIPE_in_data_148_inst] (in_data) (iNsTr_19_149) 
+    // 		->(scevgep3) := iNsTr_19
+    //  file prog.linked.opt.aa, line 62
+    // ->(scevgep3)
+    &/ [ptr_deref_151_base_resize] (scevgep3_89) (ptr_deref_151_resized_base_address) 
+    &/ [ptr_deref_151_root_address_inst] (ptr_deref_151_resized_base_address) (ptr_deref_151_root_address) 
+    &/ [ptr_deref_151_addr_0] (ptr_deref_151_root_address) (ptr_deref_151_word_address_0) 
+    $store [ptr_deref_151_store_0] $to memory_space_0 (ptr_deref_151_word_address_0 ptr_deref_151_data_0) 
+    $delay ptr_deref_151_store_0 2
+    &/ [ptr_deref_151_gather_scatter] (iNsTr_19_149) (ptr_deref_151_data_0) 
+    // 		iNsTr_22 := in_data
+    //  file prog.linked.opt.aa, line 63
+    // in_data
+    $ioport $in [RPIPE_in_data_155_inst] (in_data) (iNsTr_22_156) 
+    // 		->(scevgep2) := iNsTr_22
+    //  file prog.linked.opt.aa, line 64
+    // ->(scevgep2)
+    &/ [ptr_deref_158_base_resize] (scevgep2_96) (ptr_deref_158_resized_base_address) 
+    &/ [ptr_deref_158_root_address_inst] (ptr_deref_158_resized_base_address) (ptr_deref_158_root_address) 
+    &/ [ptr_deref_158_addr_0] (ptr_deref_158_root_address) (ptr_deref_158_word_address_0) 
+    $store [ptr_deref_158_store_0] $to memory_space_0 (ptr_deref_158_word_address_0 ptr_deref_158_data_0) 
+    $delay ptr_deref_158_store_0 2
+    &/ [ptr_deref_158_gather_scatter] (iNsTr_22_156) (ptr_deref_158_data_0) 
+    // 		->(scevgep1) := ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    //  file prog.linked.opt.aa, line 65
+    // ->(scevgep1)
+    &/ [ptr_deref_162_base_resize] (scevgep1_106) (ptr_deref_162_resized_base_address) 
+    &/ [ptr_deref_162_root_address_inst] (ptr_deref_162_resized_base_address) (ptr_deref_162_root_address) 
+    &/ [ptr_deref_162_addr_0] (ptr_deref_162_root_address) (ptr_deref_162_word_address_0) 
+    $store [ptr_deref_162_store_0] $to memory_space_0 (ptr_deref_162_word_address_0 ptr_deref_162_data_0) 
+    $delay ptr_deref_162_store_0 2
+    &/ [ptr_deref_162_gather_scatter] (type_cast_164_wire_constant) (ptr_deref_162_data_0) 
+    // 		out_id := tmp
+    //  file prog.linked.opt.aa, line 66
+    // out_id
+    $ioport $out [WPIPE_out_id_166_inst]  (tmp_112) (out_id) 
+    $buffering $in WPIPE_out_id_166_inst tmp_112 1
+  }
+  // end data-path
+  // 		->(iNsTr_0) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+  //  file prog.linked.opt.aa, line 36
+  ptr_deref_28_base_resize <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_base_addr_resize/base_resize_ack)
+  ptr_deref_28_root_address_inst <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_base_plus_offset/sum_rename_ack)
+  ptr_deref_28_addr_0 <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_word_addrgen/root_register_ack)
+  ptr_deref_28_gather_scatter <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_Sample/ptr_deref_28_Split/split_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_Sample/ptr_deref_28_Split/split_ack)
+  ptr_deref_28_store_0 <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_28_Update/word_access_complete/word_0/ca)
+  // 		->(iNsTr_2) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+  //  file prog.linked.opt.aa, line 38
+  ptr_deref_41_base_resize <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_base_addr_resize/base_resize_ack)
+  ptr_deref_41_root_address_inst <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_base_plus_offset/sum_rename_ack)
+  ptr_deref_41_addr_0 <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_word_addrgen/root_register_ack)
+  ptr_deref_41_gather_scatter <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_Sample/ptr_deref_41_Split/split_req) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_Sample/ptr_deref_41_Split/split_ack)
+  ptr_deref_41_store_0 <=> (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_26_to_assign_stmt_44/ptr_deref_41_Update/word_access_complete/word_0/ca)
+  // CP-DP links for merge  
+  //  file prog.linked.opt.aa, line 40
+  // ($cast ($uint<32>) iNsTr_5 )
+  type_cast_53_inst <=> (branch_block_stmt_18/bb_1_bb_1_PhiReq/phi_stmt_47/phi_stmt_47_sources/type_cast_53/SplitProtocol/Sample/rr branch_block_stmt_18/bb_1_bb_1_PhiReq/phi_stmt_47/phi_stmt_47_sources/type_cast_53/SplitProtocol/Update/cr) (branch_block_stmt_18/bb_1_bb_1_PhiReq/phi_stmt_47/phi_stmt_47_sources/type_cast_53/SplitProtocol/Sample/ra branch_block_stmt_18/bb_1_bb_1_PhiReq/phi_stmt_47/phi_stmt_47_sources/type_cast_53/SplitProtocol/Update/ca)
+  phi_stmt_47 <=> (branch_block_stmt_18/bb_0_bb_1_PhiReq/phi_stmt_47/phi_stmt_47_req branch_block_stmt_18/bb_1_bb_1_PhiReq/phi_stmt_47/phi_stmt_47_req) (branch_block_stmt_18/merge_stmt_46_PhiAck/phi_stmt_47_ack)
+  // 		scevgep7 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+  //  file prog.linked.opt.aa, line 43
+  array_obj_ref_59_index_0_resize <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_index_resize_0/index_resize_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_index_resize_0/index_resize_ack)
+  array_obj_ref_59_index_0_scale <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_index_scale_0_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_index_scale_0_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_index_scale_0_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_index_scale_0_Update/ca)
+  array_obj_ref_59_index_offset <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_final_index_sum_regn_Sample/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_final_index_sum_regn_Update/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_final_index_sum_regn_Sample/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_final_index_sum_regn_Update/ack)
+  array_obj_ref_59_root_address_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_59_base_plus_offset/sum_rename_ack)
+  addr_of_60_final_reg <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_60_request/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_60_complete/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_60_request/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_60_complete/ack)
+  // 		scevgep6 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+  //  file prog.linked.opt.aa, line 44
+  array_obj_ref_66_index_0_resize <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_index_resize_0/index_resize_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_index_resize_0/index_resize_ack)
+  array_obj_ref_66_index_0_scale <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_index_scale_0_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_index_scale_0_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_index_scale_0_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_index_scale_0_Update/ca)
+  array_obj_ref_66_index_offset <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_final_index_sum_regn_Sample/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_final_index_sum_regn_Update/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_final_index_sum_regn_Sample/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_final_index_sum_regn_Update/ack)
+  array_obj_ref_66_root_address_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_66_base_plus_offset/sum_rename_ack)
+  addr_of_67_final_reg <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_67_request/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_67_complete/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_67_request/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_67_complete/ack)
+  // 		scevgep5 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+  //  file prog.linked.opt.aa, line 45
+  array_obj_ref_73_index_0_resize <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_index_resize_0/index_resize_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_index_resize_0/index_resize_ack)
+  array_obj_ref_73_index_0_scale <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_index_scale_0_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_index_scale_0_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_index_scale_0_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_index_scale_0_Update/ca)
+  array_obj_ref_73_index_offset <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_final_index_sum_regn_Sample/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_final_index_sum_regn_Update/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_final_index_sum_regn_Sample/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_final_index_sum_regn_Update/ack)
+  array_obj_ref_73_root_address_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_73_base_plus_offset/sum_rename_ack)
+  addr_of_74_final_reg <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_74_request/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_74_complete/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_74_request/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_74_complete/ack)
+  // 		scevgep4 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+  //  file prog.linked.opt.aa, line 46
+  array_obj_ref_80_index_0_resize <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_index_resize_0/index_resize_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_index_resize_0/index_resize_ack)
+  array_obj_ref_80_index_0_scale <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_index_scale_0_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_index_scale_0_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_index_scale_0_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_index_scale_0_Update/ca)
+  array_obj_ref_80_index_offset <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_final_index_sum_regn_Sample/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_final_index_sum_regn_Update/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_final_index_sum_regn_Sample/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_final_index_sum_regn_Update/ack)
+  array_obj_ref_80_root_address_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_80_base_plus_offset/sum_rename_ack)
+  addr_of_81_final_reg <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_81_request/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_81_complete/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_81_request/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_81_complete/ack)
+  // 		scevgep3 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+  //  file prog.linked.opt.aa, line 47
+  array_obj_ref_87_index_0_resize <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_index_resize_0/index_resize_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_index_resize_0/index_resize_ack)
+  array_obj_ref_87_index_0_scale <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_index_scale_0_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_index_scale_0_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_index_scale_0_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_index_scale_0_Update/ca)
+  array_obj_ref_87_index_offset <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_final_index_sum_regn_Sample/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_final_index_sum_regn_Update/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_final_index_sum_regn_Sample/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_final_index_sum_regn_Update/ack)
+  array_obj_ref_87_root_address_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_87_base_plus_offset/sum_rename_ack)
+  addr_of_88_final_reg <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_88_request/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_88_complete/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_88_request/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_88_complete/ack)
+  // 		scevgep2 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+  //  file prog.linked.opt.aa, line 48
+  array_obj_ref_94_index_0_resize <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_index_resize_0/index_resize_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_index_resize_0/index_resize_ack)
+  array_obj_ref_94_index_0_scale <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_index_scale_0_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_index_scale_0_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_index_scale_0_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_index_scale_0_Update/ca)
+  array_obj_ref_94_index_offset <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_final_index_sum_regn_Sample/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_final_index_sum_regn_Update/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_final_index_sum_regn_Sample/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_final_index_sum_regn_Update/ack)
+  array_obj_ref_94_root_address_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_94_base_plus_offset/sum_rename_ack)
+  addr_of_95_final_reg <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_95_request/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_95_complete/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_95_request/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_95_complete/ack)
+  // 		scevgep := @(job[ix_x0])
+  //  file prog.linked.opt.aa, line 49
+  array_obj_ref_99_index_0_resize <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_index_resize_0/index_resize_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_index_resize_0/index_resize_ack)
+  array_obj_ref_99_index_0_scale <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_index_scale_0_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_index_scale_0_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_index_scale_0_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_index_scale_0_Update/ca)
+  array_obj_ref_99_index_offset <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_final_index_sum_regn/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_final_index_sum_regn/ack)
+  array_obj_ref_99_root_address_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/array_obj_ref_99_base_plus_offset/sum_rename_ack)
+  addr_of_100_final_reg <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_100_request/req branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_100_complete/req) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_100_request/ack branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/addr_of_100_complete/ack)
+  // 		scevgep1 := ($bitcast ($pointer< $uint<32> >) scevgep )
+  //  file prog.linked.opt.aa, line 50
+  // ($bitcast ($pointer< $uint<32> >) scevgep )
+  type_cast_105_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/type_cast_105_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/type_cast_105_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/type_cast_105_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/type_cast_105_Update/ca)
+  // 		tmp := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  //  file prog.linked.opt.aa, line 51
+  // (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  ADD_u32_u32_111_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_111_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_111_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_111_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_111_Update/ca)
+  // 		iNsTr_5 := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  //  file prog.linked.opt.aa, line 52
+  // (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  ADD_u32_u32_117_inst <=> (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_117_Sample/rr branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_117_Update/cr) (branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_117_Sample/ra branch_block_stmt_18/assign_stmt_61_to_assign_stmt_118/ADD_u32_u32_117_Update/ca)
+  // 		iNsTr_7 := in_data
+  //  file prog.linked.opt.aa, line 53
+  // in_data
+  RPIPE_in_data_120_inst <=> (branch_block_stmt_18/assign_stmt_121/RPIPE_in_data_120_Sample/rr branch_block_stmt_18/assign_stmt_121/RPIPE_in_data_120_Update/cr) (branch_block_stmt_18/assign_stmt_121/RPIPE_in_data_120_Sample/ra branch_block_stmt_18/assign_stmt_121/RPIPE_in_data_120_Update/ca)
+  // 		->(scevgep7) := iNsTr_7
+  //  file prog.linked.opt.aa, line 54
+  ptr_deref_123_base_resize <=> (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_base_addr_resize/base_resize_ack)
+  ptr_deref_123_root_address_inst <=> (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_base_plus_offset/sum_rename_ack)
+  ptr_deref_123_addr_0 <=> (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_word_addrgen/root_register_ack)
+  ptr_deref_123_gather_scatter <=> (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_Sample/ptr_deref_123_Split/split_req) (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_Sample/ptr_deref_123_Split/split_ack)
+  ptr_deref_123_store_0 <=> (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_125/ptr_deref_123_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_125/ptr_deref_123_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_125/ptr_deref_123_Update/word_access_complete/word_0/ca)
+  // 		iNsTr_10 := in_data
+  //  file prog.linked.opt.aa, line 55
+  // in_data
+  RPIPE_in_data_127_inst <=> (branch_block_stmt_18/assign_stmt_128/RPIPE_in_data_127_Sample/rr branch_block_stmt_18/assign_stmt_128/RPIPE_in_data_127_Update/cr) (branch_block_stmt_18/assign_stmt_128/RPIPE_in_data_127_Sample/ra branch_block_stmt_18/assign_stmt_128/RPIPE_in_data_127_Update/ca)
+  // 		->(scevgep6) := iNsTr_10
+  //  file prog.linked.opt.aa, line 56
+  ptr_deref_130_base_resize <=> (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_base_addr_resize/base_resize_ack)
+  ptr_deref_130_root_address_inst <=> (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_base_plus_offset/sum_rename_ack)
+  ptr_deref_130_addr_0 <=> (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_word_addrgen/root_register_ack)
+  ptr_deref_130_gather_scatter <=> (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_Sample/ptr_deref_130_Split/split_req) (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_Sample/ptr_deref_130_Split/split_ack)
+  ptr_deref_130_store_0 <=> (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_132/ptr_deref_130_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_132/ptr_deref_130_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_132/ptr_deref_130_Update/word_access_complete/word_0/ca)
+  // 		iNsTr_13 := in_data
+  //  file prog.linked.opt.aa, line 57
+  // in_data
+  RPIPE_in_data_134_inst <=> (branch_block_stmt_18/assign_stmt_135/RPIPE_in_data_134_Sample/rr branch_block_stmt_18/assign_stmt_135/RPIPE_in_data_134_Update/cr) (branch_block_stmt_18/assign_stmt_135/RPIPE_in_data_134_Sample/ra branch_block_stmt_18/assign_stmt_135/RPIPE_in_data_134_Update/ca)
+  // 		->(scevgep5) := iNsTr_13
+  //  file prog.linked.opt.aa, line 58
+  ptr_deref_137_base_resize <=> (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_base_addr_resize/base_resize_ack)
+  ptr_deref_137_root_address_inst <=> (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_base_plus_offset/sum_rename_ack)
+  ptr_deref_137_addr_0 <=> (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_word_addrgen/root_register_ack)
+  ptr_deref_137_gather_scatter <=> (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_Sample/ptr_deref_137_Split/split_req) (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_Sample/ptr_deref_137_Split/split_ack)
+  ptr_deref_137_store_0 <=> (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_139/ptr_deref_137_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_139/ptr_deref_137_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_139/ptr_deref_137_Update/word_access_complete/word_0/ca)
+  // 		iNsTr_16 := in_data
+  //  file prog.linked.opt.aa, line 59
+  // in_data
+  RPIPE_in_data_141_inst <=> (branch_block_stmt_18/assign_stmt_142/RPIPE_in_data_141_Sample/rr branch_block_stmt_18/assign_stmt_142/RPIPE_in_data_141_Update/cr) (branch_block_stmt_18/assign_stmt_142/RPIPE_in_data_141_Sample/ra branch_block_stmt_18/assign_stmt_142/RPIPE_in_data_141_Update/ca)
+  // 		->(scevgep4) := iNsTr_16
+  //  file prog.linked.opt.aa, line 60
+  ptr_deref_144_base_resize <=> (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_base_addr_resize/base_resize_ack)
+  ptr_deref_144_root_address_inst <=> (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_base_plus_offset/sum_rename_ack)
+  ptr_deref_144_addr_0 <=> (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_word_addrgen/root_register_ack)
+  ptr_deref_144_gather_scatter <=> (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_Sample/ptr_deref_144_Split/split_req) (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_Sample/ptr_deref_144_Split/split_ack)
+  ptr_deref_144_store_0 <=> (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_146/ptr_deref_144_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_146/ptr_deref_144_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_146/ptr_deref_144_Update/word_access_complete/word_0/ca)
+  // 		iNsTr_19 := in_data
+  //  file prog.linked.opt.aa, line 61
+  // in_data
+  RPIPE_in_data_148_inst <=> (branch_block_stmt_18/assign_stmt_149/RPIPE_in_data_148_Sample/rr branch_block_stmt_18/assign_stmt_149/RPIPE_in_data_148_Update/cr) (branch_block_stmt_18/assign_stmt_149/RPIPE_in_data_148_Sample/ra branch_block_stmt_18/assign_stmt_149/RPIPE_in_data_148_Update/ca)
+  // 		->(scevgep3) := iNsTr_19
+  //  file prog.linked.opt.aa, line 62
+  ptr_deref_151_base_resize <=> (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_base_addr_resize/base_resize_ack)
+  ptr_deref_151_root_address_inst <=> (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_base_plus_offset/sum_rename_ack)
+  ptr_deref_151_addr_0 <=> (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_word_addrgen/root_register_ack)
+  ptr_deref_151_gather_scatter <=> (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_Sample/ptr_deref_151_Split/split_req) (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_Sample/ptr_deref_151_Split/split_ack)
+  ptr_deref_151_store_0 <=> (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_153/ptr_deref_151_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_153/ptr_deref_151_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_153/ptr_deref_151_Update/word_access_complete/word_0/ca)
+  // 		iNsTr_22 := in_data
+  //  file prog.linked.opt.aa, line 63
+  // in_data
+  RPIPE_in_data_155_inst <=> (branch_block_stmt_18/assign_stmt_156/RPIPE_in_data_155_Sample/rr branch_block_stmt_18/assign_stmt_156/RPIPE_in_data_155_Update/cr) (branch_block_stmt_18/assign_stmt_156/RPIPE_in_data_155_Sample/ra branch_block_stmt_18/assign_stmt_156/RPIPE_in_data_155_Update/ca)
+  // 		->(scevgep2) := iNsTr_22
+  //  file prog.linked.opt.aa, line 64
+  ptr_deref_158_base_resize <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_base_addr_resize/base_resize_ack)
+  ptr_deref_158_root_address_inst <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_base_plus_offset/sum_rename_ack)
+  ptr_deref_158_addr_0 <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_word_addrgen/root_register_ack)
+  ptr_deref_158_gather_scatter <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_Sample/ptr_deref_158_Split/split_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_Sample/ptr_deref_158_Split/split_ack)
+  ptr_deref_158_store_0 <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_158_Update/word_access_complete/word_0/ca)
+  // 		->(scevgep1) := ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+  //  file prog.linked.opt.aa, line 65
+  ptr_deref_162_base_resize <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_base_addr_resize/base_resize_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_base_addr_resize/base_resize_ack)
+  ptr_deref_162_root_address_inst <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_base_plus_offset/sum_rename_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_base_plus_offset/sum_rename_ack)
+  ptr_deref_162_addr_0 <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_word_addrgen/root_register_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_word_addrgen/root_register_ack)
+  ptr_deref_162_gather_scatter <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_Sample/ptr_deref_162_Split/split_req) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_Sample/ptr_deref_162_Split/split_ack)
+  ptr_deref_162_store_0 <=> (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_Sample/word_access_start/word_0/rr branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_Update/word_access_complete/word_0/cr) (branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_Sample/word_access_start/word_0/ra branch_block_stmt_18/assign_stmt_160_to_assign_stmt_165/ptr_deref_162_Update/word_access_complete/word_0/ca)
+  // 		out_id := tmp
+  //  file prog.linked.opt.aa, line 66
+  // out_id
+  WPIPE_out_id_166_inst <=> (branch_block_stmt_18/assign_stmt_168/WPIPE_out_id_166_Sample/req branch_block_stmt_18/assign_stmt_168/WPIPE_out_id_166_Update/req) (branch_block_stmt_18/assign_stmt_168/WPIPE_out_id_166_Sample/ack branch_block_stmt_18/assign_stmt_168/WPIPE_out_id_166_Update/ack)
+}
+$module [mem_load__] 
+{
+  $in address:$int<32>
+  // can point into  mempool
+  $out data:$int<8>
+  // can point into  mempool
+  // pipe-declarations for block %mem_load__
+  //  file prog.linked.opt.aa, line 70
+  $CP 
+  {
+    // begin control-path 
+    ::[assign_stmt_182] 
+    {
+      // 	data := mempool[((address * 1 ) + 0 )]
+      //  file prog.linked.opt.aa, line 75
+      // Source expression
+      // mempool[((address * 1 ) + 0 )]
+      $T[array_obj_ref_181_base_address_calculated] 
+      $T[array_obj_ref_181_sample_start_] 
+      $T[array_obj_ref_181_sample_completed_] 
+      $T[array_obj_ref_181_update_start_] 
+      $T[array_obj_ref_181_update_completed_] 
+      $T[array_obj_ref_181_word_address_calculated] 
+      $T[array_obj_ref_181_root_address_calculated] 
+      $T[array_obj_ref_181_offset_calculated] 
+      $T[array_obj_ref_181_index_resized_0] 
+      $T[array_obj_ref_181_index_scaled_0] 
+      // ((address * 1 ) + 0 )
+      $T[ADD_u32_u32_180_sample_start_] 
+      $T[ADD_u32_u32_180_sample_completed_] 
+      $T[ADD_u32_u32_180_update_start_] 
+      $T[ADD_u32_u32_180_update_completed_] 
+      // (address * 1 )
+      $T[MUL_u32_u32_178_sample_start_] 
+      $T[MUL_u32_u32_178_sample_completed_] 
+      $T[MUL_u32_u32_178_update_start_] 
+      $T[MUL_u32_u32_178_update_completed_] 
+      // address
+      $T[R_address_176_sample_start_] 
+      $T[R_address_176_sample_completed_] 
+      $T[R_address_176_update_start_] 
+      $T[R_address_176_update_completed_] 
+      // reference to interface object
+      R_address_176_sample_start_ <-& ($entry)
+      R_address_176_sample_completed_ <-& (R_address_176_sample_start_)
+      R_address_176_update_start_ <-& (R_address_176_sample_completed_)
+      R_address_176_update_completed_ <-& (R_address_176_update_start_)
+      MUL_u32_u32_178_sample_start_ <-& (R_address_176_update_completed_)
+      ;;[MUL_u32_u32_178_Sample] 
+      {
+        // binary expression 
+        $T [rr] $T [ra]  // (split) binary operation 
+      }
+      ;;[MUL_u32_u32_178_Update] 
+      {
+        // binary expression 
+        $T [cr] $T [ca] // (split) binary operation 
+      }
+      MUL_u32_u32_178_sample_start_ &-> (MUL_u32_u32_178_Sample)
+      MUL_u32_u32_178_sample_completed_ <-& (MUL_u32_u32_178_Sample)
+      MUL_u32_u32_178_sample_completed_ &-> ($null)
+      MUL_u32_u32_178_update_start_ &-> (MUL_u32_u32_178_Update)
+      MUL_u32_u32_178_update_completed_ <-& (MUL_u32_u32_178_Update)
+      ADD_u32_u32_180_sample_start_ <-& (MUL_u32_u32_178_update_completed_)
+      ;;[ADD_u32_u32_180_Sample] 
+      {
+        // binary expression 
+        $T [rr] $T [ra]  // (split) binary operation 
+      }
+      ;;[ADD_u32_u32_180_Update] 
+      {
+        // binary expression 
+        $T [cr] $T [ca] // (split) binary operation 
+      }
+      ADD_u32_u32_180_sample_start_ &-> (ADD_u32_u32_180_Sample)
+      ADD_u32_u32_180_sample_completed_ <-& (ADD_u32_u32_180_Sample)
+      ADD_u32_u32_180_sample_completed_ &-> ($null)
+      ADD_u32_u32_180_update_start_ &-> (ADD_u32_u32_180_Update)
+      ADD_u32_u32_180_update_completed_ <-& (ADD_u32_u32_180_Update)
+      ;;[array_obj_ref_181_index_resize_0] 
+      {
+        $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+      }
+      ADD_u32_u32_180_update_completed_ &-> (array_obj_ref_181_index_resize_0)
+      array_obj_ref_181_index_resized_0 <-& (array_obj_ref_181_index_resize_0)
+      ;;[array_obj_ref_181_index_scale_0] 
+      {
+        $T [scale_rename_req] $T [scale_rename_ack] // rename 
+      }
+      array_obj_ref_181_index_resized_0 &-> (array_obj_ref_181_index_scale_0)
+      array_obj_ref_181_index_scaled_0 <-& (array_obj_ref_181_index_scale_0)
+      ;;[array_obj_ref_181_final_index_sum_regn] 
+      {
+        $T [req] $T [ack] // rename
+      }
+      array_obj_ref_181_index_scaled_0 &-> (array_obj_ref_181_final_index_sum_regn)
+      array_obj_ref_181_offset_calculated <-& (array_obj_ref_181_final_index_sum_regn)
+      ;;[array_obj_ref_181_base_plus_offset] 
+      {
+        $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+      }
+      array_obj_ref_181_offset_calculated &-> (array_obj_ref_181_base_plus_offset)
+      array_obj_ref_181_root_address_calculated <-& (array_obj_ref_181_base_plus_offset)
+      ;;[array_obj_ref_181_word_addrgen] 
+      {
+        $T [root_register_req] $T [root_register_ack]
+      }
+      array_obj_ref_181_root_address_calculated &-> (array_obj_ref_181_word_addrgen)
+      array_obj_ref_181_word_address_calculated <-& (array_obj_ref_181_word_addrgen)
+      ;;[array_obj_ref_181_Sample] 
+      {
+        ||[word_access_start] 
+        {
+          ;;[word_0] 
+          {
+            $T [rr] $T [ra] 
+          }
+        }
+      }
+      ;;[array_obj_ref_181_Update] 
+      {
+        ||[word_access_complete] 
+        {
+          ;;[word_0] 
+          {
+            $T [cr] $T [ca] 
+          }
+        }
+        ;;[array_obj_ref_181_Merge] 
+        {
+          $T [merge_req] $T [merge_ack]
+        }
+      }
+      array_obj_ref_181_sample_start_ <-& (array_obj_ref_181_word_address_calculated)
+      array_obj_ref_181_sample_start_ &-> (array_obj_ref_181_Sample)
+      array_obj_ref_181_sample_completed_ <-& (array_obj_ref_181_Sample)
+      array_obj_ref_181_sample_completed_ &-> ($null)
+      array_obj_ref_181_update_start_ &-> (array_obj_ref_181_Update)
+      array_obj_ref_181_update_completed_ <-& (array_obj_ref_181_Update)
+      // Target expression
+      // (as target) data
+      // data
+      // write to interface object
+      // load-store dependencies..
+    }
+  }
+  // end control-path
+  $DP 
+  {
+    // begin data-path 
+    // constant-object-declarations for block %mem_load__
+    //  file prog.linked.opt.aa, line 70
+    // mempool[((address * 1 ) + 0 )]
+    // 1 
+    $constant $W[expr_177_wire_constant] : $int<32> := _b00000000000000000000000000000001// 1
+    // 0 
+    $constant $W[expr_179_wire_constant] : $int<32> := _b00000000000000000000000000000000// 0
+    $constant $W[array_obj_ref_181_resized_base_address] : $int<1> := _b0// 0
+    $constant $W[array_obj_ref_181_offset_scale_factor_0] : $int<1> := _b1// 1
+    $constant $W[array_obj_ref_181_word_offset_0] : $int<1> := _b0// 0
+    // 	data := mempool[((address * 1 ) + 0 )]
+    //  file prog.linked.opt.aa, line 75
+    // mempool[((address * 1 ) + 0 )]
+    // (address * 1 )
+    $intermediate $W[MUL_u32_u32_178_wire] : $int<32>
+    // ((address * 1 ) + 0 )
+    $intermediate $W[ADD_u32_u32_180_wire] : $int<32>
+    $intermediate $W[ADD_u32_u32_180_resized] : $int<1>
+    $intermediate $W[ADD_u32_u32_180_scaled] : $int<1>
+    $intermediate $W[array_obj_ref_181_final_offset] : $int<1>
+    $intermediate $W[array_obj_ref_181_root_address] : $int<1>
+    $W[array_obj_ref_181_word_address_0] : $pointer<memory_space_1>
+    $W[array_obj_ref_181_data_0] : $int<8>
+    // data
+    // 	data := mempool[((address * 1 ) + 0 )]
+    //  file prog.linked.opt.aa, line 75
+    // mempool[((address * 1 ) + 0 )]
+    // (address * 1 )
+    *[MUL_u32_u32_178_inst] (address expr_177_wire_constant) (MUL_u32_u32_178_wire) 
+    $delay MUL_u32_u32_178_inst 1
+    // ((address * 1 ) + 0 )
+    +[ADD_u32_u32_180_inst] (MUL_u32_u32_178_wire expr_179_wire_constant) (ADD_u32_u32_180_wire) 
+    $delay ADD_u32_u32_180_inst 1
+    &/ [array_obj_ref_181_index_0_resize] (ADD_u32_u32_180_wire) (ADD_u32_u32_180_resized) 
+    &/ [array_obj_ref_181_index_0_rename] (ADD_u32_u32_180_resized) (ADD_u32_u32_180_scaled) 
+    &/ [array_obj_ref_181_index_offset] (ADD_u32_u32_180_scaled) (array_obj_ref_181_final_offset) 
+    &/ [array_obj_ref_181_root_address_inst] (array_obj_ref_181_final_offset) (array_obj_ref_181_root_address) 
+    &/ [array_obj_ref_181_addr_0] (array_obj_ref_181_root_address) (array_obj_ref_181_word_address_0) 
+    $load [array_obj_ref_181_load_0] $from memory_space_1 (array_obj_ref_181_word_address_0) (array_obj_ref_181_data_0) 
+    $delay array_obj_ref_181_load_0 2
+    &/ [array_obj_ref_181_gather_scatter] (array_obj_ref_181_data_0) (data) 
+  }
+  // end data-path
+  // 	data := mempool[((address * 1 ) + 0 )]
+  //  file prog.linked.opt.aa, line 75
+  // mempool[((address * 1 ) + 0 )]
+  // ((address * 1 ) + 0 )
+  // (address * 1 )
+  MUL_u32_u32_178_inst <=> (assign_stmt_182/MUL_u32_u32_178_Sample/rr assign_stmt_182/MUL_u32_u32_178_Update/cr) (assign_stmt_182/MUL_u32_u32_178_Sample/ra assign_stmt_182/MUL_u32_u32_178_Update/ca)
+  ADD_u32_u32_180_inst <=> (assign_stmt_182/ADD_u32_u32_180_Sample/rr assign_stmt_182/ADD_u32_u32_180_Update/cr) (assign_stmt_182/ADD_u32_u32_180_Sample/ra assign_stmt_182/ADD_u32_u32_180_Update/ca)
+  array_obj_ref_181_index_0_resize <=> (assign_stmt_182/array_obj_ref_181_index_resize_0/index_resize_req) (assign_stmt_182/array_obj_ref_181_index_resize_0/index_resize_ack)
+  array_obj_ref_181_index_0_rename <=> (assign_stmt_182/array_obj_ref_181_index_scale_0/scale_rename_req) (assign_stmt_182/array_obj_ref_181_index_scale_0/scale_rename_ack)
+  array_obj_ref_181_index_offset <=> (assign_stmt_182/array_obj_ref_181_final_index_sum_regn/req) (assign_stmt_182/array_obj_ref_181_final_index_sum_regn/ack)
+  array_obj_ref_181_root_address_inst <=> (assign_stmt_182/array_obj_ref_181_base_plus_offset/sum_rename_req) (assign_stmt_182/array_obj_ref_181_base_plus_offset/sum_rename_ack)
+  array_obj_ref_181_addr_0 <=> (assign_stmt_182/array_obj_ref_181_word_addrgen/root_register_req) (assign_stmt_182/array_obj_ref_181_word_addrgen/root_register_ack)
+  array_obj_ref_181_gather_scatter <=> (assign_stmt_182/array_obj_ref_181_Update/array_obj_ref_181_Merge/merge_req) (assign_stmt_182/array_obj_ref_181_Update/array_obj_ref_181_Merge/merge_ack)
+  array_obj_ref_181_load_0 <=> (assign_stmt_182/array_obj_ref_181_Sample/word_access_start/word_0/rr assign_stmt_182/array_obj_ref_181_Update/word_access_complete/word_0/cr) (assign_stmt_182/array_obj_ref_181_Sample/word_access_start/word_0/ra assign_stmt_182/array_obj_ref_181_Update/word_access_complete/word_0/ca)
+}
+$module [mem_store__] 
+{
+  $in address:$int<32>
+  // can point into  mempool
+  data:$int<8>
+  // can point into  mempool
+  // pipe-declarations for block %mem_store__
+  //  file prog.linked.opt.aa, line 77
+  $CP 
+  {
+    // begin control-path 
+    ::[assign_stmt_194] 
+    {
+      // 	mempool[((address * 1 ) + 0 )] := data
+      //  file prog.linked.opt.aa, line 82
+      // Source expression
+      // data
+      $T[R_data_193_sample_start_] 
+      $T[R_data_193_sample_completed_] 
+      $T[R_data_193_update_start_] 
+      $T[R_data_193_update_completed_] 
+      // reference to interface object
+      R_data_193_sample_start_ <-& ($entry)
+      R_data_193_sample_completed_ <-& (R_data_193_sample_start_)
+      R_data_193_update_start_ <-& (R_data_193_sample_completed_)
+      R_data_193_update_completed_ <-& (R_data_193_update_start_)
+      // Target expression
+      // mempool[((address * 1 ) + 0 )]
+      $T[array_obj_ref_192_sample_start_] 
+      $T[array_obj_ref_192_sample_completed_] 
+      $T[array_obj_ref_192_update_start_] 
+      $T[array_obj_ref_192_update_completed_] 
+      $T[array_obj_ref_192_word_address_calculated] 
+      $T[array_obj_ref_192_root_address_calculated] 
+      $T[array_obj_ref_192_offset_calculated] 
+      $T[array_obj_ref_192_index_resized_0] 
+      $T[array_obj_ref_192_index_scaled_0] 
+      // ((address * 1 ) + 0 )
+      $T[ADD_u32_u32_191_sample_start_] 
+      $T[ADD_u32_u32_191_sample_completed_] 
+      $T[ADD_u32_u32_191_update_start_] 
+      $T[ADD_u32_u32_191_update_completed_] 
+      // (address * 1 )
+      $T[MUL_u32_u32_189_sample_start_] 
+      $T[MUL_u32_u32_189_sample_completed_] 
+      $T[MUL_u32_u32_189_update_start_] 
+      $T[MUL_u32_u32_189_update_completed_] 
+      // address
+      $T[R_address_187_sample_start_] 
+      $T[R_address_187_sample_completed_] 
+      $T[R_address_187_update_start_] 
+      $T[R_address_187_update_completed_] 
+      // reference to interface object
+      R_address_187_sample_start_ <-& ($entry)
+      R_address_187_sample_completed_ <-& (R_address_187_sample_start_)
+      R_address_187_update_start_ <-& (R_address_187_sample_completed_)
+      R_address_187_update_completed_ <-& (R_address_187_update_start_)
+      MUL_u32_u32_189_sample_start_ <-& (R_address_187_update_completed_)
+      ;;[MUL_u32_u32_189_Sample] 
+      {
+        // binary expression 
+        $T [rr] $T [ra]  // (split) binary operation 
+      }
+      ;;[MUL_u32_u32_189_Update] 
+      {
+        // binary expression 
+        $T [cr] $T [ca] // (split) binary operation 
+      }
+      MUL_u32_u32_189_sample_start_ &-> (MUL_u32_u32_189_Sample)
+      MUL_u32_u32_189_sample_completed_ <-& (MUL_u32_u32_189_Sample)
+      MUL_u32_u32_189_sample_completed_ &-> ($null)
+      MUL_u32_u32_189_update_start_ &-> (MUL_u32_u32_189_Update)
+      MUL_u32_u32_189_update_completed_ <-& (MUL_u32_u32_189_Update)
+      ADD_u32_u32_191_sample_start_ <-& (MUL_u32_u32_189_update_completed_)
+      ;;[ADD_u32_u32_191_Sample] 
+      {
+        // binary expression 
+        $T [rr] $T [ra]  // (split) binary operation 
+      }
+      ;;[ADD_u32_u32_191_Update] 
+      {
+        // binary expression 
+        $T [cr] $T [ca] // (split) binary operation 
+      }
+      ADD_u32_u32_191_sample_start_ &-> (ADD_u32_u32_191_Sample)
+      ADD_u32_u32_191_sample_completed_ <-& (ADD_u32_u32_191_Sample)
+      ADD_u32_u32_191_sample_completed_ &-> ($null)
+      ADD_u32_u32_191_update_start_ &-> (ADD_u32_u32_191_Update)
+      ADD_u32_u32_191_update_completed_ <-& (ADD_u32_u32_191_Update)
+      ;;[array_obj_ref_192_index_resize_0] 
+      {
+        $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+      }
+      ADD_u32_u32_191_update_completed_ &-> (array_obj_ref_192_index_resize_0)
+      array_obj_ref_192_index_resized_0 <-& (array_obj_ref_192_index_resize_0)
+      ;;[array_obj_ref_192_index_scale_0] 
+      {
+        $T [scale_rename_req] $T [scale_rename_ack] // rename 
+      }
+      array_obj_ref_192_index_resized_0 &-> (array_obj_ref_192_index_scale_0)
+      array_obj_ref_192_index_scaled_0 <-& (array_obj_ref_192_index_scale_0)
+      ;;[array_obj_ref_192_final_index_sum_regn] 
+      {
+        $T [req] $T [ack] // rename
+      }
+      array_obj_ref_192_index_scaled_0 &-> (array_obj_ref_192_final_index_sum_regn)
+      array_obj_ref_192_offset_calculated <-& (array_obj_ref_192_final_index_sum_regn)
+      ;;[array_obj_ref_192_base_plus_offset] 
+      {
+        $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+      }
+      array_obj_ref_192_offset_calculated &-> (array_obj_ref_192_base_plus_offset)
+      array_obj_ref_192_root_address_calculated <-& (array_obj_ref_192_base_plus_offset)
+      ;;[array_obj_ref_192_word_addrgen] 
+      {
+        $T [root_register_req] $T [root_register_ack]
+      }
+      array_obj_ref_192_root_address_calculated &-> (array_obj_ref_192_word_addrgen)
+      array_obj_ref_192_word_address_calculated <-& (array_obj_ref_192_word_addrgen)
+      ;;[array_obj_ref_192_Sample] 
+      {
+        ;;[array_obj_ref_192_Split] 
+        {
+          $T [split_req] $T [split_ack]
+        }
+        ||[word_access_start] 
+        {
+          ;;[word_0] 
+          {
+            $T [rr] $T [ra] 
+          }
+        }
+      }
+      ;;[array_obj_ref_192_Update] 
+      {
+        ||[word_access_complete] 
+        {
+          ;;[word_0] 
+          {
+            $T [cr] $T [ca] 
+          }
+        }
+      }
+      array_obj_ref_192_sample_start_ <-& (array_obj_ref_192_word_address_calculated)
+      array_obj_ref_192_sample_start_ &-> (array_obj_ref_192_Sample)
+      array_obj_ref_192_sample_completed_ <-& (array_obj_ref_192_Sample)
+      array_obj_ref_192_sample_completed_ &-> ($null)
+      array_obj_ref_192_update_start_ &-> (array_obj_ref_192_Update)
+      array_obj_ref_192_update_completed_ <-& (array_obj_ref_192_Update)
+      array_obj_ref_192_sample_start_ <-& (R_data_193_update_completed_)
+      // load-store dependencies..
+    }
+  }
+  // end control-path
+  $DP 
+  {
+    // begin data-path 
+    // constant-object-declarations for block %mem_store__
+    //  file prog.linked.opt.aa, line 77
+    // mempool[((address * 1 ) + 0 )]
+    // 1 
+    $constant $W[expr_188_wire_constant] : $int<32> := _b00000000000000000000000000000001// 1
+    // 0 
+    $constant $W[expr_190_wire_constant] : $int<32> := _b00000000000000000000000000000000// 0
+    $constant $W[array_obj_ref_192_resized_base_address] : $int<1> := _b0// 0
+    $constant $W[array_obj_ref_192_offset_scale_factor_0] : $int<1> := _b1// 1
+    $constant $W[array_obj_ref_192_word_offset_0] : $int<1> := _b0// 0
+    // 	mempool[((address * 1 ) + 0 )] := data
+    //  file prog.linked.opt.aa, line 82
+    // mempool[((address * 1 ) + 0 )]
+    // (address * 1 )
+    $intermediate $W[MUL_u32_u32_189_wire] : $int<32>
+    // ((address * 1 ) + 0 )
+    $intermediate $W[ADD_u32_u32_191_wire] : $int<32>
+    $intermediate $W[ADD_u32_u32_191_resized] : $int<1>
+    $intermediate $W[ADD_u32_u32_191_scaled] : $int<1>
+    $intermediate $W[array_obj_ref_192_final_offset] : $int<1>
+    $intermediate $W[array_obj_ref_192_root_address] : $int<1>
+    $W[array_obj_ref_192_word_address_0] : $pointer<memory_space_1>
+    $W[array_obj_ref_192_data_0] : $int<8>
+    // 	mempool[((address * 1 ) + 0 )] := data
+    //  file prog.linked.opt.aa, line 82
+    // mempool[((address * 1 ) + 0 )]
+    // (address * 1 )
+    *[MUL_u32_u32_189_inst] (address expr_188_wire_constant) (MUL_u32_u32_189_wire) 
+    $delay MUL_u32_u32_189_inst 1
+    // ((address * 1 ) + 0 )
+    +[ADD_u32_u32_191_inst] (MUL_u32_u32_189_wire expr_190_wire_constant) (ADD_u32_u32_191_wire) 
+    $delay ADD_u32_u32_191_inst 1
+    &/ [array_obj_ref_192_index_0_resize] (ADD_u32_u32_191_wire) (ADD_u32_u32_191_resized) 
+    &/ [array_obj_ref_192_index_0_rename] (ADD_u32_u32_191_resized) (ADD_u32_u32_191_scaled) 
+    &/ [array_obj_ref_192_index_offset] (ADD_u32_u32_191_scaled) (array_obj_ref_192_final_offset) 
+    &/ [array_obj_ref_192_root_address_inst] (array_obj_ref_192_final_offset) (array_obj_ref_192_root_address) 
+    &/ [array_obj_ref_192_addr_0] (array_obj_ref_192_root_address) (array_obj_ref_192_word_address_0) 
+    $store [array_obj_ref_192_store_0] $to memory_space_1 (array_obj_ref_192_word_address_0 array_obj_ref_192_data_0) 
+    $delay array_obj_ref_192_store_0 2
+    &/ [array_obj_ref_192_gather_scatter] (data) (array_obj_ref_192_data_0) 
+  }
+  // end data-path
+  // 	mempool[((address * 1 ) + 0 )] := data
+  //  file prog.linked.opt.aa, line 82
+  // ((address * 1 ) + 0 )
+  // (address * 1 )
+  MUL_u32_u32_189_inst <=> (assign_stmt_194/MUL_u32_u32_189_Sample/rr assign_stmt_194/MUL_u32_u32_189_Update/cr) (assign_stmt_194/MUL_u32_u32_189_Sample/ra assign_stmt_194/MUL_u32_u32_189_Update/ca)
+  ADD_u32_u32_191_inst <=> (assign_stmt_194/ADD_u32_u32_191_Sample/rr assign_stmt_194/ADD_u32_u32_191_Update/cr) (assign_stmt_194/ADD_u32_u32_191_Sample/ra assign_stmt_194/ADD_u32_u32_191_Update/ca)
+  array_obj_ref_192_index_0_resize <=> (assign_stmt_194/array_obj_ref_192_index_resize_0/index_resize_req) (assign_stmt_194/array_obj_ref_192_index_resize_0/index_resize_ack)
+  array_obj_ref_192_index_0_rename <=> (assign_stmt_194/array_obj_ref_192_index_scale_0/scale_rename_req) (assign_stmt_194/array_obj_ref_192_index_scale_0/scale_rename_ack)
+  array_obj_ref_192_index_offset <=> (assign_stmt_194/array_obj_ref_192_final_index_sum_regn/req) (assign_stmt_194/array_obj_ref_192_final_index_sum_regn/ack)
+  array_obj_ref_192_root_address_inst <=> (assign_stmt_194/array_obj_ref_192_base_plus_offset/sum_rename_req) (assign_stmt_194/array_obj_ref_192_base_plus_offset/sum_rename_ack)
+  array_obj_ref_192_addr_0 <=> (assign_stmt_194/array_obj_ref_192_word_addrgen/root_register_req) (assign_stmt_194/array_obj_ref_192_word_addrgen/root_register_ack)
+  array_obj_ref_192_gather_scatter <=> (assign_stmt_194/array_obj_ref_192_Sample/array_obj_ref_192_Split/split_req) (assign_stmt_194/array_obj_ref_192_Sample/array_obj_ref_192_Split/split_ack)
+  array_obj_ref_192_store_0 <=> (assign_stmt_194/array_obj_ref_192_Sample/word_access_start/word_0/rr assign_stmt_194/array_obj_ref_192_Update/word_access_complete/word_0/cr) (assign_stmt_194/array_obj_ref_192_Sample/word_access_start/word_0/ra assign_stmt_194/array_obj_ref_192_Update/word_access_complete/word_0/ca)
+}

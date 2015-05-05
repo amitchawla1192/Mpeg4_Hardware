@@ -1,0 +1,25 @@
+/* This file contains the list of pointers modified at software side before sending frame to hardware side.
+1. The pointers which are malloced are already taken care of and rest are listed in this file and are to be modified now.
+
+1.  We do not need to transfer nul_buffer to hardware as it is always written at software side from p_bitstream
+2.  h->frames.refference are to be replaced from corresponding fdec at hardware side, h->fref[0] and are also to be replaced correspondingly. are also to be replaced from 
+*/
+
+
+void modify_frame_pointers(x264_t *h,x264_frame_t *frame,char *frame_base)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

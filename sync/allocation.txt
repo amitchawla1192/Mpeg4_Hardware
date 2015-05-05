@@ -1,0 +1,170 @@
+
+
+
+
+
+
+Allocation for x264_t structure is sizeof(x264_t) For single thread 
+
+size allocated for h->quant4_mf[0] is 1664 
+size allocated for h->dequant4_mf[0] is 384 
+size allocated for h->unquant4_mf[0] is 3328 
+size allocated for h->quant4_bias[0] is 1664 
+size allocated for h->quant4_bias0[0] is 1664 
+size allocated for h->quant4_bias[1] is 1664 
+size allocated for h->quant4_bias0[1] is 1664 
+size allocated for h->quant8_mf[0] is 6656 
+size allocated for h->dequant8_mf[0] is 1536 
+size allocated for h->unquant8_mf[0] is 13312 
+size allocated for h->quant8_bias[0] is 6656 
+size allocated for h->quant8_bias0[0] is 6656 
+size allocated for h->quant8_bias[1] is 6656 
+size allocated for h->quant8_bias0[1] is 6656 
+size allocated for h->nr_offset_emergency is 9216 
+size of x264_frame_t pointer is 4 and size of x264_frame_t is 12048size allocated for h->frames.unused[0] is 172 
+size allocated for h->frames.unused[1] is 84 
+size allocated for h->frames.current is 28 
+size allocated for h->frames.blank_unused is 16 
+ value of h->param.b_cabac = 1size of data allocated to h->cost_mv[0] is 65538 
+size of data allocated to h->cost_mv[1] is 65538 
+size of data allocated to h->cost_mv[2] is 65538 
+size of data allocated to h->cost_mv[3] is 65538 
+size of data allocated to h->cost_mv[4] is 65538 
+size of data allocated to h->cost_mv[5] is 65538 
+size of data allocated to h->cost_mv[6] is 65538 
+size of data allocated to h->cost_mv[7] is 65538 
+size of data allocated to h->cost_mv[8] is 65538 
+size of data allocated to h->cost_mv[9] is 65538 
+size of data allocated to h->cost_mv[10] is 65538 
+size of data allocated to h->cost_mv[11] is 65538 
+size of data allocated to h->cost_mv[12] is 65538 
+size of data allocated to h->cost_mv[13] is 65538 
+size of data allocated to h->cost_mv[14] is 65538 
+size of data allocated to h->cost_mv[15] is 65538 
+size of data allocated to h->cost_mv[16] is 65538 
+size of data allocated to h->cost_mv[17] is 65538 
+size of data allocated to h->cost_mv[18] is 65538 
+size of data allocated to h->cost_mv[19] is 65538 
+size of data allocated to h->cost_mv[20] is 65538 
+size of data allocated to h->cost_mv[21] is 65538 
+size of data allocated to h->cost_mv[22] is 65538 
+size of data allocated to h->cost_mv[23] is 65538 
+size of data allocated to h->cost_mv[24] is 65538 
+size of data allocated to h->cost_mv[25] is 65538 
+size of data allocated to h->cost_mv[26] is 65538 
+size of data allocated to h->cost_mv[27] is 65538 
+size of data allocated to h->cost_mv[28] is 65538 
+size of data allocated to h->cost_mv[29] is 65538 
+size of data allocated to h->cost_mv[30] is 65538 
+size of data allocated to h->cost_mv[31] is 65538 
+size of data allocated to h->cost_mv[32] is 65538 
+size of data allocated to h->cost_mv[33] is 65538 
+size of data allocated to h->cost_mv[34] is 65538 
+size of data allocated to h->cost_mv[35] is 65538 
+size of data allocated to h->cost_mv[36] is 65538 
+size of data allocated to h->cost_mv[37] is 65538 
+size of data allocated to h->cost_mv[38] is 65538 
+size of data allocated to h->cost_mv[39] is 65538 
+size of data allocated to h->cost_mv[40] is 65538 
+size of data allocated to h->cost_mv[41] is 65538 
+size of data allocated to h->cost_mv[42] is 65538 
+size of data allocated to h->cost_mv[43] is 65538 
+size of data allocated to h->cost_mv[44] is 65538 
+size of data allocated to h->cost_mv[45] is 65538 
+size of data allocated to h->cost_mv[46] is 65538 
+size of data allocated to h->cost_mv[47] is 65538 
+size of data allocated to h->cost_mv[48] is 65538 
+size of data allocated to h->cost_mv[49] is 65538 
+size of data allocated to h->cost_mv[50] is 65538 
+size of data allocated to h->cost_mv[51] is 65538 
+size of data allocated to h->cost_mv[52] is 65538 
+size of data allocated to h->cost_mv[53] is 65538 
+size of data allocated to h->cost_mv[54] is 65538 
+size of data allocated to h->cost_mv[55] is 65538 
+size of data allocated to h->cost_mv[56] is 65538 
+size of data allocated to h->cost_mv[57] is 65538 
+size of data allocated to h->cost_mv[58] is 65538 
+size of data allocated to h->cost_mv[59] is 65538 
+size of data allocated to h->cost_mv[60] is 65538 
+size of data allocated to h->cost_mv[61] is 65538 
+size of data allocated to h->cost_mv[62] is 65538 
+size of data allocated to h->cost_mv[63] is 65538 
+size of data allocated to h->cost_mv[64] is 65538 
+size of data allocated to h->cost_mv[65] is 65538 
+size of data allocated to h->cost_mv[66] is 65538 
+size of data allocated to h->cost_mv[67] is 65538 
+size of data allocated to h->cost_mv[68] is 65538 
+size of data allocated to h->cost_mv[69] is 65538 
+size allocated to h->nal_buffer id 1500068 
+size allocated to h->reconfig_h is 50432 
+size allocated to h->thread[0]->out.p_bitstream is 1000000 
+size allocated to h->thread[0]->out.nal is 96 
+size allocated to h->mb.base for each thread is 112896 
+size allocated to h->intra_border_backup[0][0] for each thread is 208 
+size allocated to h->intra_border_backup[0][1] for each thread is 208 
+size allocated to h->intra_border_backup[1][0] for each thread is 208 
+size allocated to h->intra_border_backup[1][1] for each thread is 208 
+size allocated to h->deblock_strength[0] for each thread is 704 
+size allocated to h->scratch_buffer for each thread is 512 
+size allocated to h->scratch_buffer2 for each thread is 384 
+size allocated to h->rc is 656 
+size allocated to h->rc.pred  is 100 
+size allocated to h->rc.pred_b_from_p  is 20 
+total size allocated is 2601328csp is 1 height is 144 width is 176 
+i_delay is 40 and i_thread_frames is  1 
+i_frame is 300 
+ plane sizes are 25344 6336 6336 pixel_depth = 1  
+pic.img.i_plane is 3, pic.img.i_stride[0] is 176, pic.img.i_stride[1] is 88, pic.img.i_strdie[2] is 88, sizeof(pic.img(plane[0])) is 4
+counting is 300 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////// This stuff is not a part of h structure still needed to be copied because of static initializations as global structure ////
+
+
+
+
+Static constants initialized in x264_encoder_open but not a part of h structure and needed to be transferred are written here
+x264_cabac_size_unary[i_prefix][i_ctx] = f8_bits;   (x264_rdo_init)
+x264_cabac_transition_unary[i_prefix][i_ctx] = ctx; (x264_rdo_init)
+cabac_size_5ones[i_ctx] = f8_bits;  (x264_rdo_init)
+cabac_transition_5ones[i_ctx] = ctx;  (x264_rdo_init)
+
+
+uint8_t x264_cabac_contexts[4][QP_MAX_SPEC+1][1024];   (x264_cabac_init) initializes this matrix
+vlc_large_t x264_level_token[7][LEVEL_TABLE_SIZE];  (x264_cavlc_init)
+uint32_t x264_run_before[1<<16];  (x264_cavlc_init)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////   STUDY CAREFULLY  POINTER HASE BEEN CHANGED AFTER SPACE ALLOCATION////////
+
+CHECKED_MALLOC( h->cost_mv[qp], (4*4*2048 + 1) * sizeof(uint16_t) );
+    h->cost_mv[qp] += 2*4*2048;       * Note: Taken care already at both sides still to be checked if correct or not
+This is to be taken care at hardware part too.... 
+
+CHECKED_MALLOC( h->cost_mv_fpel[qp][j], (4*2048 + 1) * sizeof(uint16_t) );
+fprintf(stdout,"size of data allocated to h->cost_mv_fpel[%d][%d] is ",qp,j,(4*2048 + 1) * sizeof(uint16_t) );
+h->cost_mv_fpel[qp][j] += 2*2048;    /// Not alloted for our cases
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////

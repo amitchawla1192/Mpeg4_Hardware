@@ -1,0 +1,85 @@
+$record [structx_x_Job]  < $uint<32> >  < $uint<32> >  < $uint<32> >  < $uint<32> >  < $uint<32> >  < $uint<32> >  < $uint<32> > 
+$pipe  in_data : $uint<32>  $depth 8 
+// can point into 
+$storage  job : $array[20] $of  structx_x_Job  // memory space index = 1  base address = 0  word size = 32
+// can point into 
+$storage  mempool : $array[1] $of $uint<8> // memory space index = 0  base address = 0  word size = 8
+// can point into  foreign( $void )
+$pipe  out_id : $uint<32>  $depth 8 
+// can point into 
+$module [progx_xoptx_xo_storage_initializer_]
+$in ()
+$out ()
+$is
+{
+  $null
+  $attribute initializer 
+}
+$module [global_storage_initializer_]
+$in ()
+$out ()
+$is
+{
+  $parallelblock[pb]
+  {
+    $call progx_xoptx_xo_storage_initializer_ () () 
+  }
+}
+$module [hardware1]
+$in ()
+$out ()
+$is
+{
+  $branchblock [body]
+  {
+    iNsTr_0 := @(job[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )])
+    ->(iNsTr_0) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    iNsTr_2 := @(job[($bitcast ($uint<32>) _b00000000000000000000000000000001  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )])
+    ->(iNsTr_2) := ($bitcast ($uint<32>) _b00000000000000000000000000000000  )
+    $place[bb_0_bb_1]
+    $merge bb_0_bb_1 bb_1_bb_1 
+    $phi ix_x0 := 			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bb_0_bb_1			  ($cast ($uint<32>) iNsTr_5 ) $on bb_1_bb_1 // type of target is $uint<32>
+    $endmerge
+    scevgep7 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000001  )])
+    scevgep6 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000010  )])
+    scevgep5 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000011  )])
+    scevgep4 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000100  )])
+    scevgep3 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000101  )])
+    scevgep2 := @(job[ix_x0][($bitcast ($uint<32>) _b00000000000000000000000000000110  )])
+    scevgep := @(job[ix_x0])
+    scevgep1 := ($bitcast ($pointer< $uint<32> >) scevgep )
+    tmp := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    iNsTr_5 := (ix_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    iNsTr_7 := in_data
+    ->(scevgep7) := iNsTr_7
+    iNsTr_10 := in_data
+    ->(scevgep6) := iNsTr_10
+    iNsTr_13 := in_data
+    ->(scevgep5) := iNsTr_13
+    iNsTr_16 := in_data
+    ->(scevgep4) := iNsTr_16
+    iNsTr_19 := in_data
+    ->(scevgep3) := iNsTr_19
+    iNsTr_22 := in_data
+    ->(scevgep2) := iNsTr_22
+    ->(scevgep1) := ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    out_id := tmp
+    $place[bb_1_bb_1]
+  }
+}
+$module [mem_load__]
+$in ( address : $uint<32>  )
+$out ( data : $uint<8>  )
+$is
+{
+  data := mempool[((address * 1 ) + 0 )]
+}
+$module [mem_store__]
+$in ( address : $uint<32>   data : $uint<8>  )
+$out ()
+$is
+{
+  mempool[((address * 1 ) + 0 )] := data
+}
+// Memory space 0: mempool 
+// Memory space 1: job 
