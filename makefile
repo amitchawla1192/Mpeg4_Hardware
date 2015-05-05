@@ -8,7 +8,7 @@ vpath %.rc $(SRCPATH)
 
 GENERATED =
 
-all:SW
+all:SW HW
 default:
 
 SRCS = x264_hw.c
@@ -105,13 +105,9 @@ HW: default c2llvmbc llvmbc2aa
 c2llvmbc: $(SRCS) config.mak
 	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS)),$(CLANG) $(CLFLAGS) -o $(SRC:%.c=%.o) $(SRC);)
 	llvm-ld-2.8 -link-as-library $(addprefix $(SRCPATH)/, $(OBJS)) -b x264.linked.o
-#	@echo $(OBJS)
-#	clang -O3 -std=gnu89 $(PROGDEFS)  -I$(SOCKETLIB_INCLUDE) -I$(FUNCTIONLIB)/include -emit-llvm -c $(SRC)/prog.c
-#	@$(foreach OBJ, $(OBJS), opt --indvars --loopsimplify -o $(OBJ:%.o=%.opt.o) $(OBJ);)
-#	opt --indvars --loopsimplify prog.o -o prog.opt.o
 	llvm-dis x264.linked.o
 	opt --indvars --loopsimplify x264.linked.o -o x264.linked.opt.o
-# llvm byte-code to Aa..
+
 llvmbc2aa:  x264.linked.opt.o 
 	llvm2aa $(LLVM2AAOPTS)  x264.linked.opt.o | vcFormat >  x264.aa
 
@@ -168,4 +164,4 @@ llvmbc2aa:  x264.linked.opt.o
 # 
 # PHONY: all clean	
 clean: default
-	rm $(SRCS:%.c=%.o) *.o
+	rm $(SRCS:%.c=%.o) *.o *~
