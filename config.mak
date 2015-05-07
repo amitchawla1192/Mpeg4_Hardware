@@ -31,6 +31,6 @@ PROF_USE_LD=-fprofile-use
 HAVE_OPENCL=yes
 default:
 install:
-LDFLAGSCLI = -ldl -lgpac_static -lz 
+LDFLAGSCLI = -ldl -lz 
 CLI_LIBX264 = $(LIBX264)
 CLANG = clang

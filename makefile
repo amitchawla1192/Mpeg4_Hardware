@@ -10,6 +10,7 @@ GENERATED =
 
 all:SW HW
 default:
+
 AHIR_RELEASE=/home/users/amitchawla/ahir/release
 SOCKETLIB_INCLUDE=$(AHIR_RELEASE)/iolib/include
 SOCKETLIB_LIB=$(AHIR_RELEASE)/iolib/lib
@@ -19,9 +20,10 @@ PTHREADUTILS_INCLUDE=$(AHIR_RELEASE)/pthreadUtils/include
 VHDL_LIB=$(AHIR_RELEASE)/vhdl
 VHDL_VHPI_LIB=$(AHIR_RELEASE)/CtestBench/vhdl
 FUNCTIONLIB=$(AHIR_RELEASE)/functionLibrary/
-CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I$(SOCKETLIB_INCLUDE) -std=gnu99
+CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I$(SOCKETLIB_INCLUDE) -std=gnu99 -fomit-frame-pointer -fno-tree-vectorize
 LDFLAGS=-m32  -L$(SOCKETLIB_LIB)  -lio -lpthread -lm -ldl
 CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I$(SOCKETLIB_INCLUDE) -emit-llvm
+
 SRCS = x264_hw.c
 OBJS =
 OBJSO =
@@ -85,7 +87,7 @@ HW: default c2llvmbc llvmbc2aa aalink
 
 
 c2llvmbc: $(SRCS) config.mak
-#	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS)),$(CLANG) $(CLFLAGS) -o $(SRC:%.c=%.o) $(SRC);)
+	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS)),$(CLANG) $(CLFLAGS) -o $(SRC:%.c=%.o) $(SRC);)
 	llvm-ld -link-as-library $(addprefix $(SRCPATH)/, $(OBJS)) -b x264.linked.o
 	llvm-dis x264.linked.o
 	opt --indvars --loopsimplify x264.linked.o -o x264.linked.opt.o
