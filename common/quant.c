@@ -37,6 +37,20 @@
         (coef) = - ((f - (coef)) * (mf) >> 16); \
     nz |= (coef); \
 }
+int modulo(int a, int b)
+{int c;
+while(a>=b)
+{
+a = a - b;
+
+}
+#ifdef SW
+if(c%b != a)
+fprintf(stderr,"error in modulo function in quant.c");
+#endif
+return a;
+}
+
 
  int quant_8x8( dctcoef dct[64], udctcoef mf[64], udctcoef bias[64] )
 {
@@ -93,7 +107,7 @@
 
  void dequant_4x4( dctcoef dct[16], int dequant_mf[6][16], int i_qp )
 {
-    const int i_mf = i_qp%6;
+    const int i_mf = modulo(i_qp,6);
     const int i_qbits = i_qp/6 - 4;
 
     if( i_qbits >= 0 )
@@ -111,7 +125,7 @@
 
  void dequant_8x8( dctcoef dct[64], int dequant_mf[6][64], int i_qp )
 {
-    const int i_mf = i_qp%6;
+    const int i_mf = modulo(i_qp,6);
     const int i_qbits = i_qp/6 - 6;
 
     if( i_qbits >= 0 )
@@ -130,16 +144,16 @@
  void dequant_4x4_dc( dctcoef dct[16], int dequant_mf[6][16], int i_qp )
 {
     const int i_qbits = i_qp/6 - 6;
-
+	int qp_mod = modulo(i_qp,6);
     if( i_qbits >= 0 )
     {
-        const int i_dmf = dequant_mf[i_qp%6][0] << i_qbits;
+        const int i_dmf = dequant_mf[qp_mod][0] << i_qbits;
         for( int i = 0; i < 16; i++ )
             dct[i] *= i_dmf;
     }
     else
     {
-        const int i_dmf = dequant_mf[i_qp%6][0];
+        const int i_dmf = dequant_mf[qp_mod][0];
         const int f = 1 << (-i_qbits-1);
         for( int i = 0; i < 16; i++ )
             dct[i] = ( dct[i] * i_dmf + f ) >> (-i_qbits);
@@ -167,7 +181,8 @@
  void idct_dequant_2x4_dc( dctcoef dct[8], dctcoef dct4x4[8][16], int dequant_mf[6][16], int i_qp )
 {
     IDCT_DEQUANT_2X4_START
-    int dmf = dequant_mf[i_qp%6][0] << i_qp/6;
+	int qp_mod = modulo(i_qp,6);
+    int dmf = dequant_mf[qp_mod][0] << i_qp/6;
     dct4x4[0][0] = ((b0 + b1) * dmf + 32) >> 6;
     dct4x4[1][0] = ((b2 + b3) * dmf + 32) >> 6;
     dct4x4[2][0] = ((b0 - b1) * dmf + 32) >> 6;
@@ -181,7 +196,8 @@
  void idct_dequant_2x4_dconly( dctcoef dct[8], int dequant_mf[6][16], int i_qp )
 {
     IDCT_DEQUANT_2X4_START
-    int dmf = dequant_mf[i_qp%6][0] << i_qp/6;
+	 int qp_mod = modulo(i_qp,6);
+    int dmf = dequant_mf[qp_mod][0] << i_qp/6;
     dct[0] = ((b0 + b1) * dmf + 32) >> 6;
     dct[1] = ((b2 + b3) * dmf + 32) >> 6;
     dct[2] = ((b0 - b1) * dmf + 32) >> 6;

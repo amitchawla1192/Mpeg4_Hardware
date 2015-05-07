@@ -10,16 +10,21 @@ GENERATED =
 
 all:SW HW
 default:
-CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I/home/users/amitchawla/ahir/release/CtestBench/include/ -std=gnu99 -fomit-frame
-LDFLAGS=-m32  -L/home/users/amitchawla/ahir/release/iolib/lib  -lio -lpthread -lm -ldl
-CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I/home/users/amitchawla/ahir/release/CtestBench/include/ -emit-llvm
+AHIR_RELEASE=/home/users/amitchawla/ahir/release
+SOCKETLIB_INCLUDE=$(AHIR_RELEASE)/iolib/include
+SOCKETLIB_LIB=$(AHIR_RELEASE)/iolib/lib
+PIPEHANDLER_INCLUDE=$(AHIR_RELEASE)/pipeHandler/include
+PIPEHANDLER_LIB=$(AHIR_RELEASE)/pipeHandler/lib
+PTHREADUTILS_INCLUDE=$(AHIR_RELEASE)/pthreadUtils/include
+VHDL_LIB=$(AHIR_RELEASE)/vhdl
+VHDL_VHPI_LIB=$(AHIR_RELEASE)/CtestBench/vhdl
+FUNCTIONLIB=$(AHIR_RELEASE)/functionLibrary/
+CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I$(SOCKETLIB_INCLUDE) -std=gnu99
+LDFLAGS=-m32  -L$(SOCKETLIB_LIB)  -lio -lpthread -lm -ldl
+CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I$(SOCKETLIB_INCLUDE) -emit-llvm
 SRCS = x264_hw.c
-#SRCCLI = 
-#SRCSO =
 OBJS =
 OBJSO =
-#OBJCLI =
-#OBJCHK = 
 CONFIG := $(shell cat config.h)
 
 ifneq ($(findstring HAVE_AHIR 1, $(CONFIG)),)
@@ -37,8 +42,6 @@ SRCS += common/mc.c common/predict.c common/pixel.c common/macroblock.c \
 endif
 
 ifeq ($(HAVE_OPENCL),yes)
-#common/oclobj.h: common/opencl/x264-cl.h $(wildcard $(SRCPATH)/common/opencl/*.cl)
-#	cat $^ | $(SRCPATH)/tools/cltostr.sh $@
 GENERATED += common/oclobj.h
 SRCS += common/opencl.c
 endif
@@ -46,31 +49,10 @@ endif
 OBJS   += $(SRCS:%.c=%.o)
 #OBJCLI += $(SRCCLI:%.c=%.o)
 #OBJSO  += $(SRCSO:%.c=%.o)
-
-
-
-AHIR_RELEASE=/home/amit/ahirgit/ahir/release/
-SOCKETLIB_INCLUDE=$(AHIR_RELEASE)/CtestBench/include
-SOCKETLIB_LIB=$(AHIR_RELEASE)/CtestBench/lib
-PIPEHANDLER_INCLUDE=$(AHIR_RELEASE)/pipeHandler/include
-PIPEHANDLER_LIB=$(AHIR_RELEASE)/pipeHandler/lib
-PTHREADUTILS_INCLUDE=$(AHIR_RELEASE)/pthreadUtils/include
-VHDL_LIB=$(AHIR_RELEASE)/vhdl
-VHDL_VHPI_LIB=$(AHIR_RELEASE)/CtestBench/vhdl
-FUNCTIONLIB=$(AHIR_RELEASE)/functionLibrary/
-#SRC=./src
-
-#all: SW HW 
-#TOAA:c2llvmbc llvmbc2aa  aalink
-#TOVC:c2llvmbc llvmbc2aa  aalink aa2vc 
-#VC2VHDL: vc2vhdl  vhdlsim
-#AA2VHDLSIM: aa2vc  vc2vhdl  vhdlsim
-#TOVHDL:TOVC vc2vhdl
-
-# llvm2aa opts: pipelined case, extract-do-while.
 LLVM2AAOPTS=--storageinit=true
-#LLVM2AAOPTS=-extract_do_while=true --storageinit=true -pipedepths=pipedepths.txt
 
+
+SRCS = common/dct.c
 #program defs: no unrolling
 #PROGDEFS=-DPIPELINE 
 #PROGDEFS=-DPIPELINE -DALT
@@ -79,6 +61,7 @@ LLVM2AAOPTS=--storageinit=true
 #TOPMODULES=-T main
 
 .PHONY: SW HW
+
 # compile with SW defined.
 # note the use of IOLIB in building the testbench.
 SW: default x264$(EXE)
@@ -98,14 +81,11 @@ $(LIBX264): $(GENERATED) .depend $(OBJS) $(OBJASM)
 	$(AR)$@ $(OBJS) $(OBJASM)
 	$(if $(RANLIB), $(RANLIB) $@)
 	
-HW: default c2llvmbc llvmbc2aa
+HW: default c2llvmbc llvmbc2aa aalink
 
-#AA2VHDL: aa2vc vc2vhdl vhdlsim
-
-# C to llvm byte-code.. use clang.
 
 c2llvmbc: $(SRCS) config.mak
-	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS)),$(CLANG) $(CLFLAGS) -o $(SRC:%.c=%.o) $(SRC);)
+#	@$(foreach SRC, $(addprefix $(SRCPATH)/, $(SRCS)),$(CLANG) $(CLFLAGS) -o $(SRC:%.c=%.o) $(SRC);)
 	llvm-ld -link-as-library $(addprefix $(SRCPATH)/, $(OBJS)) -b x264.linked.o
 	llvm-dis x264.linked.o
 	opt --indvars --loopsimplify x264.linked.o -o x264.linked.opt.o
@@ -114,9 +94,9 @@ llvmbc2aa:  x264.linked.opt.o
 	llvm2aa $(LLVM2AAOPTS)  x264.linked.opt.o | vcFormat >  x264.aa
 
 # Aa to vC
-#aalink: prog.aa 
-#	AaLinkExtMem prog.aa $(FUNCTIONLIB)/Aa/fpu.aa | vcFormat > prog.linked.aa
-#	AaOpt -B prog.linked.aa | vcFormat > prog.linked.opt.aa
+aalink: x264.aa 
+	AaLinkExtMem x264.aa $(FUNCTIONLIB)/Aa/fpu.aa | vcFormat > x264.linked.aa
+	AaOpt -B x264.linked.aa | vcFormat > x264.linked.opt.aa
 
 #aa2vc: prog.linked.opt.aa
 #	Aa2VC -O -C prog.linked.opt.aa | vcFormat > prog.vc
@@ -166,4 +146,4 @@ llvmbc2aa:  x264.linked.opt.o
 # 
 # PHONY: all clean	
 clean: default
-	rm $(SRCS:%.c=%.o) *.o *~
+	rm $(SRCS:%.c=%.o) x264_hw *~
