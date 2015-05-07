@@ -31,3 +31,4 @@
 #define HAVE_LSMASH 0
 #define HAVE_X86_INLINE_ASM 0
 #define HAVE_AS_FUNC 0
+#define HAVE_DCT_WRAP 1

@@ -43,6 +43,10 @@ SRCS += common/mc.c common/predict.c common/pixel.c common/macroblock.c \
 
 endif
 
+ifneq ($(findstring HAVE_DCT_WRAP 1, $(CONFIG)),)
+SRCS += common/dct_wrapper.c
+endif
+
 ifeq ($(HAVE_OPENCL),yes)
 GENERATED += common/oclobj.h
 SRCS += common/opencl.c
@@ -54,7 +58,7 @@ OBJS   += $(SRCS:%.c=%.o)
 LLVM2AAOPTS=--storageinit=true
 
 
-SRCS = common/dct.c
+#SRCS = common/dct.c
 #program defs: no unrolling
 #PROGDEFS=-DPIPELINE 
 #PROGDEFS=-DPIPELINE -DALT
@@ -148,4 +152,4 @@ aalink: x264.aa
 # 
 # PHONY: all clean	
 clean: default
-	rm $(SRCS:%.c=%.o) x264_hw *~
+	rm $(SRCS:%.c=%.o) x264_hw common/*~ encoder/*~ x264.linked* x264.aa

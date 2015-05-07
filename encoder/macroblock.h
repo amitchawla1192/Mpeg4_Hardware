@@ -27,7 +27,7 @@
 
 #ifndef X264_ENCODER_MACROBLOCK_H
 #define X264_ENCODER_MACROBLOCK_H
-
+#include "common/dct_wrapper.h"
 #include "common/macroblock.h"
 
 extern const int x264_lambda2_tab[QP_MAX_MAX+1];

@@ -93,7 +93,7 @@ const uint32_t x264_dct8_weight2_tab[64] = {
 #undef W
 
 
- void dct4x4dc( dctcoef d[16] )
+void dct4x4dc( dctcoef d[16] )
 {
     dctcoef tmp[16];
 
