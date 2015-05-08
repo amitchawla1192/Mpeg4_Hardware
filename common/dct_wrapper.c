@@ -35,67 +35,163 @@ ADD8x8_IDCT_DC,
 ADD16x16_IDCT_DC
 };
 
-char Buffer[32];
+
 
 void dct4x4dc_wrap( dctcoef d[16] )
 {
 int function_id,send_size,recieve_size;
-function_id = dct4x4dc;
-sendsize = 16 * sizeof(dctcoef)/4
+function_id = DCT4x4DC;
+///  Sending part ////
+sendsize = 16 * sizeof(dctcoef)/4;
 write_uint32("dct_in_data", function_id);
 write_uint32("dct_in_data", send_size);
 write_uint32_n("dct_in_data",d,send_size);
-fprintf(stderr,"send data for dct4x4");
-
+fprintf(stderr,"send data for dct4x4dc \n");
+///  Recieving part ////
 function_id = read_uint32("dct_out_data");
 recieve_size = read_uint32("dct_out_data");
 if(recieve_size != send_size)
-fprintf(stderr,"Error in recieving data in dct4x4dc");
+fprintf(stderr,"Error in recieving data in dct4x4dc \n ");
 read_uint32_n("dct_out_data",d,recieve_size);
-fprintf(stderr,"recieved data from dct4x4dc with function_id = %d",function_id);
-
+fprintf(stderr,"recieved data from dct4x4dc with function_id = %d \n",function_id);
 }
 
 void idct4x4dc_wrap( dctcoef d[16] )
 {
-fprintf(stderr,"going in dct_wrapper");
-idct4x4dc( d );
-fprintf(stderr,"returning in dct_wrapper");
+int function_id,send_size,recieve_size;
+function_id = IDCT4x4DC;
+///  Sending part ////
+sendsize = (16 * sizeof(dctcoef))/4;
+write_uint32("dct_in_data", function_id);
+write_uint32("dct_in_data", send_size);
+write_uint32_n("dct_in_data",d,send_size);
+fprintf(stderr,"send data for idct4x4dc \n");
+///  Recieving part ////
+function_id = read_uint32("dct_out_data");
+recieve_size = read_uint32("dct_out_data");
+if(recieve_size != send_size)
+fprintf(stderr,"Error in recieving data in idct4x4dc \n");
+read_uint32_n("dct_out_data",d,recieve_size);
+fprintf(stderr,"recieved data from idct4x4dc with function_id = %d \n",function_id);
 }
 
 void dct2x4dc_wrap( dctcoef dct[8], dctcoef dct4x4[8][16] )
 {
-fprintf(stderr,"going in dct_wrapper");
-dct2x4dc(  dct,  dct4x4 );
-fprintf(stderr,"returning in dct_wrapper");
+int function_id,send_size1,send_size2,recieve_size;
+function_id = DCT2x4DC;
+///  Sending part ////
+sendsize1 = (8 * sizeof(dctcoef))/4;
+sendsize2 = (8 * 16 * sizeof(dctcoef))/4;
+write_uint32("dct_in_data", function_id);
+write_uint32("dct_in_data", send_size1+send_size2);
+write_uint32_n("dct_in_data",dct,send_size1);
+write_uint32_n("dct_in_data",dct4x4,send_size2);
+fprintf(stderr,"sent data for dct2x4dc \n");
+///  Recieving part ////
+function_id = read_uint32("dct_out_data");
+recieve_size = read_uint32("dct_out_data");
+if(recieve_size != send_size1)
+fprintf(stderr,"Error in recieving data in dct2x4dc \n");
+read_uint32_n("dct_out_data",dct,send_size1);
+dct4x4[0][0] = 0;
+dct4x4[1][0] = 0;
+dct4x4[2][0] = 0;
+dct4x4[3][0] = 0;
+dct4x4[4][0] = 0;
+dct4x4[5][0] = 0;
+dct4x4[6][0] = 0;
+dct4x4[7][0] = 0;
+fprintf(stderr,"recieved data from dct2x4dc with function_id = %d \n",function_id);
+
 }
 
 void sub4x4_dct_wrap( dctcoef dct[16], pixel *pix1, pixel *pix2 )
 {
-fprintf(stderr,"going in dct_wrapper");
-sub4x4_dct(  dct, pix1, pix2 );
-fprintf(stderr,"returning in dct_wrapper");
+int function_id,send_size1,send_size2,recieve_size;
+function_id = SUB4x4_DCT;
+///  Sending part ////
+sendsize1 =(16 * sizeof(dctcoef))/4;
+sendsize2 = (4 * FENC_STRIDE * sizeof(pixel))/4;
+sendsize3 = (4 * FDEC_STRIDE * sizeof(pixel))/4;
+write_uint32("dct_in_data", function_id);
+write_uint32("dct_in_data", send_size1+send_size2 + send_size3);
+write_uint32_n("dct_in_data",dct,send_size1);
+write_uint32_n("dct_in_data",pix1,send_size2);
+write_uint32_n("dct_in_data",pix2,send_size3);
+fprintf(stderr,"sent data for sub4x4dct \n");
+///  Recieving part ////
+function_id = read_uint32("dct_out_data");
+recieve_size = read_uint32("dct_out_data");
+if(recieve_size != send_size1)
+fprintf(stderr,"Error in recieving data in sub4x4dct \n");
+read_uint32_n("dct_out_data",dct,send_size1);
+fprintf(stderr,"recieved data from sub4x4dct with function_id = %d \n",function_id);
 }
 
 void sub8x8_dct_wrap( dctcoef dct[4][16], pixel *pix1, pixel *pix2 )
 {
-fprintf(stderr,"going in dct_wrapper");
-sub8x8_dct( dct, pix1, pix2 );
-fprintf(stderr,"returning in dct_wrapper");
+int function_id,send_size1,send_size2,recieve_size;
+function_id = SUB8x8_DCT;
+///  Sending part ////
+sendsize1 = (4 * 16 * sizeof(dctcoef))/4;
+sendsize2 = (8 * FENC_STRIDE * sizeof(pixel))/4;
+sendsize3 = (8 * FDEC_STRIDE * sizeof(pixel))/4;
+write_uint32("dct_in_data", function_id);
+write_uint32("dct_in_data", send_size1+send_size2 + send_size3);
+write_uint32_n("dct_in_data",dct,send_size1);
+write_uint32_n("dct_in_data",pix1,send_size2);
+write_uint32_n("dct_in_data",pix2,send_size3);
+fprintf(stderr,"sent data for sub8x8dc \n");
+///  Recieving part ////
+function_id = read_uint32("dct_out_data");
+recieve_size = read_uint32("dct_out_data");
+if(recieve_size != send_size1)
+fprintf(stderr,"Error in recieving data in sub8x8dc \n");
+read_uint32_n("dct_out_data",dct,send_size1);
+fprintf(stderr,"recieved data from sub8x8dc with function_id = %d \n",function_id);
+
 }
 
 void sub16x16_dct_wrap( dctcoef dct[16][16], pixel *pix1, pixel *pix2 )
 {
-fprintf(stderr,"going in dct_wrapper");
-sub16x16_dct( dct, pix1, pix2 );
-fprintf(stderr,"returning in dct_wrapper");
+int function_id,send_size1,send_size2,recieve_size;
+function_id = SUB16X16_DCT;
+///  Sending part ////
+sendsize1 = (16 * 16 * sizeof(dctcoef))/4;
+sendsize2 = (16 * FENC_STRIDE * sizeof(pixel))/4;
+sendsize3 = (16 * FDEC_STRIDE * sizeof(pixel))/4;
+write_uint32("dct_in_data", function_id);
+write_uint32("dct_in_data", send_size1+send_size2 + send_size3);
+write_uint32_n("dct_in_data",dct,send_size1);
+write_uint32_n("dct_in_data",pix1,send_size2);
+write_uint32_n("dct_in_data",pix2,send_size3);
+fprintf(stderr,"sent data for sub16X16dc \n");
+///  Recieving part ////
+function_id = read_uint32("dct_out_data");
+recieve_size = read_uint32("dct_out_data");
+if(recieve_size != send_size1)
+fprintf(stderr,"Error in recieving data in sub16X16dc \n");
+read_uint32_n("dct_out_data",dct,send_size1);
+fprintf(stderr,"recieved data from SUB16X16DC with function_id = %d \n",function_id);
 }
 
 int sub4x4_dct_dc_wrap( pixel *pix1, pixel *pix2 )
 {int sum ;
-fprintf(stderr,"going in dct_wrapper");
-sum = sub4x4_dct_dc( pix1, pix2 );
-fprintf(stderr,"returning in dct_wrapper");
+int function_id,send_size1,send_size2,recieve_size;
+function_id = SUB4x4_DCT_DC;
+///  Sending part ////
+//sendsize1 = (16 * 16 * sizeof(dctcoef))/4;
+sendsize2 = (4 * FENC_STRIDE * sizeof(pixel))/4;
+sendsize3 = (4 * FDEC_STRIDE * sizeof(pixel))/4;
+write_uint32("dct_in_data", function_id);
+write_uint32("dct_in_data", send_size2 + send_size3);
+write_uint32_n("dct_in_data",pix1,send_size2);
+write_uint32_n("dct_in_data",pix2,send_size3);
+fprintf(stderr,"sent data for sub16X16dc \n");
+///  Recieving part ////
+function_id = read_uint32("dct_out_data");
+sum = read_uint32("dct_out_data");
+fprintf(stderr,"recieved data from SUB16X16DC with function_id = %d \n",function_id);
 return sum;
 }
 
