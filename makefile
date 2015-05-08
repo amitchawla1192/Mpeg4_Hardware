@@ -43,9 +43,9 @@ SRCS += common/mc.c common/predict.c common/pixel.c common/macroblock.c \
 
 endif
 
-ifneq ($(findstring HAVE_DCT_WRAP 1, $(CONFIG)),)
-SRCS += common/dct_wrapper.c
-endif
+#ifneq ($(findstring HAVE_DCT_WRAP 1, $(CONFIG)),)
+#SRCS += common/dct_wrapper.c
+#endif
 
 ifeq ($(HAVE_OPENCL),yes)
 GENERATED += common/oclobj.h
