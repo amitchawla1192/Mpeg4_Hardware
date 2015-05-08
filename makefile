@@ -11,7 +11,7 @@ GENERATED =
 all:SW HW
 default:
 
-AHIR_RELEASE=/home/users/amitchawla/ahir/release
+AHIR_RELEASE=/home/amit/ahirgit/ahir/release
 SOCKETLIB_INCLUDE=$(AHIR_RELEASE)/iolib/include
 SOCKETLIB_LIB=$(AHIR_RELEASE)/iolib/lib
 PIPEHANDLER_INCLUDE=$(AHIR_RELEASE)/pipeHandler/include

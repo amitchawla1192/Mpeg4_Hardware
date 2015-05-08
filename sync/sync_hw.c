@@ -1,4 +1,6 @@
 /*
+AUTHOR : Amit K. Chawla
+Under guidance of Prof. Madhav. P. Desai (IIT Bombay)
 This file is to be kept at Hardware side to sync with software side.
 This file contains the following functions.
 1) x264_hw_sync_open
