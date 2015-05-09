@@ -456,7 +456,7 @@ static int x264_mb_predict_mv_direct16x16_spatial_progressive( x264_t *h )
 int x264_mb_predict_mv_direct16x16( x264_t *h, int *b_changed )// H/W in analyse.c
 {
     int b_available=1;
-/* if( h->param.analyse.i_direct_mv_pred == X264_DIRECT_PRED_NONE )
+ if( h->param.analyse.i_direct_mv_pred == X264_DIRECT_PRED_NONE )
         return 0;
     else if( h->sh.b_direct_spatial_mv_pred )
     {        if( SLICE_MBAFF )
@@ -467,7 +467,7 @@ int x264_mb_predict_mv_direct16x16( x264_t *h, int *b_changed )// H/W in analyse
     }
     else
        b_available = x264_mb_predict_mv_direct16x16_temporal( h );
-*/
+
     if( b_changed != NULL && b_available )
     {
         int changed;
