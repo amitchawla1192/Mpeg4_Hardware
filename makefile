@@ -11,7 +11,7 @@ GENERATED =
 all:SW HW
 default:
 
-AHIR_RELEASE=/home/amit/ahirgit/ahir/release
+AHIR_RELEASE=/home/users/amitchawla/ahir/release
 SOCKETLIB_INCLUDE=$(AHIR_RELEASE)/iolib/include
 SOCKETLIB_LIB=$(AHIR_RELEASE)/iolib/lib
 PIPEHANDLER_INCLUDE=$(AHIR_RELEASE)/pipeHandler/include
@@ -23,7 +23,7 @@ FUNCTIONLIB=$(AHIR_RELEASE)/functionLibrary/
 CFLAGS=-Wshadow -O3 -ffast-math -m32  -Wall -I. -I$(SRCPATH) -I$(SOCKETLIB_INCLUDE) -std=gnu99 -fomit-frame-pointer -fno-tree-vectorize
 LDFLAGS=-m32  -L$(SOCKETLIB_LIB)  -lio -lpthread -lm -ldl
 CLFLAGS = -c -O3 -std=gnu99 -I. -I$(SRCPATH) -I$(SOCKETLIB_INCLUDE) -emit-llvm
-
+TOPMODULES = -T dct_engine
 SRCS = x264_hw.c
 OBJS =
 OBJSO =
@@ -58,7 +58,7 @@ OBJS   += $(SRCS:%.c=%.o)
 LLVM2AAOPTS=--storageinit=true
 
 
-#SRCS = common/dct.c
+SRCS = common/dct.c common/dct_engine.c
 #program defs: no unrolling
 #PROGDEFS=-DPIPELINE 
 #PROGDEFS=-DPIPELINE -DALT
@@ -87,7 +87,7 @@ $(LIBX264): $(GENERATED) .depend $(OBJS) $(OBJASM)
 	$(AR)$@ $(OBJS) $(OBJASM)
 	$(if $(RANLIB), $(RANLIB) $@)
 	
-HW: default c2llvmbc llvmbc2aa aalink
+HW: default c2llvmbc llvmbc2aa aa2vc vc2vhdl
 
 
 c2llvmbc: $(SRCS) config.mak
@@ -97,22 +97,22 @@ c2llvmbc: $(SRCS) config.mak
 	opt --indvars --loopsimplify x264.linked.o -o x264.linked.opt.o
 
 llvmbc2aa:  x264.linked.opt.o 
-	llvm2aa $(LLVM2AAOPTS)  x264.linked.opt.o | vcFormat >  x264.aa
+	llvm2aa $(LLVM2AAOPTS) -modules=common/dct_modules  x264.linked.opt.o | vcFormat >  x264.aa
 
 # Aa to vC
 aalink: x264.aa 
 	AaLinkExtMem x264.aa $(FUNCTIONLIB)/Aa/fpu.aa | vcFormat > x264.linked.aa
 	AaOpt -B x264.linked.aa | vcFormat > x264.linked.opt.aa
 
-#aa2vc: prog.linked.opt.aa
-#	Aa2VC -O -C prog.linked.opt.aa | vcFormat > prog.vc
+aa2vc: x264.aa
+	Aa2VC -O -C x264.aa | vcFormat > x264.vc
 
-# vC to VHDL
-#vc2vhdl: prog.vc
-#	vc2vhdl -O -S 4 -I 2 -v -a -C -e ahir_system -w -s ghdl $(TOPMODULES) -f prog.vc -L $(FUNCTIONLIB)/fpu.list
-#	vhdlFormat < ahir_system_global_package.unformatted_vhdl > ahir_system_global_package.vhdl
-#	vhdlFormat < ahir_system.unformatted_vhdl > ahir_system.vhdl
-#	vhdlFormat < ahir_system_test_bench.unformatted_vhdl > ahir_system_test_bench.vhdl
+#vc to  VHDL
+vc2vhdl: x264.vc
+	vc2vhdl -O -S 4 -I 2 -v -a -C -e ahir_system -w -s ghdl $(TOPMODULES) -f x264.vc -L $(FUNCTIONLIB)/fpu.list
+	vhdlFormat < ahir_system_global_package.unformatted_vhdl > ahir_system_global_package.vhdl
+	vhdlFormat < ahir_system.unformatted_vhdl > ahir_system.vhdl
+	vhdlFormat < ahir_system_test_bench.unformatted_vhdl > ahir_system_test_bench.vhdl
 
 # build testbench and ghdl executable
 # note the use of SOCKETLIB in building the testbench.

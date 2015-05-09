@@ -1,45 +1,253 @@
-gcc -Wshadow -O3 -ffast-math -m32  -Wall -I. -I. -I/home/users/amitchawla/ahir/release/iolib/include -std=gnu99 -fomit-frame-pointer -fno-tree-vectorize   -c -o common/dct_wrapper.o common/dct_wrapper.c
-common/dct_wrapper.c:3:21: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:8:22: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:13:21: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:13:37: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:18:23: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:18:40: error: unknown type name ‘pixel’
-common/dct_wrapper.c:18:53: error: unknown type name ‘pixel’
-common/dct_wrapper.c:23:23: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:23:43: error: unknown type name ‘pixel’
-common/dct_wrapper.c:23:56: error: unknown type name ‘pixel’
-common/dct_wrapper.c:28:25: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:28:46: error: unknown type name ‘pixel’
-common/dct_wrapper.c:28:59: error: unknown type name ‘pixel’
-common/dct_wrapper.c:33:25: error: unknown type name ‘pixel’
-common/dct_wrapper.c:33:38: error: unknown type name ‘pixel’
-common/dct_wrapper.c:39:26: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:39:42: error: unknown type name ‘pixel’
-common/dct_wrapper.c:39:55: error: unknown type name ‘pixel’
-common/dct_wrapper.c:44:27: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:44:43: error: unknown type name ‘pixel’
-common/dct_wrapper.c:44:56: error: unknown type name ‘pixel’
-common/dct_wrapper.c:49:24: error: unknown type name ‘pixel’
-common/dct_wrapper.c:49:38: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:54:24: error: unknown type name ‘pixel’
-common/dct_wrapper.c:54:38: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:59:26: error: unknown type name ‘pixel’
-common/dct_wrapper.c:59:40: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:65:24: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:65:41: error: unknown type name ‘pixel’
-common/dct_wrapper.c:65:54: error: unknown type name ‘pixel’
-common/dct_wrapper.c:70:26: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:70:46: error: unknown type name ‘pixel’
-common/dct_wrapper.c:70:59: error: unknown type name ‘pixel’
-common/dct_wrapper.c:75:25: error: unknown type name ‘pixel’
-common/dct_wrapper.c:75:37: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:80:27: error: unknown type name ‘pixel’
-common/dct_wrapper.c:80:39: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:85:34: error: unknown type name ‘pixel’
-common/dct_wrapper.c:85:48: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:90:27: error: unknown type name ‘pixel’
-common/dct_wrapper.c:90:41: error: unknown type name ‘dctcoef’
-common/dct_wrapper.c:95:30: error: unknown type name ‘pixel’
-common/dct_wrapper.c:95:44: error: unknown type name ‘dctcoef’
-make: *** [common/dct_wrapper.o] Error 1
+In file included from ./common/dct.c:29:
+In file included from ./common/common.h:1121:
+./common/rectangle.h:28:9: warning: 'HAVE_VECTOREXT' macro redefined
+#define HAVE_VECTOREXT 0
+        ^
+In file included from ./common/dct.c:29:
+In file included from ./common/common.h:88:
+In file included from ./common/osdep.h:38:
+./config.h:11:9: note: previous definition is here
+#define HAVE_VECTOREXT 1
+        ^
+1 warning generated.
+In file included from ./common/dct_engine.c:3:
+In file included from ./common/common.h:1121:
+./common/rectangle.h:28:9: warning: 'HAVE_VECTOREXT' macro redefined
+#define HAVE_VECTOREXT 0
+        ^
+In file included from ./common/dct_engine.c:3:
+In file included from ./common/common.h:88:
+In file included from ./common/osdep.h:38:
+./config.h:11:9: note: previous definition is here
+#define HAVE_VECTOREXT 1
+        ^
+./common/dct_engine.c:91:12: warning: implicit declaration of function 'sub4x4_dct' is invalid in C99 [-Wimplicit-function-declaration]
+                                        sub4x4_dct( dct, pix1, pix2 );
+                                        ^
+./common/dct_engine.c:95:35: warning: incompatible pointer to integer conversion passing 'dctcoef *' (aka 'short *') to parameter of type 'uint32_t' (aka 'unsigned int')
+                                  write_uint32("dct_out_data",&dct[2*i]);
+                                                              ^~~~~~~~~
+In file included from ./common/dct_engine.c:2:
+/home/users/amitchawla/ahir/release/iolib/include/iolib.h:19:38: note: passing argument to parameter 'data' here
+void write_uint32(char *id, uint32_t data);
+                                     ^
+3 warnings generated.
+llvm-ld -link-as-library ./common/dct.o ./common/dct_engine.o -b x264.linked.o
+llvm-dis x264.linked.o
+opt --indvars --loopsimplify x264.linked.o -o x264.linked.opt.o
+llvm2aa --storageinit=true -modules=common/dct_modules  x264.linked.opt.o | vcFormat >  x264.aa
+Info: module to be translated: dct_engine
+Info: module to be translated: 
+Info: -storageinit=true: storage initializers will be generated
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: added pipe dct_in_data with type $uint<32>
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: generating storage initialization module which calls all initializers in parallel
+Info: skipping function dct4x4dc not specified in -modules
+Info: skipping function idct4x4dc not specified in -modules
+Info: skipping function dct2x4dc not specified in -modules
+Info: skipping function sub4x4_dct not specified in -modules
+Info: skipping function sub8x8_dct not specified in -modules
+Info: skipping function sub16x16_dct not specified in -modules
+Info: skipping function sub4x4_dct_dc not specified in -modules
+Info: skipping function sub8x8_dct_dc not specified in -modules
+Info: skipping function sub8x16_dct_dc not specified in -modules
+Info: skipping function add4x4_idct not specified in -modules
+Info: skipping function add8x8_idct not specified in -modules
+Info: skipping function add16x16_idct not specified in -modules
+Info: skipping function sub8x8_dct8 not specified in -modules
+Info: skipping function sub16x16_dct8 not specified in -modules
+Info: skipping function add8x8_idct8 not specified in -modules
+Info: skipping function add16x16_idct8 not specified in -modules
+Info: skipping function add8x8_idct_dc not specified in -modules
+Info: skipping function add16x16_idct_dc not specified in -modules
+Info: skipping function zigzag_scan_8x8_frame not specified in -modules
+Info: skipping function zigzag_scan_8x8_field not specified in -modules
+Info: skipping function zigzag_scan_4x4_frame not specified in -modules
+Info: skipping function zigzag_scan_4x4_field not specified in -modules
+Info: skipping function llvm.memcpy.p0i8.p0i8.i32 not specified in -modules
+Info: skipping function zigzag_sub_4x4_frame not specified in -modules
+Info: skipping function zigzag_sub_4x4_field not specified in -modules
+Info: skipping function zigzag_sub_4x4ac_frame not specified in -modules
+Info: skipping function zigzag_sub_4x4ac_field not specified in -modules
+Info: skipping function zigzag_sub_8x8_frame not specified in -modules
+Info: skipping function zigzag_sub_8x8_field not specified in -modules
+Info: skipping function zigzag_interleave_8x8_cavlc not specified in -modules
+Info: visiting function dct_engine
+Info: traversal: visited block bb_0
+Info: traversal: visited block bb_1
+Info: traversal: visited block bb.nph.preheader
+Info: traversal: visited block bb.nph
+Info: traversal: visited block .preheader.preheader
+Info: traversal: visited block .preheader
+Info: starting new BB-chain-dag with header bb_0
+Info: starting new BB-chain-dag with header bb_1
+Info: starting new BB-chain-dag with header bb.nph.preheader
+Info: starting new BB-chain-dag with header bb.nph
+Info: starting new BB-chain-dag with header .preheader.preheader
+Info: starting new BB-chain-dag with header .preheader
+Basic Block Chain DAGS.
+Basic-block-chain-DAG with header = bb_0
+ bb_0
+   -> 
+   <- 
+loop-backs 
+exit-points 
+  bb_0
+Basic-block-chain-DAG with header = bb_1
+ bb_1
+   -> 
+   <- 
+loop-backs 
+  bb_1
+exit-points 
+  bb_1
+Basic-block-chain-DAG with header = bbx_xnphx_xpreheader
+ bbx_xnphx_xpreheader
+   -> 
+   <- 
+loop-backs 
+exit-points 
+  bbx_xnphx_xpreheader
+Basic-block-chain-DAG with header = bbx_xnph
+ bbx_xnph
+   -> 
+   <- 
+loop-backs 
+  bbx_xnph
+exit-points 
+  bbx_xnph
+Basic-block-chain-DAG with header = xx_xpreheaderx_xpreheader
+ xx_xpreheaderx_xpreheader
+   -> 
+   <- 
+loop-backs 
+exit-points 
+  xx_xpreheaderx_xpreheader
+Basic-block-chain-DAG with header = xx_xpreheader
+ xx_xpreheader
+   -> 
+   <- 
+loop-backs 
+  xx_xpreheader
+exit-points 
+Info: ignoring get-element-ptr to x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr since it is not (really) used in any function..
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: ignoring get-element-ptr to x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr since it is not (really) used in any function..
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: ignoring get-element-ptr to x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr since it is not (really) used in any function..
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: ignoring get-element-ptr to x264x_xlinkedx_xoptx_xo_iNtErNal_xx_xstr since it is not (really) used in any function..
+Info: locating portname in constant GEP [12 x i8] c"dct_in_data\00"
+
+Info: skipping function read_uint32 not specified in -modules
+Aa2VC -O -C x264.aa | vcFormat > x264.vc
+Info: -O option selected, will parallelize straight-line sequences
+Info: -C option selected, will generate C-stubs for mixed C-VHDL simulation
+Info: elaborating the program .... initializing the call-graph
+Info: mapping object references..
+Info: checking for cycles in the call-graph ... 
+Info: module order:
+	dct_engine
+	x264x_xlinkedx_xoptx_xo_storage_initializer_
+Info: marking modules reachable from root-modules ... 
+Info: module dct_engine is reachable from a specified root module.
+Info: module x264x_xlinkedx_xoptx_xo_storage_initializer_ is reachable from a specified root module.
+Info: propagating types in the program ... 
+Info: coalescing storage into distinct memory spaces ... 
+Info: Marking foreign pointers in modules which are not called from the program
+Info: Coalescing storage from native objects..
+Info: Finished coalescing storage.. identified 2 disjoint memory space(s)
+Info: Memory space 0: %dct_engine%body:dct_alloc 
+Info: Memory space 1: %dct_engine%body:pix1_alloc 
+Info: propagating constants in the program ... 
+Info: Writing optimized VC model.. 
+Info: Done writing optimized VC model.. 
+vc2vhdl -O -S 4 -I 2 -v -a -C -e ahir_system -w -s ghdl -T dct_engine -f x264.vc -L /home/users/amitchawla/ahir/release/functionLibrary//fpu.list
+Info: -O option selected, will try to compress control-path..
+Info: -S option selected: bypass stride will be set to 4.
+Info: -I option is deprecated.. has no effect.
+Info: -v option selected: lots of info will be printed to stderr.
+Info: -a option selected: will try for minimum overall circuit area.
+Info: -C option selected: will generate testbench which connects to foreign link.
+Info: -e ahir_system top-level VHDL entity will have name ahir_system.unformatted_vhdl
+Info: -w ahir_system will write separate system and testbench VHDL files.
+Info: -s ghdl option selected: will generate testbench with VHPI link.
+Info: module dct_engine set as one of the ever-running top modules. 
+   NOTE: dct_engine cannot have any input/output arguments.
+Info: will add library  /home/users/amitchawla/ahir/release/functionLibrary//fpu.list.
+Info: vcSystem::Add_Function_Library: added function library module fpu32 with delay 24
+Info: vcSystem::Add_Function_Library: added function library module fpadd32 with delay 24
+Info: vcSystem::Add_Function_Library: added function library module fpsub32 with delay 24
+Info: vcSystem::Add_Function_Library: added function library module fpmul32 with delay 24
+Info: vcSystem::Add_Function_Library: added function library module fpu64 with delay 24
+Info: vcSystem::Add_Function_Library: added function library module fpadd64 with delay 24
+Info: vcSystem::Add_Function_Library: added function library module fpsub64 with delay 24
+Info: vcSystem::Add_Function_Library: added function library module fpmul64 with delay 24
+Warning: in equivalence operator array_obj_ref_75_index_1_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator ptr_deref_86_base_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator array_obj_ref_124_index_2_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: in equivalence operator ptr_deref_134_base_resize, total input width is not equal to total output width.. output will truncate the input..
+Warning: module x264x_xlinkedx_xoptx_xo_storage_initializer_ is not reachable from a top-level module, ignored
+Info: Info: transition [array_obj_ref_75_base_address_calculated] is isolated, removed.
+Info: Info: transition [array_obj_ref_124_base_address_calculated] is isolated, removed.
+Warning: exit not reachable from every element in region branch_block_stmt_6/assign_stmt_26
+	 un-visited elements
+	RPIPE_dct_in_data_25_sample_start_
+	RPIPE_dct_in_data_25_sample_completed_
+	RPIPE_dct_in_data_25_Sample
+Info: reducing Control-path 
+Info: ADD_u32_u32_141_inst included in vcBinarySplitOperator group 0
+Info: ADD_u32_u32_93_inst included in vcBinarySplitOperator group 1
+Info: AND_u1_u1_46_inst included in vcBinarySplitOperator group 2
+Info: EQ_u32_u1_34_inst included in vcBinarySplitOperator group 3
+Info: EQ_u32_u1_41_inst included in vcBinarySplitOperator group 4
+Info: EQ_u32_u1_99_inst included in vcBinarySplitOperator group 5
+Info: MUL_u32_u32_69_inst included in vcBinarySplitOperator group 6
+Info: RPIPE_dct_in_data_131_inst included in vcInport group 0
+Info: RPIPE_dct_in_data_25_inst included in vcInport group 0
+Info: RPIPE_dct_in_data_28_inst included in vcInport group 0
+Info: RPIPE_dct_in_data_83_inst included in vcInport group 0
+Info: array_obj_ref_124_index_offset included in vcBinarySplitOperator group 7
+Info: array_obj_ref_75_index_offset included in vcBinarySplitOperator group 8
+Info: ptr_deref_134_addr_0 included in vcBinarySplitOperator group 9
+Info: ptr_deref_134_addr_1 included in vcBinarySplitOperator group 10
+Info: ptr_deref_134_addr_2 included in vcBinarySplitOperator group 11
+Info: ptr_deref_134_addr_3 included in vcBinarySplitOperator group 12
+Info: ptr_deref_134_store_0 included in vcStore group 0
+Info: ptr_deref_134_store_1 included in vcStore group 0
+Info: ptr_deref_134_store_2 included in vcStore group 0
+Info: ptr_deref_134_store_3 included in vcStore group 0
+Info: ptr_deref_86_addr_0 included in vcBinarySplitOperator group 13
+Info: ptr_deref_86_addr_1 included in vcBinarySplitOperator group 14
+Info: ptr_deref_86_store_0 included in vcStore group 1
+Info: ptr_deref_86_store_1 included in vcStore group 1
+Info: printing VHDL global package
+Info: printing top-level system VHDL file ahir_system.unformatted_vhdl
+Info: printing VHDL model
+Info: printing VHDL model for module dct_engine
+Warning: CP element 1 has no predecessors.. tie to false
+-- CP-element group 1 transition  place  bypass 
+-- predecessors 
+-- successors 
+-- members (3) {
+-- 	$exit
+-- 	branch_block_stmt_6/$exit
+-- 	branch_block_stmt_6/branch_block_stmt_6__exit__
+-- }
+Warning: memory space memory_space_0 is not read from... dummy used
+Warning: memory space memory_space_1 is not read from... dummy used
+Info: finished printing VHDL model
+Info: printing Dot-file of CP for module dct_engine
+vhdlFormat < ahir_system_global_package.unformatted_vhdl > ahir_system_global_package.vhdl
+vhdlFormat < ahir_system.unformatted_vhdl > ahir_system.vhdl
+vhdlFormat < ahir_system_test_bench.unformatted_vhdl > ahir_system_test_bench.vhdl

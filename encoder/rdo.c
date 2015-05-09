@@ -339,7 +339,7 @@ uint64_t x264_rd_cost_part( x264_t *h, int i_lambda2, int i4, int i_pixel )/// c
 {
     uint64_t i_ssd, i_bits;
     int i8 = i4 >> 2;
-/*
+
     if( i_pixel == PIXEL_16x16 )
     {
         int i_cost = x264_rd_cost_mb( h, i_lambda2 );
@@ -374,7 +374,7 @@ uint64_t x264_rd_cost_part( x264_t *h, int i_lambda2, int i4, int i_pixel )/// c
     }
     else
         i_bits = x264_partition_size_cavlc( h, i8, i_pixel ) * i_lambda2;
-*/
+
     return (i_ssd<<8) + i_bits;
 }
 
