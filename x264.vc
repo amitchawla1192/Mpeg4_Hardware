@@ -1,0 +1,1869 @@
+// Virtual circuit produced from Aa description by Aa2VC 
+// $pipe  dct_in_data : $uint<32>  $depth 1 
+// can point into 
+// in scope  top-level
+$pipe [dct_in_data] 32 $depth 1 
+$module [dct_engine] 
+{
+  // pipe-declarations for block %dct_engine
+  //  file x264.aa, line 8
+  // pipe-declarations for block %dct_engine%body
+  //  file x264.aa, line 13
+  // pipe-declarations for block %dct_engine%body%
+  //  file x264.aa, line 22
+  // pipe-declarations for block %dct_engine%body%
+  //  file x264.aa, line 33
+  // pipe-declarations for block %dct_engine%body%
+  //  file x264.aa, line 37
+  // pipe-declarations for block %dct_engine%body%
+  //  file x264.aa, line 50
+  // pipe-declarations for block %dct_engine%body%
+  //  file x264.aa, line 54
+  $memoryspace [memory_space_0] 
+  {
+    $capacity 16
+    $datawidth 16
+    $addrwidth 5
+    $maxaccesswidth 32
+    // 		$storage  dct_alloc : $array[16] $of $uint<16> // memory space index = 0  base address = 0  word size = 16
+    // can point into 
+    // in scope  %dct_engine%body
+    $object [xxdct_enginexxbodyxxdct_alloc] : $array[16] $of $int<16>
+  }
+  $memoryspace [memory_space_1] 
+  {
+    $capacity 256
+    $datawidth 8
+    $addrwidth 9
+    $maxaccesswidth 32
+    // 		$storage  pix1_alloc : $array[16] $of $array[16] $of $uint<8> // memory space index = 1  base address = 0  word size = 8
+    // can point into 
+    // in scope  %dct_engine%body
+    $object [xxdct_enginexxbodyxxpix1_alloc] : $array[16] $of $array[16] $of $int<8>
+  }
+  $CP 
+  {
+    // begin control-path 
+    <>[branch_block_stmt_6] // Branch Block  file x264.aa, line 13
+    {
+      $P [branch_block_stmt_6__entry__]
+      branch_block_stmt_6__entry__ <-| ($entry)
+      $P [branch_block_stmt_6__exit__]
+      branch_block_stmt_6__exit__ |-> ($exit)
+      $P [assign_stmt_17_to_assign_stmt_21__entry__] 
+      $P [assign_stmt_17_to_assign_stmt_21__exit__] 
+      $P [bb_0_bb_1]
+      $P [merge_stmt_23__exit__] 
+      $P [assign_stmt_26__entry__] 
+      $P [assign_stmt_26__exit__] 
+      $P [assign_stmt_29__entry__] 
+      $P [assign_stmt_29__exit__] 
+      $P [assign_stmt_36_to_assign_stmt_47__entry__] 
+      $P [assign_stmt_36_to_assign_stmt_47__exit__] 
+      $P [if_stmt_48__entry__] 
+      $P [if_stmt_48__exit__] 
+      $P [merge_stmt_54__entry__] 
+      $P [merge_stmt_54__exit__] 
+      $P [bbx_xnphx_xpreheader_bbx_xnph]
+      $P [merge_stmt_56__exit__] 
+      $P [assign_stmt_70_to_assign_stmt_81__entry__] 
+      $P [assign_stmt_70_to_assign_stmt_81__exit__] 
+      $P [assign_stmt_84__entry__] 
+      $P [assign_stmt_84__exit__] 
+      $P [assign_stmt_88_to_assign_stmt_100__entry__] 
+      $P [assign_stmt_88_to_assign_stmt_100__exit__] 
+      $P [if_stmt_101__entry__] 
+      $P [if_stmt_101__exit__] 
+      $P [merge_stmt_107__entry__] 
+      $P [merge_stmt_107__exit__] 
+      $P [xx_xpreheaderx_xpreheader_xx_xpreheader]
+      $P [merge_stmt_109__exit__] 
+      $P [assign_stmt_125_to_assign_stmt_129__entry__] 
+      $P [assign_stmt_125_to_assign_stmt_129__exit__] 
+      $P [assign_stmt_132__entry__] 
+      $P [assign_stmt_132__exit__] 
+      $P [assign_stmt_136_to_assign_stmt_142__entry__] 
+      $P [assign_stmt_136_to_assign_stmt_142__exit__] 
+      $P [xx_xpreheader_xx_xpreheader]
+      ::[assign_stmt_17_to_assign_stmt_21] 
+      {
+        // load-store dependencies..
+      }
+      assign_stmt_17_to_assign_stmt_21__entry__ |-> (assign_stmt_17_to_assign_stmt_21)
+      assign_stmt_17_to_assign_stmt_21__exit__ <-| (assign_stmt_17_to_assign_stmt_21)
+      ::[assign_stmt_26] 
+      {
+        // 		iNsTr_2 := dct_in_data
+        //  file x264.aa, line 24
+        // Source expression
+        // dct_in_data
+        $T[RPIPE_dct_in_data_25_sample_start_] 
+        $T[RPIPE_dct_in_data_25_sample_completed_] 
+        $T[RPIPE_dct_in_data_25_update_start_] 
+        $T[RPIPE_dct_in_data_25_update_completed_] 
+        ;;[RPIPE_dct_in_data_25_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_dct_in_data_25_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_dct_in_data_25_sample_start_ &-> (RPIPE_dct_in_data_25_Sample)
+        RPIPE_dct_in_data_25_sample_completed_ <-& (RPIPE_dct_in_data_25_Sample)
+        RPIPE_dct_in_data_25_sample_completed_ &-> ($null)
+        RPIPE_dct_in_data_25_update_start_ &-> (RPIPE_dct_in_data_25_Update)
+        RPIPE_dct_in_data_25_update_completed_ <-& (RPIPE_dct_in_data_25_Update)
+        // both source and target are implicit: use interlock 
+        $T[RPIPE_dct_in_data_25_sample_start_] 
+        $T[RPIPE_dct_in_data_25_sample_completed_] 
+        $T[RPIPE_dct_in_data_25_update_start_] 
+        $T[RPIPE_dct_in_data_25_update_completed_] 
+        // Target expression
+        // (as target) iNsTr_2
+        // iNsTr_2
+        // implicit reference
+        // barrier: 		iNsTr_2 := dct_in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe dct_in_data
+      }
+      assign_stmt_26__entry__ |-> (assign_stmt_26)
+      assign_stmt_26__exit__ <-| (assign_stmt_26)
+      ::[assign_stmt_29] 
+      {
+        // 		iNsTr_4 := dct_in_data
+        //  file x264.aa, line 25
+        // Source expression
+        // dct_in_data
+        $T[RPIPE_dct_in_data_28_sample_start_] 
+        $T[RPIPE_dct_in_data_28_sample_completed_] 
+        $T[RPIPE_dct_in_data_28_update_start_] 
+        $T[RPIPE_dct_in_data_28_update_completed_] 
+        ;;[RPIPE_dct_in_data_28_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_dct_in_data_28_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_dct_in_data_28_sample_start_ &-> (RPIPE_dct_in_data_28_Sample)
+        RPIPE_dct_in_data_28_sample_completed_ <-& (RPIPE_dct_in_data_28_Sample)
+        RPIPE_dct_in_data_28_sample_completed_ &-> ($null)
+        RPIPE_dct_in_data_28_update_start_ &-> (RPIPE_dct_in_data_28_Update)
+        RPIPE_dct_in_data_28_update_completed_ <-& (RPIPE_dct_in_data_28_Update)
+        // both source and target are implicit: use interlock 
+        $T[RPIPE_dct_in_data_28_sample_start_] 
+        $T[RPIPE_dct_in_data_28_sample_completed_] 
+        $T[RPIPE_dct_in_data_28_update_start_] 
+        $T[RPIPE_dct_in_data_28_update_completed_] 
+        // Target expression
+        // (as target) iNsTr_4
+        // iNsTr_4
+        // implicit reference
+        // barrier: 		iNsTr_4 := dct_in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe dct_in_data
+      }
+      assign_stmt_29__entry__ |-> (assign_stmt_29)
+      assign_stmt_29__exit__ <-| (assign_stmt_29)
+      ::[assign_stmt_36_to_assign_stmt_47] 
+      {
+        // 		cond := (iNsTr_2 == ($bitcast ($uint<32>) _b00000000000000000000000000000011  ))
+        //  file x264.aa, line 27
+        // Source expression
+        // (iNsTr_2 == ($bitcast ($uint<32>) _b00000000000000000000000000000011  ))
+        $T[EQ_u32_u1_34_sample_start_] 
+        $T[EQ_u32_u1_34_sample_completed_] 
+        $T[EQ_u32_u1_34_update_start_] 
+        $T[EQ_u32_u1_34_update_completed_] 
+        // iNsTr_2
+        $T[R_iNsTr_2_31_sample_start_] 
+        $T[R_iNsTr_2_31_sample_completed_] 
+        $T[R_iNsTr_2_31_update_start_] 
+        $T[R_iNsTr_2_31_update_completed_] 
+        // implicit reference
+        R_iNsTr_2_31_sample_start_ <-& ($entry)
+        R_iNsTr_2_31_sample_completed_ <-& (R_iNsTr_2_31_sample_start_)
+        R_iNsTr_2_31_update_start_ <-& (R_iNsTr_2_31_sample_completed_)
+        R_iNsTr_2_31_update_completed_ <-& (R_iNsTr_2_31_update_start_)
+        EQ_u32_u1_34_sample_start_ <-& (R_iNsTr_2_31_update_completed_)
+        ;;[EQ_u32_u1_34_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[EQ_u32_u1_34_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        EQ_u32_u1_34_sample_start_ &-> (EQ_u32_u1_34_Sample)
+        EQ_u32_u1_34_sample_completed_ <-& (EQ_u32_u1_34_Sample)
+        EQ_u32_u1_34_sample_completed_ &-> ($null)
+        EQ_u32_u1_34_update_start_ &-> (EQ_u32_u1_34_Update)
+        EQ_u32_u1_34_update_completed_ <-& (EQ_u32_u1_34_Update)
+        // both source and target are implicit: use interlock 
+        $T[EQ_u32_u1_34_sample_start_] 
+        $T[EQ_u32_u1_34_sample_completed_] 
+        $T[EQ_u32_u1_34_update_start_] 
+        $T[EQ_u32_u1_34_update_completed_] 
+        // Target expression
+        // (as target) cond
+        // cond
+        // implicit reference
+        // 		iNsTr_5 := (iNsTr_4 == ($bitcast ($uint<32>) _b00000000000000000000000000111000  ))
+        //  file x264.aa, line 29
+        // Source expression
+        // (iNsTr_4 == ($bitcast ($uint<32>) _b00000000000000000000000000111000  ))
+        $T[EQ_u32_u1_41_sample_start_] 
+        $T[EQ_u32_u1_41_sample_completed_] 
+        $T[EQ_u32_u1_41_update_start_] 
+        $T[EQ_u32_u1_41_update_completed_] 
+        // iNsTr_4
+        $T[R_iNsTr_4_38_sample_start_] 
+        $T[R_iNsTr_4_38_sample_completed_] 
+        $T[R_iNsTr_4_38_update_start_] 
+        $T[R_iNsTr_4_38_update_completed_] 
+        // implicit reference
+        R_iNsTr_4_38_sample_start_ <-& ($entry)
+        R_iNsTr_4_38_sample_completed_ <-& (R_iNsTr_4_38_sample_start_)
+        R_iNsTr_4_38_update_start_ <-& (R_iNsTr_4_38_sample_completed_)
+        R_iNsTr_4_38_update_completed_ <-& (R_iNsTr_4_38_update_start_)
+        EQ_u32_u1_41_sample_start_ <-& (R_iNsTr_4_38_update_completed_)
+        ;;[EQ_u32_u1_41_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[EQ_u32_u1_41_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        EQ_u32_u1_41_sample_start_ &-> (EQ_u32_u1_41_Sample)
+        EQ_u32_u1_41_sample_completed_ <-& (EQ_u32_u1_41_Sample)
+        EQ_u32_u1_41_sample_completed_ &-> ($null)
+        EQ_u32_u1_41_update_start_ &-> (EQ_u32_u1_41_Update)
+        EQ_u32_u1_41_update_completed_ <-& (EQ_u32_u1_41_Update)
+        // both source and target are implicit: use interlock 
+        $T[EQ_u32_u1_41_sample_start_] 
+        $T[EQ_u32_u1_41_sample_completed_] 
+        $T[EQ_u32_u1_41_update_start_] 
+        $T[EQ_u32_u1_41_update_completed_] 
+        // Target expression
+        // (as target) iNsTr_5
+        // iNsTr_5
+        // implicit reference
+        // 		orx_xcond := (cond & iNsTr_5)
+        //  file x264.aa, line 30
+        // Source expression
+        // (cond & iNsTr_5)
+        $T[AND_u1_u1_46_sample_start_] 
+        $T[AND_u1_u1_46_sample_completed_] 
+        $T[AND_u1_u1_46_update_start_] 
+        $T[AND_u1_u1_46_update_completed_] 
+        // cond
+        $T[R_cond_44_sample_start_] 
+        $T[R_cond_44_sample_completed_] 
+        $T[R_cond_44_update_start_] 
+        $T[R_cond_44_update_completed_] 
+        // implicit reference
+        R_cond_44_sample_start_ <-& (EQ_u32_u1_34_update_completed_)
+        R_cond_44_sample_completed_ <-& (R_cond_44_sample_start_)
+        R_cond_44_update_start_ <-& (R_cond_44_sample_completed_)
+        R_cond_44_update_completed_ <-& (R_cond_44_update_start_)
+        // iNsTr_5
+        $T[R_iNsTr_5_45_sample_start_] 
+        $T[R_iNsTr_5_45_sample_completed_] 
+        $T[R_iNsTr_5_45_update_start_] 
+        $T[R_iNsTr_5_45_update_completed_] 
+        // implicit reference
+        R_iNsTr_5_45_sample_start_ <-& (EQ_u32_u1_41_update_completed_)
+        R_iNsTr_5_45_sample_completed_ <-& (R_iNsTr_5_45_sample_start_)
+        R_iNsTr_5_45_update_start_ <-& (R_iNsTr_5_45_sample_completed_)
+        R_iNsTr_5_45_update_completed_ <-& (R_iNsTr_5_45_update_start_)
+        AND_u1_u1_46_sample_start_ <-& (R_cond_44_update_completed_)
+        AND_u1_u1_46_sample_start_ <-& (R_iNsTr_5_45_update_completed_)
+        ;;[AND_u1_u1_46_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[AND_u1_u1_46_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        AND_u1_u1_46_sample_start_ &-> (AND_u1_u1_46_Sample)
+        AND_u1_u1_46_sample_completed_ <-& (AND_u1_u1_46_Sample)
+        AND_u1_u1_46_sample_completed_ &-> ($null)
+        AND_u1_u1_46_update_start_ &-> (AND_u1_u1_46_Update)
+        AND_u1_u1_46_update_completed_ <-& (AND_u1_u1_46_Update)
+        // both source and target are implicit: use interlock 
+        $T[AND_u1_u1_46_sample_start_] 
+        $T[AND_u1_u1_46_sample_completed_] 
+        $T[AND_u1_u1_46_update_start_] 
+        $T[AND_u1_u1_46_update_completed_] 
+        // Target expression
+        // (as target) orx_xcond
+        // orx_xcond
+        // implicit reference
+        // load-store dependencies..
+      }
+      assign_stmt_36_to_assign_stmt_47__entry__ |-> (assign_stmt_36_to_assign_stmt_47)
+      assign_stmt_36_to_assign_stmt_47__exit__ <-| (assign_stmt_36_to_assign_stmt_47)
+      // if-statement  
+      //  file x264.aa, line 31
+      ;;[if_stmt_48_dead_link] 
+      {
+        $T [dead_transition] $dead 
+      }
+      if_stmt_48__entry__ |-> (if_stmt_48_dead_link)
+      if_stmt_48__exit__ <-| (if_stmt_48_dead_link)
+      ;;[if_stmt_48_eval_test] 
+      {
+        // test expression evaluate and trigger branch 
+        $T [branch_req] 
+      }
+      if_stmt_48__entry__ |-> (if_stmt_48_eval_test)
+      $P [R_orx_xcond_49_place]
+      R_orx_xcond_49_place <-| (if_stmt_48_eval_test)
+      ;;[if_stmt_48_if_link] 
+      {
+        $T [if_choice_transition] 
+      }
+      ;;[if_stmt_48_else_link] 
+      {
+        $T [else_choice_transition] 
+      }
+      R_orx_xcond_49_place |-> (if_stmt_48_if_link if_stmt_48_else_link)
+      $P [bb_1_bbx_xnphx_xpreheader]
+      bb_1_bbx_xnphx_xpreheader <-| (if_stmt_48_if_link)
+      $P [bb_1_bb_1]
+      bb_1_bb_1 <-| (if_stmt_48_else_link)
+      ::[assign_stmt_70_to_assign_stmt_81] 
+      {
+        // 		tmp4 := (ix_x05 * ($bitcast ($uint<32>) _b00000000000000000000000000000010  ))
+        //  file x264.aa, line 40
+        // Source expression
+        // (ix_x05 * ($bitcast ($uint<32>) _b00000000000000000000000000000010  ))
+        $T[MUL_u32_u32_69_sample_start_] 
+        $T[MUL_u32_u32_69_sample_completed_] 
+        $T[MUL_u32_u32_69_update_start_] 
+        $T[MUL_u32_u32_69_update_completed_] 
+        // ix_x05
+        $T[R_ix_x05_66_sample_start_] 
+        $T[R_ix_x05_66_sample_completed_] 
+        $T[R_ix_x05_66_update_start_] 
+        $T[R_ix_x05_66_update_completed_] 
+        // implicit reference
+        R_ix_x05_66_sample_start_ <-& ($entry)
+        R_ix_x05_66_sample_completed_ <-& (R_ix_x05_66_sample_start_)
+        R_ix_x05_66_update_start_ <-& (R_ix_x05_66_sample_completed_)
+        R_ix_x05_66_update_completed_ <-& (R_ix_x05_66_update_start_)
+        MUL_u32_u32_69_sample_start_ <-& (R_ix_x05_66_update_completed_)
+        ;;[MUL_u32_u32_69_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[MUL_u32_u32_69_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        MUL_u32_u32_69_sample_start_ &-> (MUL_u32_u32_69_Sample)
+        MUL_u32_u32_69_sample_completed_ <-& (MUL_u32_u32_69_Sample)
+        MUL_u32_u32_69_sample_completed_ &-> ($null)
+        MUL_u32_u32_69_update_start_ &-> (MUL_u32_u32_69_Update)
+        MUL_u32_u32_69_update_completed_ <-& (MUL_u32_u32_69_Update)
+        // both source and target are implicit: use interlock 
+        $T[MUL_u32_u32_69_sample_start_] 
+        $T[MUL_u32_u32_69_sample_completed_] 
+        $T[MUL_u32_u32_69_update_start_] 
+        $T[MUL_u32_u32_69_update_completed_] 
+        // Target expression
+        // (as target) tmp4
+        // tmp4
+        // implicit reference
+        // 		scevgep := dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+        //  file x264.aa, line 41
+        // Source expression
+        // dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+        $T[array_obj_ref_75_base_address_calculated] 
+        $T[array_obj_ref_75_sample_start_] 
+        $T[array_obj_ref_75_sample_completed_] 
+        $T[array_obj_ref_75_update_start_] 
+        $T[array_obj_ref_75_update_completed_] 
+        $T[array_obj_ref_75_root_address_calculated] 
+        $T[array_obj_ref_75_offset_calculated] 
+        $T[array_obj_ref_75_index_resized_1] 
+        $T[array_obj_ref_75_index_scaled_1] 
+        // tmp4
+        $T[R_tmp4_74_sample_start_] 
+        $T[R_tmp4_74_sample_completed_] 
+        $T[R_tmp4_74_update_start_] 
+        $T[R_tmp4_74_update_completed_] 
+        // implicit reference
+        R_tmp4_74_sample_start_ <-& (MUL_u32_u32_69_update_completed_)
+        R_tmp4_74_sample_completed_ <-& (R_tmp4_74_sample_start_)
+        R_tmp4_74_update_start_ <-& (R_tmp4_74_sample_completed_)
+        R_tmp4_74_update_completed_ <-& (R_tmp4_74_update_start_)
+        ;;[array_obj_ref_75_index_resize_1] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_tmp4_74_update_completed_ &-> (array_obj_ref_75_index_resize_1)
+        array_obj_ref_75_index_resized_1 <-& (array_obj_ref_75_index_resize_1)
+        ;;[array_obj_ref_75_index_scale_1] 
+        {
+          $T [scale_rename_req] $T [scale_rename_ack] // rename 
+        }
+        array_obj_ref_75_index_resized_1 &-> (array_obj_ref_75_index_scale_1)
+        array_obj_ref_75_index_scaled_1 <-& (array_obj_ref_75_index_scale_1)
+        $T[array_obj_ref_75_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_75_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_75_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_75_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_75_index_scaled_1 &-> (array_obj_ref_75_final_index_sum_regn_Sample)
+        array_obj_ref_75_final_index_sum_regn_sample_complete <-& (array_obj_ref_75_final_index_sum_regn_Sample)
+        array_obj_ref_75_final_index_sum_regn_update_start &-> (array_obj_ref_75_final_index_sum_regn_Update)
+        array_obj_ref_75_offset_calculated <-& (array_obj_ref_75_final_index_sum_regn_Update)
+        ;;[array_obj_ref_75_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_75_offset_calculated &-> (array_obj_ref_75_base_plus_offset)
+        array_obj_ref_75_root_address_calculated <-& (array_obj_ref_75_base_plus_offset)
+        ;;[array_obj_ref_75_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[array_obj_ref_75_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        array_obj_ref_75_sample_start_ <-& (array_obj_ref_75_root_address_calculated)
+        array_obj_ref_75_sample_start_ &-> (array_obj_ref_75_request)
+        array_obj_ref_75_sample_completed_ <-& (array_obj_ref_75_request)
+        array_obj_ref_75_update_start_ &-> (array_obj_ref_75_complete)
+        array_obj_ref_75_update_completed_ <-& (array_obj_ref_75_complete)
+        // both source and target are implicit: use interlock 
+        $T[array_obj_ref_75_sample_start_] 
+        $T[array_obj_ref_75_sample_completed_] 
+        $T[array_obj_ref_75_update_start_] 
+        $T[array_obj_ref_75_update_completed_] 
+        // Target expression
+        // (as target) scevgep
+        // scevgep
+        // implicit reference
+        // 		scevgep78 := ($bitcast ($pointer< $uint<32> >) scevgep )
+        //  file x264.aa, line 42
+        // Source expression
+        // ($bitcast ($pointer< $uint<32> >) scevgep )
+        $T[type_cast_80_sample_start_] 
+        $T[type_cast_80_sample_completed_] 
+        $T[type_cast_80_update_start_] 
+        $T[type_cast_80_update_completed_] 
+        // scevgep
+        $T[R_scevgep_79_sample_start_] 
+        $T[R_scevgep_79_sample_completed_] 
+        $T[R_scevgep_79_update_start_] 
+        $T[R_scevgep_79_update_completed_] 
+        // implicit reference
+        R_scevgep_79_sample_start_ <-& (array_obj_ref_75_update_completed_)
+        R_scevgep_79_sample_completed_ <-& (R_scevgep_79_sample_start_)
+        R_scevgep_79_update_start_ <-& (R_scevgep_79_sample_completed_)
+        R_scevgep_79_update_completed_ <-& (R_scevgep_79_update_start_)
+        type_cast_80_sample_start_ <-& (R_scevgep_79_update_completed_)
+        ;;[type_cast_80_Sample] 
+        {
+          // unary expression 
+          $T [rr] $T [ra] // (split) unary operation
+        }
+        ;;[type_cast_80_Update] 
+        {
+          // unary expression 
+          $T [cr] $T [ca] //(split) unary operation
+        }
+        type_cast_80_sample_start_ &-> (type_cast_80_Sample)
+        type_cast_80_sample_completed_ <-& (type_cast_80_Sample)
+        type_cast_80_sample_completed_ &-> ($null)
+        type_cast_80_update_start_ &-> (type_cast_80_Update)
+        type_cast_80_update_completed_ <-& (type_cast_80_Update)
+        // both source and target are implicit: use interlock 
+        $T[type_cast_80_sample_start_] 
+        $T[type_cast_80_sample_completed_] 
+        $T[type_cast_80_update_start_] 
+        $T[type_cast_80_update_completed_] 
+        // Target expression
+        // (as target) scevgep78
+        // scevgep78
+        // implicit reference
+        // load-store dependencies..
+      }
+      assign_stmt_70_to_assign_stmt_81__entry__ |-> (assign_stmt_70_to_assign_stmt_81)
+      assign_stmt_70_to_assign_stmt_81__exit__ <-| (assign_stmt_70_to_assign_stmt_81)
+      ::[assign_stmt_84] 
+      {
+        // 		iNsTr_9 := dct_in_data
+        //  file x264.aa, line 43
+        // Source expression
+        // dct_in_data
+        $T[RPIPE_dct_in_data_83_sample_start_] 
+        $T[RPIPE_dct_in_data_83_sample_completed_] 
+        $T[RPIPE_dct_in_data_83_update_start_] 
+        $T[RPIPE_dct_in_data_83_update_completed_] 
+        ;;[RPIPE_dct_in_data_83_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_dct_in_data_83_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_dct_in_data_83_sample_start_ &-> (RPIPE_dct_in_data_83_Sample)
+        RPIPE_dct_in_data_83_sample_completed_ <-& (RPIPE_dct_in_data_83_Sample)
+        RPIPE_dct_in_data_83_sample_completed_ &-> ($null)
+        RPIPE_dct_in_data_83_update_start_ &-> (RPIPE_dct_in_data_83_Update)
+        RPIPE_dct_in_data_83_update_completed_ <-& (RPIPE_dct_in_data_83_Update)
+        // both source and target are implicit: use interlock 
+        $T[RPIPE_dct_in_data_83_sample_start_] 
+        $T[RPIPE_dct_in_data_83_sample_completed_] 
+        $T[RPIPE_dct_in_data_83_update_start_] 
+        $T[RPIPE_dct_in_data_83_update_completed_] 
+        // Target expression
+        // (as target) iNsTr_9
+        // iNsTr_9
+        // implicit reference
+        // barrier: 		iNsTr_9 := dct_in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe dct_in_data
+      }
+      assign_stmt_84__entry__ |-> (assign_stmt_84)
+      assign_stmt_84__exit__ <-| (assign_stmt_84)
+      ::[assign_stmt_88_to_assign_stmt_100] 
+      {
+        // 		->(scevgep78) := iNsTr_9
+        //  file x264.aa, line 44
+        // Source expression
+        // iNsTr_9
+        $T[R_iNsTr_9_87_sample_start_] 
+        $T[R_iNsTr_9_87_sample_completed_] 
+        $T[R_iNsTr_9_87_update_start_] 
+        $T[R_iNsTr_9_87_update_completed_] 
+        // implicit reference
+        R_iNsTr_9_87_sample_start_ <-& ($entry)
+        R_iNsTr_9_87_sample_completed_ <-& (R_iNsTr_9_87_sample_start_)
+        R_iNsTr_9_87_update_start_ <-& (R_iNsTr_9_87_sample_completed_)
+        R_iNsTr_9_87_update_completed_ <-& (R_iNsTr_9_87_update_start_)
+        // both source and target are implicit: use interlock 
+        $T[ptr_deref_86_sample_start_] 
+        $T[ptr_deref_86_sample_completed_] 
+        $T[ptr_deref_86_update_start_] 
+        $T[ptr_deref_86_update_completed_] 
+        // Target expression
+        // ->(scevgep78)
+        $T[ptr_deref_86_sample_start_] 
+        $T[ptr_deref_86_sample_completed_] 
+        $T[ptr_deref_86_update_start_] 
+        $T[ptr_deref_86_update_completed_] 
+        $T[ptr_deref_86_base_address_calculated] 
+        // scevgep78
+        $T[R_scevgep78_85_sample_start_] 
+        $T[R_scevgep78_85_sample_completed_] 
+        $T[R_scevgep78_85_update_start_] 
+        $T[R_scevgep78_85_update_completed_] 
+        // implicit reference
+        R_scevgep78_85_sample_start_ <-& ($entry)
+        R_scevgep78_85_sample_completed_ <-& (R_scevgep78_85_sample_start_)
+        R_scevgep78_85_update_start_ <-& (R_scevgep78_85_sample_completed_)
+        R_scevgep78_85_update_completed_ <-& (R_scevgep78_85_update_start_)
+        $T[ptr_deref_86_word_address_calculated] 
+        $T[ptr_deref_86_root_address_calculated] 
+        $T[ptr_deref_86_base_address_resized] 
+        ;;[ptr_deref_86_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_86_base_address_calculated &-> (ptr_deref_86_base_addr_resize)
+        ptr_deref_86_base_address_resized <-& (ptr_deref_86_base_addr_resize)
+        ;;[ptr_deref_86_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_86_base_address_resized &-> (ptr_deref_86_base_plus_offset)
+        ptr_deref_86_root_address_calculated <-& (ptr_deref_86_base_plus_offset)
+        $T[ptr_deref_86_word_addrgen_sample_start] 
+        $T[ptr_deref_86_word_addrgen_sample_complete] 
+        $T[ptr_deref_86_word_addrgen_update_start] 
+        $T[ptr_deref_86_word_addrgen_update_complete] 
+        ptr_deref_86_root_address_calculated &-> (ptr_deref_86_word_addrgen_sample_start)
+        ptr_deref_86_word_address_calculated <-& (ptr_deref_86_word_addrgen_update_complete)
+        ;;[ptr_deref_86_word_addrgen_0_Sample] 
+        {
+          $T [rr] $T [ra]
+        }
+        ;;[ptr_deref_86_word_addrgen_0_Update] 
+        {
+          $T [cr] $T [ca]
+        }
+        ptr_deref_86_word_addrgen_sample_start &-> (ptr_deref_86_word_addrgen_0_Sample)
+        ptr_deref_86_word_addrgen_update_start &-> (ptr_deref_86_word_addrgen_0_Update)
+        ptr_deref_86_word_addrgen_sample_complete <-& (ptr_deref_86_word_addrgen_0_Sample)
+        ptr_deref_86_word_addrgen_update_complete <-& (ptr_deref_86_word_addrgen_0_Update)
+        ;;[ptr_deref_86_word_addrgen_1_Sample] 
+        {
+          $T [rr] $T [ra]
+        }
+        ;;[ptr_deref_86_word_addrgen_1_Update] 
+        {
+          $T [cr] $T [ca]
+        }
+        ptr_deref_86_word_addrgen_sample_start &-> (ptr_deref_86_word_addrgen_1_Sample)
+        ptr_deref_86_word_addrgen_update_start &-> (ptr_deref_86_word_addrgen_1_Update)
+        ptr_deref_86_word_addrgen_sample_complete <-& (ptr_deref_86_word_addrgen_1_Sample)
+        ptr_deref_86_word_addrgen_update_complete <-& (ptr_deref_86_word_addrgen_1_Update)
+        ;;[ptr_deref_86_Sample] 
+        {
+          ;;[ptr_deref_86_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+            ;;[word_1] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_86_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+            ;;[word_1] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_86_sample_start_ <-& (ptr_deref_86_word_address_calculated)
+        ptr_deref_86_sample_start_ &-> (ptr_deref_86_Sample)
+        ptr_deref_86_sample_completed_ <-& (ptr_deref_86_Sample)
+        ptr_deref_86_sample_completed_ &-> ($null)
+        ptr_deref_86_update_start_ &-> (ptr_deref_86_Update)
+        ptr_deref_86_update_completed_ <-& (ptr_deref_86_Update)
+        ptr_deref_86_base_address_calculated <-& (R_scevgep78_85_update_completed_)
+        ptr_deref_86_sample_start_ <-& (ptr_deref_86_base_address_calculated)
+        ptr_deref_86_sample_start_ <-& (R_iNsTr_9_87_update_completed_)
+        // 		iNsTr_11 := (ix_x05 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        //  file x264.aa, line 45
+        // Source expression
+        // (ix_x05 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        $T[ADD_u32_u32_93_sample_start_] 
+        $T[ADD_u32_u32_93_sample_completed_] 
+        $T[ADD_u32_u32_93_update_start_] 
+        $T[ADD_u32_u32_93_update_completed_] 
+        // ix_x05
+        $T[R_ix_x05_90_sample_start_] 
+        $T[R_ix_x05_90_sample_completed_] 
+        $T[R_ix_x05_90_update_start_] 
+        $T[R_ix_x05_90_update_completed_] 
+        // implicit reference
+        R_ix_x05_90_sample_start_ <-& ($entry)
+        R_ix_x05_90_sample_completed_ <-& (R_ix_x05_90_sample_start_)
+        R_ix_x05_90_update_start_ <-& (R_ix_x05_90_sample_completed_)
+        R_ix_x05_90_update_completed_ <-& (R_ix_x05_90_update_start_)
+        ADD_u32_u32_93_sample_start_ <-& (R_ix_x05_90_update_completed_)
+        ;;[ADD_u32_u32_93_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[ADD_u32_u32_93_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        ADD_u32_u32_93_sample_start_ &-> (ADD_u32_u32_93_Sample)
+        ADD_u32_u32_93_sample_completed_ <-& (ADD_u32_u32_93_Sample)
+        ADD_u32_u32_93_sample_completed_ &-> ($null)
+        ADD_u32_u32_93_update_start_ &-> (ADD_u32_u32_93_Update)
+        ADD_u32_u32_93_update_completed_ <-& (ADD_u32_u32_93_Update)
+        // both source and target are implicit: use interlock 
+        $T[ADD_u32_u32_93_sample_start_] 
+        $T[ADD_u32_u32_93_sample_completed_] 
+        $T[ADD_u32_u32_93_update_start_] 
+        $T[ADD_u32_u32_93_update_completed_] 
+        // Target expression
+        // (as target) iNsTr_11
+        // iNsTr_11
+        // implicit reference
+        // 		exitcond3 := (iNsTr_11 == ($bitcast ($uint<32>) _b00000000000000000000000000010000  ))
+        //  file x264.aa, line 47
+        // Source expression
+        // (iNsTr_11 == ($bitcast ($uint<32>) _b00000000000000000000000000010000  ))
+        $T[EQ_u32_u1_99_sample_start_] 
+        $T[EQ_u32_u1_99_sample_completed_] 
+        $T[EQ_u32_u1_99_update_start_] 
+        $T[EQ_u32_u1_99_update_completed_] 
+        // iNsTr_11
+        $T[R_iNsTr_11_96_sample_start_] 
+        $T[R_iNsTr_11_96_sample_completed_] 
+        $T[R_iNsTr_11_96_update_start_] 
+        $T[R_iNsTr_11_96_update_completed_] 
+        // implicit reference
+        R_iNsTr_11_96_sample_start_ <-& (ADD_u32_u32_93_update_completed_)
+        R_iNsTr_11_96_sample_completed_ <-& (R_iNsTr_11_96_sample_start_)
+        R_iNsTr_11_96_update_start_ <-& (R_iNsTr_11_96_sample_completed_)
+        R_iNsTr_11_96_update_completed_ <-& (R_iNsTr_11_96_update_start_)
+        EQ_u32_u1_99_sample_start_ <-& (R_iNsTr_11_96_update_completed_)
+        ;;[EQ_u32_u1_99_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[EQ_u32_u1_99_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        EQ_u32_u1_99_sample_start_ &-> (EQ_u32_u1_99_Sample)
+        EQ_u32_u1_99_sample_completed_ <-& (EQ_u32_u1_99_Sample)
+        EQ_u32_u1_99_sample_completed_ &-> ($null)
+        EQ_u32_u1_99_update_start_ &-> (EQ_u32_u1_99_Update)
+        EQ_u32_u1_99_update_completed_ <-& (EQ_u32_u1_99_Update)
+        // both source and target are implicit: use interlock 
+        $T[EQ_u32_u1_99_sample_start_] 
+        $T[EQ_u32_u1_99_sample_completed_] 
+        $T[EQ_u32_u1_99_update_start_] 
+        $T[EQ_u32_u1_99_update_completed_] 
+        // Target expression
+        // (as target) exitcond3
+        // exitcond3
+        // implicit reference
+        // load-store dependencies..
+      }
+      assign_stmt_88_to_assign_stmt_100__entry__ |-> (assign_stmt_88_to_assign_stmt_100)
+      assign_stmt_88_to_assign_stmt_100__exit__ <-| (assign_stmt_88_to_assign_stmt_100)
+      // if-statement  
+      //  file x264.aa, line 48
+      ;;[if_stmt_101_dead_link] 
+      {
+        $T [dead_transition] $dead 
+      }
+      if_stmt_101__entry__ |-> (if_stmt_101_dead_link)
+      if_stmt_101__exit__ <-| (if_stmt_101_dead_link)
+      ;;[if_stmt_101_eval_test] 
+      {
+        // test expression evaluate and trigger branch 
+        $T [branch_req] 
+      }
+      if_stmt_101__entry__ |-> (if_stmt_101_eval_test)
+      $P [R_exitcond3_102_place]
+      R_exitcond3_102_place <-| (if_stmt_101_eval_test)
+      ;;[if_stmt_101_if_link] 
+      {
+        $T [if_choice_transition] 
+      }
+      ;;[if_stmt_101_else_link] 
+      {
+        $T [else_choice_transition] 
+      }
+      R_exitcond3_102_place |-> (if_stmt_101_if_link if_stmt_101_else_link)
+      $P [bbx_xnph_xx_xpreheaderx_xpreheader]
+      bbx_xnph_xx_xpreheaderx_xpreheader <-| (if_stmt_101_if_link)
+      $P [bbx_xnph_bbx_xnph]
+      bbx_xnph_bbx_xnph <-| (if_stmt_101_else_link)
+      ::[assign_stmt_125_to_assign_stmt_129] 
+      {
+        // 		scevgep1 := pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+        //  file x264.aa, line 57
+        // Source expression
+        // pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+        $T[array_obj_ref_124_base_address_calculated] 
+        $T[array_obj_ref_124_sample_start_] 
+        $T[array_obj_ref_124_sample_completed_] 
+        $T[array_obj_ref_124_update_start_] 
+        $T[array_obj_ref_124_update_completed_] 
+        $T[array_obj_ref_124_root_address_calculated] 
+        $T[array_obj_ref_124_offset_calculated] 
+        $T[array_obj_ref_124_index_resized_2] 
+        $T[array_obj_ref_124_index_scaled_2] 
+        // i1x_x0
+        $T[R_i1x_x0_123_sample_start_] 
+        $T[R_i1x_x0_123_sample_completed_] 
+        $T[R_i1x_x0_123_update_start_] 
+        $T[R_i1x_x0_123_update_completed_] 
+        // implicit reference
+        R_i1x_x0_123_sample_start_ <-& ($entry)
+        R_i1x_x0_123_sample_completed_ <-& (R_i1x_x0_123_sample_start_)
+        R_i1x_x0_123_update_start_ <-& (R_i1x_x0_123_sample_completed_)
+        R_i1x_x0_123_update_completed_ <-& (R_i1x_x0_123_update_start_)
+        ;;[array_obj_ref_124_index_resize_2] 
+        {
+          $T [index_resize_req] $T [index_resize_ack] // resize index to address-width
+        }
+        R_i1x_x0_123_update_completed_ &-> (array_obj_ref_124_index_resize_2)
+        array_obj_ref_124_index_resized_2 <-& (array_obj_ref_124_index_resize_2)
+        ;;[array_obj_ref_124_index_scale_2] 
+        {
+          $T [scale_rename_req] $T [scale_rename_ack] // rename 
+        }
+        array_obj_ref_124_index_resized_2 &-> (array_obj_ref_124_index_scale_2)
+        array_obj_ref_124_index_scaled_2 <-& (array_obj_ref_124_index_scale_2)
+        $T[array_obj_ref_124_final_index_sum_regn_sample_complete] 
+        $T[array_obj_ref_124_final_index_sum_regn_update_start] 
+        ;;[array_obj_ref_124_final_index_sum_regn_Sample] 
+        {
+          $T [req] $T [ack] 
+        }
+        ;;[array_obj_ref_124_final_index_sum_regn_Update] 
+        {
+          $T [req] $T [ack] 
+        }
+        array_obj_ref_124_index_scaled_2 &-> (array_obj_ref_124_final_index_sum_regn_Sample)
+        array_obj_ref_124_final_index_sum_regn_sample_complete <-& (array_obj_ref_124_final_index_sum_regn_Sample)
+        array_obj_ref_124_final_index_sum_regn_update_start &-> (array_obj_ref_124_final_index_sum_regn_Update)
+        array_obj_ref_124_offset_calculated <-& (array_obj_ref_124_final_index_sum_regn_Update)
+        ;;[array_obj_ref_124_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        array_obj_ref_124_offset_calculated &-> (array_obj_ref_124_base_plus_offset)
+        array_obj_ref_124_root_address_calculated <-& (array_obj_ref_124_base_plus_offset)
+        ;;[array_obj_ref_124_request] 
+        {
+          $T [req] $T [ack]
+        }
+        ;;[array_obj_ref_124_complete] 
+        {
+          $T [req] $T [ack]
+        }
+        array_obj_ref_124_sample_start_ <-& (array_obj_ref_124_root_address_calculated)
+        array_obj_ref_124_sample_start_ &-> (array_obj_ref_124_request)
+        array_obj_ref_124_sample_completed_ <-& (array_obj_ref_124_request)
+        array_obj_ref_124_update_start_ &-> (array_obj_ref_124_complete)
+        array_obj_ref_124_update_completed_ <-& (array_obj_ref_124_complete)
+        // both source and target are implicit: use interlock 
+        $T[array_obj_ref_124_sample_start_] 
+        $T[array_obj_ref_124_sample_completed_] 
+        $T[array_obj_ref_124_update_start_] 
+        $T[array_obj_ref_124_update_completed_] 
+        // Target expression
+        // (as target) scevgep1
+        // scevgep1
+        // implicit reference
+        // 		scevgep6 := ($bitcast ($pointer< $uint<32> >) scevgep1 )
+        //  file x264.aa, line 58
+        // Source expression
+        // ($bitcast ($pointer< $uint<32> >) scevgep1 )
+        $T[type_cast_128_sample_start_] 
+        $T[type_cast_128_sample_completed_] 
+        $T[type_cast_128_update_start_] 
+        $T[type_cast_128_update_completed_] 
+        // scevgep1
+        $T[R_scevgep1_127_sample_start_] 
+        $T[R_scevgep1_127_sample_completed_] 
+        $T[R_scevgep1_127_update_start_] 
+        $T[R_scevgep1_127_update_completed_] 
+        // implicit reference
+        R_scevgep1_127_sample_start_ <-& (array_obj_ref_124_update_completed_)
+        R_scevgep1_127_sample_completed_ <-& (R_scevgep1_127_sample_start_)
+        R_scevgep1_127_update_start_ <-& (R_scevgep1_127_sample_completed_)
+        R_scevgep1_127_update_completed_ <-& (R_scevgep1_127_update_start_)
+        type_cast_128_sample_start_ <-& (R_scevgep1_127_update_completed_)
+        ;;[type_cast_128_Sample] 
+        {
+          // unary expression 
+          $T [rr] $T [ra] // (split) unary operation
+        }
+        ;;[type_cast_128_Update] 
+        {
+          // unary expression 
+          $T [cr] $T [ca] //(split) unary operation
+        }
+        type_cast_128_sample_start_ &-> (type_cast_128_Sample)
+        type_cast_128_sample_completed_ <-& (type_cast_128_Sample)
+        type_cast_128_sample_completed_ &-> ($null)
+        type_cast_128_update_start_ &-> (type_cast_128_Update)
+        type_cast_128_update_completed_ <-& (type_cast_128_Update)
+        // both source and target are implicit: use interlock 
+        $T[type_cast_128_sample_start_] 
+        $T[type_cast_128_sample_completed_] 
+        $T[type_cast_128_update_start_] 
+        $T[type_cast_128_update_completed_] 
+        // Target expression
+        // (as target) scevgep6
+        // scevgep6
+        // implicit reference
+        // load-store dependencies..
+      }
+      assign_stmt_125_to_assign_stmt_129__entry__ |-> (assign_stmt_125_to_assign_stmt_129)
+      assign_stmt_125_to_assign_stmt_129__exit__ <-| (assign_stmt_125_to_assign_stmt_129)
+      ::[assign_stmt_132] 
+      {
+        // 		iNsTr_15 := dct_in_data
+        //  file x264.aa, line 59
+        // Source expression
+        // dct_in_data
+        $T[RPIPE_dct_in_data_131_sample_start_] 
+        $T[RPIPE_dct_in_data_131_sample_completed_] 
+        $T[RPIPE_dct_in_data_131_update_start_] 
+        $T[RPIPE_dct_in_data_131_update_completed_] 
+        ;;[RPIPE_dct_in_data_131_Sample] 
+        {
+          // pipe read sample
+          $T [rr] $T [ra] 
+        }
+        ;;[RPIPE_dct_in_data_131_Update] 
+        {
+          // pipe read update
+          $T [cr] $T [ca] 
+        }
+        RPIPE_dct_in_data_131_sample_start_ &-> (RPIPE_dct_in_data_131_Sample)
+        RPIPE_dct_in_data_131_sample_completed_ <-& (RPIPE_dct_in_data_131_Sample)
+        RPIPE_dct_in_data_131_sample_completed_ &-> ($null)
+        RPIPE_dct_in_data_131_update_start_ &-> (RPIPE_dct_in_data_131_Update)
+        RPIPE_dct_in_data_131_update_completed_ <-& (RPIPE_dct_in_data_131_Update)
+        // both source and target are implicit: use interlock 
+        $T[RPIPE_dct_in_data_131_sample_start_] 
+        $T[RPIPE_dct_in_data_131_sample_completed_] 
+        $T[RPIPE_dct_in_data_131_update_start_] 
+        $T[RPIPE_dct_in_data_131_update_completed_] 
+        // Target expression
+        // (as target) iNsTr_15
+        // iNsTr_15
+        // implicit reference
+        // barrier: 		iNsTr_15 := dct_in_data
+        // load-store dependencies..
+        // pipe read/write dependencies for pipe dct_in_data
+      }
+      assign_stmt_132__entry__ |-> (assign_stmt_132)
+      assign_stmt_132__exit__ <-| (assign_stmt_132)
+      ::[assign_stmt_136_to_assign_stmt_142] 
+      {
+        // 		->(scevgep6) := iNsTr_15
+        //  file x264.aa, line 60
+        // Source expression
+        // iNsTr_15
+        $T[R_iNsTr_15_135_sample_start_] 
+        $T[R_iNsTr_15_135_sample_completed_] 
+        $T[R_iNsTr_15_135_update_start_] 
+        $T[R_iNsTr_15_135_update_completed_] 
+        // implicit reference
+        R_iNsTr_15_135_sample_start_ <-& ($entry)
+        R_iNsTr_15_135_sample_completed_ <-& (R_iNsTr_15_135_sample_start_)
+        R_iNsTr_15_135_update_start_ <-& (R_iNsTr_15_135_sample_completed_)
+        R_iNsTr_15_135_update_completed_ <-& (R_iNsTr_15_135_update_start_)
+        // both source and target are implicit: use interlock 
+        $T[ptr_deref_134_sample_start_] 
+        $T[ptr_deref_134_sample_completed_] 
+        $T[ptr_deref_134_update_start_] 
+        $T[ptr_deref_134_update_completed_] 
+        // Target expression
+        // ->(scevgep6)
+        $T[ptr_deref_134_sample_start_] 
+        $T[ptr_deref_134_sample_completed_] 
+        $T[ptr_deref_134_update_start_] 
+        $T[ptr_deref_134_update_completed_] 
+        $T[ptr_deref_134_base_address_calculated] 
+        // scevgep6
+        $T[R_scevgep6_133_sample_start_] 
+        $T[R_scevgep6_133_sample_completed_] 
+        $T[R_scevgep6_133_update_start_] 
+        $T[R_scevgep6_133_update_completed_] 
+        // implicit reference
+        R_scevgep6_133_sample_start_ <-& ($entry)
+        R_scevgep6_133_sample_completed_ <-& (R_scevgep6_133_sample_start_)
+        R_scevgep6_133_update_start_ <-& (R_scevgep6_133_sample_completed_)
+        R_scevgep6_133_update_completed_ <-& (R_scevgep6_133_update_start_)
+        $T[ptr_deref_134_word_address_calculated] 
+        $T[ptr_deref_134_root_address_calculated] 
+        $T[ptr_deref_134_base_address_resized] 
+        ;;[ptr_deref_134_base_addr_resize] 
+        {
+          $T [base_resize_req] $T [base_resize_ack]
+        }
+        ptr_deref_134_base_address_calculated &-> (ptr_deref_134_base_addr_resize)
+        ptr_deref_134_base_address_resized <-& (ptr_deref_134_base_addr_resize)
+        ;;[ptr_deref_134_base_plus_offset] 
+        {
+          $T [sum_rename_req] $T [sum_rename_ack] // one gets through 
+        }
+        ptr_deref_134_base_address_resized &-> (ptr_deref_134_base_plus_offset)
+        ptr_deref_134_root_address_calculated <-& (ptr_deref_134_base_plus_offset)
+        $T[ptr_deref_134_word_addrgen_sample_start] 
+        $T[ptr_deref_134_word_addrgen_sample_complete] 
+        $T[ptr_deref_134_word_addrgen_update_start] 
+        $T[ptr_deref_134_word_addrgen_update_complete] 
+        ptr_deref_134_root_address_calculated &-> (ptr_deref_134_word_addrgen_sample_start)
+        ptr_deref_134_word_address_calculated <-& (ptr_deref_134_word_addrgen_update_complete)
+        ;;[ptr_deref_134_word_addrgen_0_Sample] 
+        {
+          $T [rr] $T [ra]
+        }
+        ;;[ptr_deref_134_word_addrgen_0_Update] 
+        {
+          $T [cr] $T [ca]
+        }
+        ptr_deref_134_word_addrgen_sample_start &-> (ptr_deref_134_word_addrgen_0_Sample)
+        ptr_deref_134_word_addrgen_update_start &-> (ptr_deref_134_word_addrgen_0_Update)
+        ptr_deref_134_word_addrgen_sample_complete <-& (ptr_deref_134_word_addrgen_0_Sample)
+        ptr_deref_134_word_addrgen_update_complete <-& (ptr_deref_134_word_addrgen_0_Update)
+        ;;[ptr_deref_134_word_addrgen_1_Sample] 
+        {
+          $T [rr] $T [ra]
+        }
+        ;;[ptr_deref_134_word_addrgen_1_Update] 
+        {
+          $T [cr] $T [ca]
+        }
+        ptr_deref_134_word_addrgen_sample_start &-> (ptr_deref_134_word_addrgen_1_Sample)
+        ptr_deref_134_word_addrgen_update_start &-> (ptr_deref_134_word_addrgen_1_Update)
+        ptr_deref_134_word_addrgen_sample_complete <-& (ptr_deref_134_word_addrgen_1_Sample)
+        ptr_deref_134_word_addrgen_update_complete <-& (ptr_deref_134_word_addrgen_1_Update)
+        ;;[ptr_deref_134_word_addrgen_2_Sample] 
+        {
+          $T [rr] $T [ra]
+        }
+        ;;[ptr_deref_134_word_addrgen_2_Update] 
+        {
+          $T [cr] $T [ca]
+        }
+        ptr_deref_134_word_addrgen_sample_start &-> (ptr_deref_134_word_addrgen_2_Sample)
+        ptr_deref_134_word_addrgen_update_start &-> (ptr_deref_134_word_addrgen_2_Update)
+        ptr_deref_134_word_addrgen_sample_complete <-& (ptr_deref_134_word_addrgen_2_Sample)
+        ptr_deref_134_word_addrgen_update_complete <-& (ptr_deref_134_word_addrgen_2_Update)
+        ;;[ptr_deref_134_word_addrgen_3_Sample] 
+        {
+          $T [rr] $T [ra]
+        }
+        ;;[ptr_deref_134_word_addrgen_3_Update] 
+        {
+          $T [cr] $T [ca]
+        }
+        ptr_deref_134_word_addrgen_sample_start &-> (ptr_deref_134_word_addrgen_3_Sample)
+        ptr_deref_134_word_addrgen_update_start &-> (ptr_deref_134_word_addrgen_3_Update)
+        ptr_deref_134_word_addrgen_sample_complete <-& (ptr_deref_134_word_addrgen_3_Sample)
+        ptr_deref_134_word_addrgen_update_complete <-& (ptr_deref_134_word_addrgen_3_Update)
+        ;;[ptr_deref_134_Sample] 
+        {
+          ;;[ptr_deref_134_Split] 
+          {
+            $T [split_req] $T [split_ack]
+          }
+          ||[word_access_start] 
+          {
+            ;;[word_0] 
+            {
+              $T [rr] $T [ra] 
+            }
+            ;;[word_1] 
+            {
+              $T [rr] $T [ra] 
+            }
+            ;;[word_2] 
+            {
+              $T [rr] $T [ra] 
+            }
+            ;;[word_3] 
+            {
+              $T [rr] $T [ra] 
+            }
+          }
+        }
+        ;;[ptr_deref_134_Update] 
+        {
+          ||[word_access_complete] 
+          {
+            ;;[word_0] 
+            {
+              $T [cr] $T [ca] 
+            }
+            ;;[word_1] 
+            {
+              $T [cr] $T [ca] 
+            }
+            ;;[word_2] 
+            {
+              $T [cr] $T [ca] 
+            }
+            ;;[word_3] 
+            {
+              $T [cr] $T [ca] 
+            }
+          }
+        }
+        ptr_deref_134_sample_start_ <-& (ptr_deref_134_word_address_calculated)
+        ptr_deref_134_sample_start_ &-> (ptr_deref_134_Sample)
+        ptr_deref_134_sample_completed_ <-& (ptr_deref_134_Sample)
+        ptr_deref_134_sample_completed_ &-> ($null)
+        ptr_deref_134_update_start_ &-> (ptr_deref_134_Update)
+        ptr_deref_134_update_completed_ <-& (ptr_deref_134_Update)
+        ptr_deref_134_base_address_calculated <-& (R_scevgep6_133_update_completed_)
+        ptr_deref_134_sample_start_ <-& (ptr_deref_134_base_address_calculated)
+        ptr_deref_134_sample_start_ <-& (R_iNsTr_15_135_update_completed_)
+        // 		iNsTr_17 := (i1x_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        //  file x264.aa, line 61
+        // Source expression
+        // (i1x_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+        $T[ADD_u32_u32_141_sample_start_] 
+        $T[ADD_u32_u32_141_sample_completed_] 
+        $T[ADD_u32_u32_141_update_start_] 
+        $T[ADD_u32_u32_141_update_completed_] 
+        // i1x_x0
+        $T[R_i1x_x0_138_sample_start_] 
+        $T[R_i1x_x0_138_sample_completed_] 
+        $T[R_i1x_x0_138_update_start_] 
+        $T[R_i1x_x0_138_update_completed_] 
+        // implicit reference
+        R_i1x_x0_138_sample_start_ <-& ($entry)
+        R_i1x_x0_138_sample_completed_ <-& (R_i1x_x0_138_sample_start_)
+        R_i1x_x0_138_update_start_ <-& (R_i1x_x0_138_sample_completed_)
+        R_i1x_x0_138_update_completed_ <-& (R_i1x_x0_138_update_start_)
+        ADD_u32_u32_141_sample_start_ <-& (R_i1x_x0_138_update_completed_)
+        ;;[ADD_u32_u32_141_Sample] 
+        {
+          // binary expression 
+          $T [rr] $T [ra]  // (split) binary operation 
+        }
+        ;;[ADD_u32_u32_141_Update] 
+        {
+          // binary expression 
+          $T [cr] $T [ca] // (split) binary operation 
+        }
+        ADD_u32_u32_141_sample_start_ &-> (ADD_u32_u32_141_Sample)
+        ADD_u32_u32_141_sample_completed_ <-& (ADD_u32_u32_141_Sample)
+        ADD_u32_u32_141_sample_completed_ &-> ($null)
+        ADD_u32_u32_141_update_start_ &-> (ADD_u32_u32_141_Update)
+        ADD_u32_u32_141_update_completed_ <-& (ADD_u32_u32_141_Update)
+        // both source and target are implicit: use interlock 
+        $T[ADD_u32_u32_141_sample_start_] 
+        $T[ADD_u32_u32_141_sample_completed_] 
+        $T[ADD_u32_u32_141_update_start_] 
+        $T[ADD_u32_u32_141_update_completed_] 
+        // Target expression
+        // (as target) iNsTr_17
+        // iNsTr_17
+        // implicit reference
+        // load-store dependencies..
+      }
+      assign_stmt_136_to_assign_stmt_142__entry__ |-> (assign_stmt_136_to_assign_stmt_142)
+      assign_stmt_136_to_assign_stmt_142__exit__ <-| (assign_stmt_136_to_assign_stmt_142)
+      // control-path for merge  
+      //  file x264.aa, line 22
+      //---------------------   merge statement  file x264.aa, line 22  --------------------------
+      ||[bb_0_bb_1_PhiReq] 
+      {
+        // no phi statements in merge..
+      }
+      bb_0_bb_1 |-> (bb_0_bb_1_PhiReq)
+      ||[bb_1_bb_1_PhiReq] 
+      {
+        // no phi statements in merge..
+      }
+      bb_1_bb_1 |-> (bb_1_bb_1_PhiReq)
+      $P [merge_stmt_23_PhiReqMerge] 
+      merge_stmt_23_PhiReqMerge <-| ( bb_0_bb_1_PhiReq  bb_1_bb_1_PhiReq )
+      ||[merge_stmt_23_PhiAck] 
+      {
+        $T [dummy] 
+      }
+      merge_stmt_23_PhiReqMerge |-> (merge_stmt_23_PhiAck)
+      merge_stmt_23__exit__  <-| (merge_stmt_23_PhiAck)
+      //---------------------  end of merge statement  file x264.aa, line 22  --------------------------
+      // control-path for merge  
+      //  file x264.aa, line 33
+      ;;[merge_stmt_54_dead_link] 
+      {
+        $T [dead_transition] $dead 
+      }
+      merge_stmt_54__entry__ |-> (merge_stmt_54_dead_link)
+      merge_stmt_54__exit__ <-| (merge_stmt_54_dead_link)
+      //---------------------   merge statement  file x264.aa, line 33  --------------------------
+      ||[bb_1_bbx_xnphx_xpreheader_PhiReq] 
+      {
+        // no phi statements in merge..
+      }
+      bb_1_bbx_xnphx_xpreheader |-> (bb_1_bbx_xnphx_xpreheader_PhiReq)
+      $P [merge_stmt_54_PhiReqMerge] 
+      merge_stmt_54_PhiReqMerge <-| ( bb_1_bbx_xnphx_xpreheader_PhiReq )
+      ||[merge_stmt_54_PhiAck] 
+      {
+        $T [dummy] 
+      }
+      merge_stmt_54_PhiReqMerge |-> (merge_stmt_54_PhiAck)
+      merge_stmt_54__exit__  <-| (merge_stmt_54_PhiAck)
+      //---------------------  end of merge statement  file x264.aa, line 33  --------------------------
+      // control-path for merge  
+      //  file x264.aa, line 37
+      //---------------------   merge statement  file x264.aa, line 37  --------------------------
+      ||[bbx_xnph_bbx_xnph_PhiReq] 
+      {
+        ;;[phi_stmt_57] 
+        {
+          ||[phi_stmt_57_sources] 
+          {
+            // sources for 			$phi ix_x05 := 			  ($cast ($uint<32>) iNsTr_11 ) $on bbx_xnph_bbx_xnph			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bbx_xnphx_xpreheader_bbx_xnph // type of target is $uint<32>
+            // ($cast ($uint<32>) iNsTr_11 )
+            ;;[type_cast_60] 
+            {
+              // type-cast expression
+              ||[SplitProtocol] 
+              {
+                ;;[Sample] 
+                {
+                  $T [rr] $T [ra]  
+                }
+                ;;[Update] 
+                {
+                  $T [cr] $T [ca] 
+                }
+              }
+            }
+          }
+          $T [phi_stmt_57_req] 
+        }
+      }
+      bbx_xnph_bbx_xnph |-> (bbx_xnph_bbx_xnph_PhiReq)
+      ||[bbx_xnphx_xpreheader_bbx_xnph_PhiReq] 
+      {
+        ;;[phi_stmt_57] 
+        {
+          ||[phi_stmt_57_sources] 
+          {
+            // sources for 			$phi ix_x05 := 			  ($cast ($uint<32>) iNsTr_11 ) $on bbx_xnph_bbx_xnph			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bbx_xnphx_xpreheader_bbx_xnph // type of target is $uint<32>
+            // ($cast ($uint<32>) iNsTr_11 )
+            ;;[type_cast_60] 
+            {
+              // type-cast expression
+              ||[SplitProtocol] 
+              {
+                ;;[Sample] 
+                {
+                  $T [rr] $T [ra]  
+                }
+                ;;[Update] 
+                {
+                  $T [cr] $T [ca] 
+                }
+              }
+            }
+          }
+          $T [phi_stmt_57_req] 
+        }
+      }
+      bbx_xnphx_xpreheader_bbx_xnph |-> (bbx_xnphx_xpreheader_bbx_xnph_PhiReq)
+      $P [merge_stmt_56_PhiReqMerge] 
+      merge_stmt_56_PhiReqMerge <-| ( bbx_xnph_bbx_xnph_PhiReq  bbx_xnphx_xpreheader_bbx_xnph_PhiReq )
+      ||[merge_stmt_56_PhiAck] 
+      {
+        $T [phi_stmt_57_ack] 
+      }
+      merge_stmt_56_PhiReqMerge |-> (merge_stmt_56_PhiAck)
+      merge_stmt_56__exit__  <-| (merge_stmt_56_PhiAck)
+      //---------------------  end of merge statement  file x264.aa, line 37  --------------------------
+      // control-path for merge  
+      //  file x264.aa, line 50
+      ;;[merge_stmt_107_dead_link] 
+      {
+        $T [dead_transition] $dead 
+      }
+      merge_stmt_107__entry__ |-> (merge_stmt_107_dead_link)
+      merge_stmt_107__exit__ <-| (merge_stmt_107_dead_link)
+      //---------------------   merge statement  file x264.aa, line 50  --------------------------
+      ||[bbx_xnph_xx_xpreheaderx_xpreheader_PhiReq] 
+      {
+        // no phi statements in merge..
+      }
+      bbx_xnph_xx_xpreheaderx_xpreheader |-> (bbx_xnph_xx_xpreheaderx_xpreheader_PhiReq)
+      $P [merge_stmt_107_PhiReqMerge] 
+      merge_stmt_107_PhiReqMerge <-| ( bbx_xnph_xx_xpreheaderx_xpreheader_PhiReq )
+      ||[merge_stmt_107_PhiAck] 
+      {
+        $T [dummy] 
+      }
+      merge_stmt_107_PhiReqMerge |-> (merge_stmt_107_PhiAck)
+      merge_stmt_107__exit__  <-| (merge_stmt_107_PhiAck)
+      //---------------------  end of merge statement  file x264.aa, line 50  --------------------------
+      // control-path for merge  
+      //  file x264.aa, line 54
+      //---------------------   merge statement  file x264.aa, line 54  --------------------------
+      ||[xx_xpreheader_xx_xpreheader_PhiReq] 
+      {
+        ;;[phi_stmt_110] 
+        {
+          ||[phi_stmt_110_sources] 
+          {
+            // sources for 			$phi i1x_x0 := 			  ($cast ($uint<32>) iNsTr_17 ) $on xx_xpreheader_xx_xpreheader			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on xx_xpreheaderx_xpreheader_xx_xpreheader // type of target is $uint<32>
+            // ($cast ($uint<32>) iNsTr_17 )
+            ;;[type_cast_113] 
+            {
+              // type-cast expression
+              ||[SplitProtocol] 
+              {
+                ;;[Sample] 
+                {
+                  $T [rr] $T [ra]  
+                }
+                ;;[Update] 
+                {
+                  $T [cr] $T [ca] 
+                }
+              }
+            }
+          }
+          $T [phi_stmt_110_req] 
+        }
+      }
+      xx_xpreheader_xx_xpreheader |-> (xx_xpreheader_xx_xpreheader_PhiReq)
+      ||[xx_xpreheaderx_xpreheader_xx_xpreheader_PhiReq] 
+      {
+        ;;[phi_stmt_110] 
+        {
+          ||[phi_stmt_110_sources] 
+          {
+            // sources for 			$phi i1x_x0 := 			  ($cast ($uint<32>) iNsTr_17 ) $on xx_xpreheader_xx_xpreheader			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on xx_xpreheaderx_xpreheader_xx_xpreheader // type of target is $uint<32>
+            // ($cast ($uint<32>) iNsTr_17 )
+            ;;[type_cast_113] 
+            {
+              // type-cast expression
+              ||[SplitProtocol] 
+              {
+                ;;[Sample] 
+                {
+                  $T [rr] $T [ra]  
+                }
+                ;;[Update] 
+                {
+                  $T [cr] $T [ca] 
+                }
+              }
+            }
+          }
+          $T [phi_stmt_110_req] 
+        }
+      }
+      xx_xpreheaderx_xpreheader_xx_xpreheader |-> (xx_xpreheaderx_xpreheader_xx_xpreheader_PhiReq)
+      $P [merge_stmt_109_PhiReqMerge] 
+      merge_stmt_109_PhiReqMerge <-| ( xx_xpreheader_xx_xpreheader_PhiReq  xx_xpreheaderx_xpreheader_xx_xpreheader_PhiReq )
+      ||[merge_stmt_109_PhiAck] 
+      {
+        $T [phi_stmt_110_ack] 
+      }
+      merge_stmt_109_PhiReqMerge |-> (merge_stmt_109_PhiAck)
+      merge_stmt_109__exit__  <-| (merge_stmt_109_PhiAck)
+      //---------------------  end of merge statement  file x264.aa, line 54  --------------------------
+      assign_stmt_17_to_assign_stmt_21__entry__ <-| (branch_block_stmt_6__entry__)
+      bb_0_bb_1 <-| (assign_stmt_17_to_assign_stmt_21__exit__)
+      assign_stmt_26__entry__ <-| (merge_stmt_23__exit__)
+      assign_stmt_29__entry__ <-| (assign_stmt_26__exit__)
+      assign_stmt_36_to_assign_stmt_47__entry__ <-| (assign_stmt_29__exit__)
+      if_stmt_48__entry__ <-| (assign_stmt_36_to_assign_stmt_47__exit__)
+      merge_stmt_54__entry__ <-| (if_stmt_48__exit__)
+      bbx_xnphx_xpreheader_bbx_xnph <-| (merge_stmt_54__exit__)
+      assign_stmt_70_to_assign_stmt_81__entry__ <-| (merge_stmt_56__exit__)
+      assign_stmt_84__entry__ <-| (assign_stmt_70_to_assign_stmt_81__exit__)
+      assign_stmt_88_to_assign_stmt_100__entry__ <-| (assign_stmt_84__exit__)
+      if_stmt_101__entry__ <-| (assign_stmt_88_to_assign_stmt_100__exit__)
+      merge_stmt_107__entry__ <-| (if_stmt_101__exit__)
+      xx_xpreheaderx_xpreheader_xx_xpreheader <-| (merge_stmt_107__exit__)
+      assign_stmt_125_to_assign_stmt_129__entry__ <-| (merge_stmt_109__exit__)
+      assign_stmt_132__entry__ <-| (assign_stmt_125_to_assign_stmt_129__exit__)
+      assign_stmt_136_to_assign_stmt_142__entry__ <-| (assign_stmt_132__exit__)
+      xx_xpreheader_xx_xpreheader <-| (assign_stmt_136_to_assign_stmt_142__exit__)
+    }
+  }
+  // end control-path
+  $DP 
+  {
+    // begin data-path 
+    // constant-object-declarations for block %dct_engine%body%
+    //  file x264.aa, line 22
+    // constant-object-declarations for block %dct_engine%body%
+    //  file x264.aa, line 33
+    // constant-object-declarations for block %dct_engine%body%
+    //  file x264.aa, line 37
+    // constant-object-declarations for block %dct_engine%body%
+    //  file x264.aa, line 50
+    // constant-object-declarations for block %dct_engine%body%
+    //  file x264.aa, line 54
+    // constant-object-declarations for block %dct_engine%body
+    //  file x264.aa, line 13
+    // load store constants for object %dct_engine%body:dct_alloc
+    $constant $W[xxdct_enginexxbodyxxdct_alloc_base_address] : $int<5> := _b00000
+    // load store constants for object %dct_engine%body:pix1_alloc
+    $constant $W[xxdct_enginexxbodyxxpix1_alloc_base_address] : $int<9> := _b000000000
+    // constant-object-declarations for block %dct_engine
+    //  file x264.aa, line 8
+    // constant-declarations for block %dct_engine%body
+    //  file x264.aa, line 13
+    // 		dct := @(dct_alloc)
+    //  file x264.aa, line 18
+    $constant $W[dct_17] : $int<32> := _b00000000000000000000000000000000 // 0
+    // 		pix1 := @(pix1_alloc)
+    //  file x264.aa, line 19
+    $constant $W[pix1_21] : $int<32> := _b00000000000000000000000000000000 // 0
+    // constant-declarations for block %dct_engine%body%
+    //  file x264.aa, line 22
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000011  )
+    $constant $W[type_cast_33_wire_constant] : $int<32> := _b00000000000000000000000000000011// 3
+    // ($bitcast ($uint<32>) _b00000000000000000000000000111000  )
+    $constant $W[type_cast_40_wire_constant] : $int<32> := _b00000000000000000000000000111000// 56
+    // if-statement  
+    //  file x264.aa, line 31
+    // constant-declarations for block %dct_engine%body%
+    //  file x264.aa, line 33
+    // constant-declarations for block %dct_engine%body%
+    //  file x264.aa, line 37
+    // constant-declarations for phi:  			$phi ix_x05 := 			  ($cast ($uint<32>) iNsTr_11 ) $on bbx_xnph_bbx_xnph			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bbx_xnphx_xpreheader_bbx_xnph // type of target is $uint<32>
+    //  file x264.aa, line 38
+    // ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) )
+    $constant $W[type_cast_63_wire_constant] : $int<32> := _b00000000000000000000000000000000// 0
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000010  )
+    $constant $W[type_cast_68_wire_constant] : $int<32> := _b00000000000000000000000000000010// 2
+    // dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+    $constant $W[array_obj_ref_75_constant_part_of_offset] : $int<5> := _b00000// 0
+    $constant $W[array_obj_ref_75_resized_base_address] : $int<5> := _b00000// 0
+    $constant $W[array_obj_ref_75_offset_scale_factor_0] : $int<5> := _b10000// 16
+    $constant $W[array_obj_ref_75_offset_scale_factor_1] : $int<5> := _b00001// 1
+    // ->(scevgep78)
+    $constant $W[ptr_deref_86_word_offset_0] : $int<5> := _b00000// 0
+    $constant $W[ptr_deref_86_word_offset_1] : $int<5> := _b00001// 1
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    $constant $W[type_cast_92_wire_constant] : $int<32> := _b00000000000000000000000000000001// 1
+    // ($bitcast ($uint<32>) _b00000000000000000000000000010000  )
+    $constant $W[type_cast_98_wire_constant] : $int<32> := _b00000000000000000000000000010000// 16
+    // if-statement  
+    //  file x264.aa, line 48
+    // constant-declarations for block %dct_engine%body%
+    //  file x264.aa, line 50
+    // constant-declarations for block %dct_engine%body%
+    //  file x264.aa, line 54
+    // constant-declarations for phi:  			$phi i1x_x0 := 			  ($cast ($uint<32>) iNsTr_17 ) $on xx_xpreheader_xx_xpreheader			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on xx_xpreheaderx_xpreheader_xx_xpreheader // type of target is $uint<32>
+    //  file x264.aa, line 55
+    // ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) )
+    $constant $W[type_cast_116_wire_constant] : $int<32> := _b00000000000000000000000000000000// 0
+    // pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+    $constant $W[array_obj_ref_124_constant_part_of_offset] : $int<9> := _b000000000// 0
+    $constant $W[array_obj_ref_124_resized_base_address] : $int<9> := _b000000000// 0
+    $constant $W[array_obj_ref_124_offset_scale_factor_0] : $int<9> := _b100000000// 256
+    $constant $W[array_obj_ref_124_offset_scale_factor_1] : $int<9> := _b000010000// 16
+    $constant $W[array_obj_ref_124_offset_scale_factor_2] : $int<9> := _b000000001// 1
+    // ->(scevgep6)
+    $constant $W[ptr_deref_134_word_offset_0] : $int<9> := _b000000000// 0
+    $constant $W[ptr_deref_134_word_offset_1] : $int<9> := _b000000001// 1
+    $constant $W[ptr_deref_134_word_offset_2] : $int<9> := _b000000010// 2
+    $constant $W[ptr_deref_134_word_offset_3] : $int<9> := _b000000011// 3
+    // ($bitcast ($uint<32>) _b00000000000000000000000000000001  )
+    $constant $W[type_cast_140_wire_constant] : $int<32> := _b00000000000000000000000000000001// 1
+    // block %dct_engine%body
+    //  file x264.aa, line 13
+    // 		iNsTr_2 := dct_in_data
+    //  file x264.aa, line 24
+    // iNsTr_2
+    $W[iNsTr_2_26] : $int<32>
+    // 		iNsTr_4 := dct_in_data
+    //  file x264.aa, line 25
+    // iNsTr_4
+    $W[iNsTr_4_29] : $int<32>
+    // 		cond := (iNsTr_2 == ($bitcast ($uint<32>) _b00000000000000000000000000000011  ))
+    //  file x264.aa, line 27
+    // cond
+    $W[cond_36] : $int<1>
+    // 		iNsTr_5 := (iNsTr_4 == ($bitcast ($uint<32>) _b00000000000000000000000000111000  ))
+    //  file x264.aa, line 29
+    // iNsTr_5
+    $W[iNsTr_5_42] : $int<1>
+    // 		orx_xcond := (cond & iNsTr_5)
+    //  file x264.aa, line 30
+    // orx_xcond
+    $W[orx_xcond_47] : $int<1>
+    // if statement  
+    //  file x264.aa, line 31
+    // merge-statement  
+    //  file x264.aa, line 37
+    // 			$phi ix_x05 := 			  ($cast ($uint<32>) iNsTr_11 ) $on bbx_xnph_bbx_xnph			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bbx_xnphx_xpreheader_bbx_xnph // type of target is $uint<32>
+    //  file x264.aa, line 38
+    // ($cast ($uint<32>) iNsTr_11 )
+    $intermediate $W[type_cast_60_wire] : $int<32>
+    // ix_x05
+    $W[ix_x05_57] : $int<32>
+    // 		tmp4 := (ix_x05 * ($bitcast ($uint<32>) _b00000000000000000000000000000010  ))
+    //  file x264.aa, line 40
+    // tmp4
+    $W[tmp4_70] : $int<32>
+    // 		scevgep := dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+    //  file x264.aa, line 41
+    // dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+    $intermediate $W[R_tmp4_74_resized] : $int<5>
+    $intermediate $W[R_tmp4_74_scaled] : $int<5>
+    $intermediate $W[array_obj_ref_75_final_offset] : $int<5>
+    $intermediate $W[array_obj_ref_75_root_address] : $int<5>
+    // scevgep
+    $W[scevgep_76] : $int<32>
+    // 		scevgep78 := ($bitcast ($pointer< $uint<32> >) scevgep )
+    //  file x264.aa, line 42
+    // scevgep78
+    $W[scevgep78_81] : $int<32>
+    // 		iNsTr_9 := dct_in_data
+    //  file x264.aa, line 43
+    // iNsTr_9
+    $W[iNsTr_9_84] : $int<32>
+    // 		->(scevgep78) := iNsTr_9
+    //  file x264.aa, line 44
+    // ->(scevgep78)
+    $intermediate $W[ptr_deref_86_wire] : $int<32>
+    $intermediate $W[ptr_deref_86_resized_base_address] : $int<5>
+    $intermediate $W[ptr_deref_86_root_address] : $int<5>
+    $W[ptr_deref_86_word_address_0] : $pointer<dct_engine/memory_space_0>
+    $W[ptr_deref_86_word_address_1] : $pointer<dct_engine/memory_space_0>
+    $W[ptr_deref_86_data_0] : $int<16>
+    $W[ptr_deref_86_data_1] : $int<16>
+    // 		iNsTr_11 := (ix_x05 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file x264.aa, line 45
+    // iNsTr_11
+    $W[iNsTr_11_94] : $int<32>
+    // 		exitcond3 := (iNsTr_11 == ($bitcast ($uint<32>) _b00000000000000000000000000010000  ))
+    //  file x264.aa, line 47
+    // exitcond3
+    $W[exitcond3_100] : $int<1>
+    // if statement  
+    //  file x264.aa, line 48
+    // merge-statement  
+    //  file x264.aa, line 54
+    // 			$phi i1x_x0 := 			  ($cast ($uint<32>) iNsTr_17 ) $on xx_xpreheader_xx_xpreheader			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on xx_xpreheaderx_xpreheader_xx_xpreheader // type of target is $uint<32>
+    //  file x264.aa, line 55
+    // ($cast ($uint<32>) iNsTr_17 )
+    $intermediate $W[type_cast_113_wire] : $int<32>
+    // i1x_x0
+    $W[i1x_x0_110] : $int<32>
+    // 		scevgep1 := pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+    //  file x264.aa, line 57
+    // pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+    $intermediate $W[R_i1x_x0_123_resized] : $int<9>
+    $intermediate $W[R_i1x_x0_123_scaled] : $int<9>
+    $intermediate $W[array_obj_ref_124_final_offset] : $int<9>
+    $intermediate $W[array_obj_ref_124_root_address] : $int<9>
+    // scevgep1
+    $W[scevgep1_125] : $int<32>
+    // 		scevgep6 := ($bitcast ($pointer< $uint<32> >) scevgep1 )
+    //  file x264.aa, line 58
+    // scevgep6
+    $W[scevgep6_129] : $int<32>
+    // 		iNsTr_15 := dct_in_data
+    //  file x264.aa, line 59
+    // iNsTr_15
+    $W[iNsTr_15_132] : $int<32>
+    // 		->(scevgep6) := iNsTr_15
+    //  file x264.aa, line 60
+    // ->(scevgep6)
+    $intermediate $W[ptr_deref_134_wire] : $int<32>
+    $intermediate $W[ptr_deref_134_resized_base_address] : $int<9>
+    $intermediate $W[ptr_deref_134_root_address] : $int<9>
+    $W[ptr_deref_134_word_address_0] : $pointer<dct_engine/memory_space_1>
+    $W[ptr_deref_134_word_address_1] : $pointer<dct_engine/memory_space_1>
+    $W[ptr_deref_134_word_address_2] : $pointer<dct_engine/memory_space_1>
+    $W[ptr_deref_134_word_address_3] : $pointer<dct_engine/memory_space_1>
+    $W[ptr_deref_134_data_0] : $int<8>
+    $W[ptr_deref_134_data_1] : $int<8>
+    $W[ptr_deref_134_data_2] : $int<8>
+    $W[ptr_deref_134_data_3] : $int<8>
+    // 		iNsTr_17 := (i1x_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file x264.aa, line 61
+    // iNsTr_17
+    $W[iNsTr_17_142] : $int<32>
+    // datapath-instances for block %dct_engine%body
+    //  file x264.aa, line 13
+    // 		iNsTr_2 := dct_in_data
+    //  file x264.aa, line 24
+    // dct_in_data
+    $ioport $in [RPIPE_dct_in_data_25_inst] (dct_in_data) (iNsTr_2_26) 
+    // 		iNsTr_4 := dct_in_data
+    //  file x264.aa, line 25
+    // dct_in_data
+    $ioport $in [RPIPE_dct_in_data_28_inst] (dct_in_data) (iNsTr_4_29) 
+    // 		cond := (iNsTr_2 == ($bitcast ($uint<32>) _b00000000000000000000000000000011  ))
+    //  file x264.aa, line 27
+    // (iNsTr_2 == ($bitcast ($uint<32>) _b00000000000000000000000000000011  ))
+    ==[EQ_u32_u1_34_inst] (iNsTr_2_26 type_cast_33_wire_constant) (cond_36) 
+    $delay EQ_u32_u1_34_inst 1
+    // 		iNsTr_5 := (iNsTr_4 == ($bitcast ($uint<32>) _b00000000000000000000000000111000  ))
+    //  file x264.aa, line 29
+    // (iNsTr_4 == ($bitcast ($uint<32>) _b00000000000000000000000000111000  ))
+    ==[EQ_u32_u1_41_inst] (iNsTr_4_29 type_cast_40_wire_constant) (iNsTr_5_42) 
+    $delay EQ_u32_u1_41_inst 1
+    // 		orx_xcond := (cond & iNsTr_5)
+    //  file x264.aa, line 30
+    // (cond & iNsTr_5)
+    &[AND_u1_u1_46_inst] (cond_36 iNsTr_5_42) (orx_xcond_47) 
+    $delay AND_u1_u1_46_inst 1
+    // datapath-instances for if  
+    //  file x264.aa, line 31
+    ==0? [if_stmt_48_branch] (orx_xcond_47)
+    // data-path instances for merge  
+    //  file x264.aa, line 37
+    // 			$phi ix_x05 := 			  ($cast ($uint<32>) iNsTr_11 ) $on bbx_xnph_bbx_xnph			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on bbx_xnphx_xpreheader_bbx_xnph // type of target is $uint<32>
+    //  file x264.aa, line 38
+    // ($cast ($uint<32>) iNsTr_11 )
+    # := [type_cast_60_inst] (iNsTr_11_94) (type_cast_60_wire) 
+    $delay type_cast_60_inst 1
+    $phi [phi_stmt_57] (type_cast_60_wire type_cast_63_wire_constant) ( ix_x05_57 )
+    // 		tmp4 := (ix_x05 * ($bitcast ($uint<32>) _b00000000000000000000000000000010  ))
+    //  file x264.aa, line 40
+    // (ix_x05 * ($bitcast ($uint<32>) _b00000000000000000000000000000010  ))
+    *[MUL_u32_u32_69_inst] (ix_x05_57 type_cast_68_wire_constant) (tmp4_70) 
+    $delay MUL_u32_u32_69_inst 1
+    // 		scevgep := dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+    //  file x264.aa, line 41
+    // dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+    &/ [array_obj_ref_75_index_1_resize] (tmp4_70) (R_tmp4_74_resized) 
+    &/ [array_obj_ref_75_index_1_rename] (R_tmp4_74_resized) (R_tmp4_74_scaled) 
+    +[array_obj_ref_75_index_offset] (R_tmp4_74_scaled array_obj_ref_75_constant_part_of_offset) (array_obj_ref_75_final_offset) 
+    $delay array_obj_ref_75_index_offset 2
+    &/ [array_obj_ref_75_root_address_inst] (array_obj_ref_75_final_offset) (array_obj_ref_75_root_address) 
+    # := [array_obj_ref_75_final_reg] (array_obj_ref_75_root_address) (scevgep_76) 
+    // 		scevgep78 := ($bitcast ($pointer< $uint<32> >) scevgep )
+    //  file x264.aa, line 42
+    // ($bitcast ($pointer< $uint<32> >) scevgep )
+    # := [type_cast_80_inst] (scevgep_76) (scevgep78_81) 
+    $delay type_cast_80_inst 1
+    // 		iNsTr_9 := dct_in_data
+    //  file x264.aa, line 43
+    // dct_in_data
+    $ioport $in [RPIPE_dct_in_data_83_inst] (dct_in_data) (iNsTr_9_84) 
+    // 		->(scevgep78) := iNsTr_9
+    //  file x264.aa, line 44
+    // ->(scevgep78)
+    &/ [ptr_deref_86_base_resize] (scevgep78_81) (ptr_deref_86_resized_base_address) 
+    &/ [ptr_deref_86_root_address_inst] (ptr_deref_86_resized_base_address) (ptr_deref_86_root_address) 
+    +[ptr_deref_86_addr_0] (ptr_deref_86_root_address ptr_deref_86_word_offset_0) (ptr_deref_86_word_address_0) 
+    $delay ptr_deref_86_addr_0 2
+    +[ptr_deref_86_addr_1] (ptr_deref_86_root_address ptr_deref_86_word_offset_1) (ptr_deref_86_word_address_1) 
+    $delay ptr_deref_86_addr_1 2
+    $store [ptr_deref_86_store_0] $to dct_engine/memory_space_0 (ptr_deref_86_word_address_0 ptr_deref_86_data_0) 
+    $delay ptr_deref_86_store_0 2
+    $store [ptr_deref_86_store_1] $to dct_engine/memory_space_0 (ptr_deref_86_word_address_1 ptr_deref_86_data_1) 
+    $delay ptr_deref_86_store_1 2
+    &/ [ptr_deref_86_gather_scatter] (iNsTr_9_84) (ptr_deref_86_data_1 ptr_deref_86_data_0) 
+    // 		iNsTr_11 := (ix_x05 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file x264.aa, line 45
+    // (ix_x05 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    +[ADD_u32_u32_93_inst] (ix_x05_57 type_cast_92_wire_constant) (iNsTr_11_94) 
+    $delay ADD_u32_u32_93_inst 1
+    // 		exitcond3 := (iNsTr_11 == ($bitcast ($uint<32>) _b00000000000000000000000000010000  ))
+    //  file x264.aa, line 47
+    // (iNsTr_11 == ($bitcast ($uint<32>) _b00000000000000000000000000010000  ))
+    ==[EQ_u32_u1_99_inst] (iNsTr_11_94 type_cast_98_wire_constant) (exitcond3_100) 
+    $delay EQ_u32_u1_99_inst 1
+    // datapath-instances for if  
+    //  file x264.aa, line 48
+    ==0? [if_stmt_101_branch] (exitcond3_100)
+    // data-path instances for merge  
+    //  file x264.aa, line 54
+    // 			$phi i1x_x0 := 			  ($cast ($uint<32>) iNsTr_17 ) $on xx_xpreheader_xx_xpreheader			  ($cast ($uint<32>) ($bitcast ($uint<32>) _b00000000000000000000000000000000  ) ) $on xx_xpreheaderx_xpreheader_xx_xpreheader // type of target is $uint<32>
+    //  file x264.aa, line 55
+    // ($cast ($uint<32>) iNsTr_17 )
+    # := [type_cast_113_inst] (iNsTr_17_142) (type_cast_113_wire) 
+    $delay type_cast_113_inst 1
+    $phi [phi_stmt_110] (type_cast_113_wire type_cast_116_wire_constant) ( i1x_x0_110 )
+    // 		scevgep1 := pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+    //  file x264.aa, line 57
+    // pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+    &/ [array_obj_ref_124_index_2_resize] (i1x_x0_110) (R_i1x_x0_123_resized) 
+    &/ [array_obj_ref_124_index_2_rename] (R_i1x_x0_123_resized) (R_i1x_x0_123_scaled) 
+    +[array_obj_ref_124_index_offset] (R_i1x_x0_123_scaled array_obj_ref_124_constant_part_of_offset) (array_obj_ref_124_final_offset) 
+    $delay array_obj_ref_124_index_offset 2
+    &/ [array_obj_ref_124_root_address_inst] (array_obj_ref_124_final_offset) (array_obj_ref_124_root_address) 
+    # := [array_obj_ref_124_final_reg] (array_obj_ref_124_root_address) (scevgep1_125) 
+    // 		scevgep6 := ($bitcast ($pointer< $uint<32> >) scevgep1 )
+    //  file x264.aa, line 58
+    // ($bitcast ($pointer< $uint<32> >) scevgep1 )
+    # := [type_cast_128_inst] (scevgep1_125) (scevgep6_129) 
+    $delay type_cast_128_inst 1
+    // 		iNsTr_15 := dct_in_data
+    //  file x264.aa, line 59
+    // dct_in_data
+    $ioport $in [RPIPE_dct_in_data_131_inst] (dct_in_data) (iNsTr_15_132) 
+    // 		->(scevgep6) := iNsTr_15
+    //  file x264.aa, line 60
+    // ->(scevgep6)
+    &/ [ptr_deref_134_base_resize] (scevgep6_129) (ptr_deref_134_resized_base_address) 
+    &/ [ptr_deref_134_root_address_inst] (ptr_deref_134_resized_base_address) (ptr_deref_134_root_address) 
+    +[ptr_deref_134_addr_0] (ptr_deref_134_root_address ptr_deref_134_word_offset_0) (ptr_deref_134_word_address_0) 
+    $delay ptr_deref_134_addr_0 2
+    +[ptr_deref_134_addr_1] (ptr_deref_134_root_address ptr_deref_134_word_offset_1) (ptr_deref_134_word_address_1) 
+    $delay ptr_deref_134_addr_1 2
+    +[ptr_deref_134_addr_2] (ptr_deref_134_root_address ptr_deref_134_word_offset_2) (ptr_deref_134_word_address_2) 
+    $delay ptr_deref_134_addr_2 2
+    +[ptr_deref_134_addr_3] (ptr_deref_134_root_address ptr_deref_134_word_offset_3) (ptr_deref_134_word_address_3) 
+    $delay ptr_deref_134_addr_3 2
+    $store [ptr_deref_134_store_0] $to dct_engine/memory_space_1 (ptr_deref_134_word_address_0 ptr_deref_134_data_0) 
+    $delay ptr_deref_134_store_0 2
+    $store [ptr_deref_134_store_1] $to dct_engine/memory_space_1 (ptr_deref_134_word_address_1 ptr_deref_134_data_1) 
+    $delay ptr_deref_134_store_1 2
+    $store [ptr_deref_134_store_2] $to dct_engine/memory_space_1 (ptr_deref_134_word_address_2 ptr_deref_134_data_2) 
+    $delay ptr_deref_134_store_2 2
+    $store [ptr_deref_134_store_3] $to dct_engine/memory_space_1 (ptr_deref_134_word_address_3 ptr_deref_134_data_3) 
+    $delay ptr_deref_134_store_3 2
+    &/ [ptr_deref_134_gather_scatter] (iNsTr_15_132) (ptr_deref_134_data_3 ptr_deref_134_data_2 ptr_deref_134_data_1 ptr_deref_134_data_0) 
+    // 		iNsTr_17 := (i1x_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    //  file x264.aa, line 61
+    // (i1x_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+    +[ADD_u32_u32_141_inst] (i1x_x0_110 type_cast_140_wire_constant) (iNsTr_17_142) 
+    $delay ADD_u32_u32_141_inst 1
+  }
+  // end data-path
+  // CP-DP links for merge  
+  //  file x264.aa, line 22
+  // 		iNsTr_2 := dct_in_data
+  //  file x264.aa, line 24
+  // dct_in_data
+  RPIPE_dct_in_data_25_inst <=> (branch_block_stmt_6/assign_stmt_26/RPIPE_dct_in_data_25_Sample/rr branch_block_stmt_6/assign_stmt_26/RPIPE_dct_in_data_25_Update/cr) (branch_block_stmt_6/assign_stmt_26/RPIPE_dct_in_data_25_Sample/ra branch_block_stmt_6/assign_stmt_26/RPIPE_dct_in_data_25_Update/ca)
+  // 		iNsTr_4 := dct_in_data
+  //  file x264.aa, line 25
+  // dct_in_data
+  RPIPE_dct_in_data_28_inst <=> (branch_block_stmt_6/assign_stmt_29/RPIPE_dct_in_data_28_Sample/rr branch_block_stmt_6/assign_stmt_29/RPIPE_dct_in_data_28_Update/cr) (branch_block_stmt_6/assign_stmt_29/RPIPE_dct_in_data_28_Sample/ra branch_block_stmt_6/assign_stmt_29/RPIPE_dct_in_data_28_Update/ca)
+  // 		cond := (iNsTr_2 == ($bitcast ($uint<32>) _b00000000000000000000000000000011  ))
+  //  file x264.aa, line 27
+  // (iNsTr_2 == ($bitcast ($uint<32>) _b00000000000000000000000000000011  ))
+  EQ_u32_u1_34_inst <=> (branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_34_Sample/rr branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_34_Update/cr) (branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_34_Sample/ra branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_34_Update/ca)
+  // 		iNsTr_5 := (iNsTr_4 == ($bitcast ($uint<32>) _b00000000000000000000000000111000  ))
+  //  file x264.aa, line 29
+  // (iNsTr_4 == ($bitcast ($uint<32>) _b00000000000000000000000000111000  ))
+  EQ_u32_u1_41_inst <=> (branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_41_Sample/rr branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_41_Update/cr) (branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_41_Sample/ra branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/EQ_u32_u1_41_Update/ca)
+  // 		orx_xcond := (cond & iNsTr_5)
+  //  file x264.aa, line 30
+  // (cond & iNsTr_5)
+  AND_u1_u1_46_inst <=> (branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/AND_u1_u1_46_Sample/rr branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/AND_u1_u1_46_Update/cr) (branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/AND_u1_u1_46_Sample/ra branch_block_stmt_6/assign_stmt_36_to_assign_stmt_47/AND_u1_u1_46_Update/ca)
+  // CP-DP links for if  
+  //  file x264.aa, line 31
+  if_stmt_48_branch <=> (branch_block_stmt_6/if_stmt_48_eval_test/branch_req) (branch_block_stmt_6/if_stmt_48_else_link/else_choice_transition branch_block_stmt_6/if_stmt_48_if_link/if_choice_transition)
+  // CP-DP links for merge  
+  //  file x264.aa, line 33
+  // CP-DP links for merge  
+  //  file x264.aa, line 37
+  // ($cast ($uint<32>) iNsTr_11 )
+  type_cast_60_inst <=> (branch_block_stmt_6/bbx_xnph_bbx_xnph_PhiReq/phi_stmt_57/phi_stmt_57_sources/type_cast_60/SplitProtocol/Sample/rr branch_block_stmt_6/bbx_xnph_bbx_xnph_PhiReq/phi_stmt_57/phi_stmt_57_sources/type_cast_60/SplitProtocol/Update/cr) (branch_block_stmt_6/bbx_xnph_bbx_xnph_PhiReq/phi_stmt_57/phi_stmt_57_sources/type_cast_60/SplitProtocol/Sample/ra branch_block_stmt_6/bbx_xnph_bbx_xnph_PhiReq/phi_stmt_57/phi_stmt_57_sources/type_cast_60/SplitProtocol/Update/ca)
+  phi_stmt_57 <=> (branch_block_stmt_6/bbx_xnph_bbx_xnph_PhiReq/phi_stmt_57/phi_stmt_57_req branch_block_stmt_6/bbx_xnphx_xpreheader_bbx_xnph_PhiReq/phi_stmt_57/phi_stmt_57_req) (branch_block_stmt_6/merge_stmt_56_PhiAck/phi_stmt_57_ack)
+  // 		tmp4 := (ix_x05 * ($bitcast ($uint<32>) _b00000000000000000000000000000010  ))
+  //  file x264.aa, line 40
+  // (ix_x05 * ($bitcast ($uint<32>) _b00000000000000000000000000000010  ))
+  MUL_u32_u32_69_inst <=> (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/MUL_u32_u32_69_Sample/rr branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/MUL_u32_u32_69_Update/cr) (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/MUL_u32_u32_69_Sample/ra branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/MUL_u32_u32_69_Update/ca)
+  // 		scevgep := dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+  //  file x264.aa, line 41
+  // dct[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][tmp4]
+  array_obj_ref_75_index_1_resize <=> (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_index_resize_1/index_resize_req) (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_index_resize_1/index_resize_ack)
+  array_obj_ref_75_index_1_rename <=> (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_index_scale_1/scale_rename_req) (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_index_scale_1/scale_rename_ack)
+  array_obj_ref_75_index_offset <=> (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_final_index_sum_regn_Sample/req branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_final_index_sum_regn_Update/req) (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_final_index_sum_regn_Sample/ack branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_final_index_sum_regn_Update/ack)
+  array_obj_ref_75_root_address_inst <=> (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_base_plus_offset/sum_rename_req) (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_base_plus_offset/sum_rename_ack)
+  array_obj_ref_75_final_reg <=> (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_request/req branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_complete/req) (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_request/ack branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/array_obj_ref_75_complete/ack)
+  // 		scevgep78 := ($bitcast ($pointer< $uint<32> >) scevgep )
+  //  file x264.aa, line 42
+  // ($bitcast ($pointer< $uint<32> >) scevgep )
+  type_cast_80_inst <=> (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/type_cast_80_Sample/rr branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/type_cast_80_Update/cr) (branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/type_cast_80_Sample/ra branch_block_stmt_6/assign_stmt_70_to_assign_stmt_81/type_cast_80_Update/ca)
+  // 		iNsTr_9 := dct_in_data
+  //  file x264.aa, line 43
+  // dct_in_data
+  RPIPE_dct_in_data_83_inst <=> (branch_block_stmt_6/assign_stmt_84/RPIPE_dct_in_data_83_Sample/rr branch_block_stmt_6/assign_stmt_84/RPIPE_dct_in_data_83_Update/cr) (branch_block_stmt_6/assign_stmt_84/RPIPE_dct_in_data_83_Sample/ra branch_block_stmt_6/assign_stmt_84/RPIPE_dct_in_data_83_Update/ca)
+  // 		->(scevgep78) := iNsTr_9
+  //  file x264.aa, line 44
+  ptr_deref_86_base_resize <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_base_addr_resize/base_resize_req) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_base_addr_resize/base_resize_ack)
+  ptr_deref_86_root_address_inst <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_base_plus_offset/sum_rename_req) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_base_plus_offset/sum_rename_ack)
+  ptr_deref_86_addr_0 <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_0_Sample/rr branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_0_Update/cr) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_0_Sample/ra branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_0_Update/ca)
+  ptr_deref_86_addr_1 <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_1_Sample/rr branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_1_Update/cr) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_1_Sample/ra branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_word_addrgen_1_Update/ca)
+  ptr_deref_86_gather_scatter <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Sample/ptr_deref_86_Split/split_req) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Sample/ptr_deref_86_Split/split_ack)
+  ptr_deref_86_store_0 <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Sample/word_access_start/word_0/rr branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Update/word_access_complete/word_0/cr) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Sample/word_access_start/word_0/ra branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Update/word_access_complete/word_0/ca)
+  ptr_deref_86_store_1 <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Sample/word_access_start/word_1/rr branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Update/word_access_complete/word_1/cr) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Sample/word_access_start/word_1/ra branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ptr_deref_86_Update/word_access_complete/word_1/ca)
+  // 		iNsTr_11 := (ix_x05 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  //  file x264.aa, line 45
+  // (ix_x05 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  ADD_u32_u32_93_inst <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ADD_u32_u32_93_Sample/rr branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ADD_u32_u32_93_Update/cr) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ADD_u32_u32_93_Sample/ra branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/ADD_u32_u32_93_Update/ca)
+  // 		exitcond3 := (iNsTr_11 == ($bitcast ($uint<32>) _b00000000000000000000000000010000  ))
+  //  file x264.aa, line 47
+  // (iNsTr_11 == ($bitcast ($uint<32>) _b00000000000000000000000000010000  ))
+  EQ_u32_u1_99_inst <=> (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/EQ_u32_u1_99_Sample/rr branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/EQ_u32_u1_99_Update/cr) (branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/EQ_u32_u1_99_Sample/ra branch_block_stmt_6/assign_stmt_88_to_assign_stmt_100/EQ_u32_u1_99_Update/ca)
+  // CP-DP links for if  
+  //  file x264.aa, line 48
+  if_stmt_101_branch <=> (branch_block_stmt_6/if_stmt_101_eval_test/branch_req) (branch_block_stmt_6/if_stmt_101_else_link/else_choice_transition branch_block_stmt_6/if_stmt_101_if_link/if_choice_transition)
+  // CP-DP links for merge  
+  //  file x264.aa, line 50
+  // CP-DP links for merge  
+  //  file x264.aa, line 54
+  // ($cast ($uint<32>) iNsTr_17 )
+  type_cast_113_inst <=> (branch_block_stmt_6/xx_xpreheader_xx_xpreheader_PhiReq/phi_stmt_110/phi_stmt_110_sources/type_cast_113/SplitProtocol/Sample/rr branch_block_stmt_6/xx_xpreheader_xx_xpreheader_PhiReq/phi_stmt_110/phi_stmt_110_sources/type_cast_113/SplitProtocol/Update/cr) (branch_block_stmt_6/xx_xpreheader_xx_xpreheader_PhiReq/phi_stmt_110/phi_stmt_110_sources/type_cast_113/SplitProtocol/Sample/ra branch_block_stmt_6/xx_xpreheader_xx_xpreheader_PhiReq/phi_stmt_110/phi_stmt_110_sources/type_cast_113/SplitProtocol/Update/ca)
+  phi_stmt_110 <=> (branch_block_stmt_6/xx_xpreheader_xx_xpreheader_PhiReq/phi_stmt_110/phi_stmt_110_req branch_block_stmt_6/xx_xpreheaderx_xpreheader_xx_xpreheader_PhiReq/phi_stmt_110/phi_stmt_110_req) (branch_block_stmt_6/merge_stmt_109_PhiAck/phi_stmt_110_ack)
+  // 		scevgep1 := pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+  //  file x264.aa, line 57
+  // pix1[($bitcast ($uint<32>) _b00000000000000000000000000000000  )][($bitcast ($uint<32>) _b00000000000000000000000000000000  )][i1x_x0]
+  array_obj_ref_124_index_2_resize <=> (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_index_resize_2/index_resize_req) (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_index_resize_2/index_resize_ack)
+  array_obj_ref_124_index_2_rename <=> (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_index_scale_2/scale_rename_req) (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_index_scale_2/scale_rename_ack)
+  array_obj_ref_124_index_offset <=> (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_final_index_sum_regn_Sample/req branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_final_index_sum_regn_Update/req) (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_final_index_sum_regn_Sample/ack branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_final_index_sum_regn_Update/ack)
+  array_obj_ref_124_root_address_inst <=> (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_base_plus_offset/sum_rename_req) (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_base_plus_offset/sum_rename_ack)
+  array_obj_ref_124_final_reg <=> (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_request/req branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_complete/req) (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_request/ack branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/array_obj_ref_124_complete/ack)
+  // 		scevgep6 := ($bitcast ($pointer< $uint<32> >) scevgep1 )
+  //  file x264.aa, line 58
+  // ($bitcast ($pointer< $uint<32> >) scevgep1 )
+  type_cast_128_inst <=> (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/type_cast_128_Sample/rr branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/type_cast_128_Update/cr) (branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/type_cast_128_Sample/ra branch_block_stmt_6/assign_stmt_125_to_assign_stmt_129/type_cast_128_Update/ca)
+  // 		iNsTr_15 := dct_in_data
+  //  file x264.aa, line 59
+  // dct_in_data
+  RPIPE_dct_in_data_131_inst <=> (branch_block_stmt_6/assign_stmt_132/RPIPE_dct_in_data_131_Sample/rr branch_block_stmt_6/assign_stmt_132/RPIPE_dct_in_data_131_Update/cr) (branch_block_stmt_6/assign_stmt_132/RPIPE_dct_in_data_131_Sample/ra branch_block_stmt_6/assign_stmt_132/RPIPE_dct_in_data_131_Update/ca)
+  // 		->(scevgep6) := iNsTr_15
+  //  file x264.aa, line 60
+  ptr_deref_134_base_resize <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_base_addr_resize/base_resize_req) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_base_addr_resize/base_resize_ack)
+  ptr_deref_134_root_address_inst <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_base_plus_offset/sum_rename_req) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_base_plus_offset/sum_rename_ack)
+  ptr_deref_134_addr_0 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_0_Sample/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_0_Update/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_0_Sample/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_0_Update/ca)
+  ptr_deref_134_addr_1 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_1_Sample/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_1_Update/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_1_Sample/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_1_Update/ca)
+  ptr_deref_134_addr_2 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_2_Sample/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_2_Update/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_2_Sample/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_2_Update/ca)
+  ptr_deref_134_addr_3 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_3_Sample/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_3_Update/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_3_Sample/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_word_addrgen_3_Update/ca)
+  ptr_deref_134_gather_scatter <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/ptr_deref_134_Split/split_req) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/ptr_deref_134_Split/split_ack)
+  ptr_deref_134_store_0 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_0/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_0/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_0/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_0/ca)
+  ptr_deref_134_store_1 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_1/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_1/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_1/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_1/ca)
+  ptr_deref_134_store_2 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_2/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_2/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_2/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_2/ca)
+  ptr_deref_134_store_3 <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_3/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_3/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Sample/word_access_start/word_3/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ptr_deref_134_Update/word_access_complete/word_3/ca)
+  // 		iNsTr_17 := (i1x_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  //  file x264.aa, line 61
+  // (i1x_x0 + ($bitcast ($uint<32>) _b00000000000000000000000000000001  ))
+  ADD_u32_u32_141_inst <=> (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ADD_u32_u32_141_Sample/rr branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ADD_u32_u32_141_Update/cr) (branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ADD_u32_u32_141_Sample/ra branch_block_stmt_6/assign_stmt_136_to_assign_stmt_142/ADD_u32_u32_141_Update/ca)
+}
+$module [x264x_xlinkedx_xoptx_xo_storage_initializer_] 
+{
+  // pipe-declarations for block %x264x_xlinkedx_xoptx_xo_storage_initializer_
+  //  file x264.aa, line 3
+  $CP 
+  {
+    // begin control-path 
+  }
+  // end control-path
+  $DP 
+  {
+    // begin data-path 
+    // constant-object-declarations for block %x264x_xlinkedx_xoptx_xo_storage_initializer_
+    //  file x264.aa, line 3
+  }
+  // end data-path
+}
