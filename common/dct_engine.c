@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iolib.h>
 #include "common.h"
-#if HIGH_BIT_DEPTH
+/*#if HIGH_BIT_DEPTH
     typedef uint16_t pixel;
     typedef uint64_t pixel4;
     typedef int32_t  dctcoef;
@@ -14,6 +14,7 @@
     typedef uint16_t udctcoef;
 
 #endif
+    */
 #include "dct.h"
 enum func_id
 { 
@@ -51,7 +52,7 @@ void dct_engine()
 		func_id = read_uint32("dct_in_data");
 		size = read_uint32("dct_in_data");
 		switch(func_id)
-		{
+		{/*
 			case DCT4x4DC: if (size == (16 * sizeof(dctcoef))/4)
 				{ read_uint32_n("dct_in_data",d,size);
 					dct4x4dc(d);
@@ -76,24 +77,28 @@ void dct_engine()
 				  write_uint32("dct_out_data",(8 * sizeof(dctcoef))/4);
 				  write_uint32_n("dct_out_data",dct,(8 * sizeof(dctcoef))/4);
 				}
-			break;
+			break;*/
 			case SUB4x4_DCT: if (size == (16 * sizeof(dctcoef))/4 + (4 * FENC_STRIDE * sizeof(pixel))/4 + (4 * FDEC_STRIDE * sizeof(pixel))/4 )
-				{ fprintf(stderr,"going in sub4x4_dct %d %d  \n",size,func_id);
-				  read_uint32_n("dct_in_data",dct,(16 * sizeof(dctcoef))/4);
-				  read_uint32_n("dct_in_data",pix1,(4 * FENC_STRIDE * sizeof(pixel))/4);
-				  read_uint32_n("dct_in_data",pix2,(4 * FDEC_STRIDE * sizeof(pixel))/4);
-				  for(int i=0; i < 16; i++)
-				  fprintf(stderr,"copying data temp at HW is %d \n",dct[i]);
+				{ //fprintf(stderr,"going in sub4x4_dct %d %d  \n",size,func_id);
+				  for(int i=0; i<(16 * sizeof(dctcoef))/2; i++)
+				  *((uint32_t *)&dct[2*i]) = read_uint32("dct_in_data");
+				  for(int i=0; (4 * FENC_STRIDE * sizeof(pixel)); i++)
+				  *((uint32_t *)&pix1[0][i]) = read_uint32("dct_in_data");
+				  for(int i=0; (4 * FDEC_STRIDE * sizeof(pixel)); i++)
+				  *((uint32_t *)&pix2[0][i]) = read_uint32("dct_in_data");
+				//  for(int i=0; i < 16; i++)
+				 // fprintf(stderr,"copying data temp at HW is %d \n",dct[i]);
       					sub4x4_dct( dct, pix1, pix2 );
 				  write_uint32("dct_out_data",func_id);
 				  write_uint32("dct_out_data",(16 * sizeof(dctcoef))/4);
-				  write_uint32_n("dct_out_data",dct,(16 * sizeof(dctcoef))/4);
-				  for(int i=0; i < 16; i++)
-				  fprintf(stderr,"sending data temp at HW is %d \n",dct[i]);
+				  for(int i=0; i<(16 * sizeof(dctcoef))/2; i++)
+				  write_uint32("dct_out_data",&dct[2*i]);
+				 // for(int i=0; i < 16; i++)
+				 // fprintf(stderr,"sending data temp at HW is %d \n",dct[i]);
       				
 				}
 			break;
-			case SUB8x8_DCT: if (size == (4 * 16 * sizeof(dctcoef))/4 + (8 * FENC_STRIDE * sizeof(pixel))/4 + (8 * FDEC_STRIDE * sizeof(pixel))/4)
+			/*case SUB8x8_DCT: if (size == (4 * 16 * sizeof(dctcoef))/4 + (8 * FENC_STRIDE * sizeof(pixel))/4 + (8 * FDEC_STRIDE * sizeof(pixel))/4)
 				{ read_uint32_n("dct_in_data",dct1,(4 * 16 * sizeof(dctcoef))/4);
 				  read_uint32_n("dct_in_data",pix1,(8 * FENC_STRIDE * sizeof(pixel))/4);
 				  read_uint32_n("dct_in_data",pix2,(8 * FENC_STRIDE * sizeof(pixel))/4);
@@ -125,7 +130,7 @@ void dct_engine()
 			break;
 
 
-
+*/
 
 		}
 
